@@ -1,21 +1,20 @@
 const { DataTypes } = require("sequelize");
-const { db } = require("../config/database");
+const sequelize = require("../config/database");
 
-const Like = db.define("Like", {
+const branchSubItem = sequelize.define("branchSubItem", {
     id: {
         type: DataTypes.BIGINT,
         autoIncrement: true,
         primaryKey: true
     },
-    userId: {
+    filialId: {
         type: DataTypes.BIGINT,
         allowNull: false
     },
-    centerId: {
+    subjectId: {
         type: DataTypes.BIGINT,
-        allowNull:
-            false
+        allowNull: false
     },
 });
 
-module.exports = Like;
+module.exports = branchSubItem;

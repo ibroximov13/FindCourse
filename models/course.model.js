@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
+const { db } = require("../config/database");
 
-const Course = sequelize.define("Course", {
+const Course = db.define("Course", {
     id: {
         type: DataTypes.BIGINT,
         autoIncrement: true,

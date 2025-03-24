@@ -1,21 +1,20 @@
 const { DataTypes } = require("sequelize");
 const { db } = require("../config/database");
 
-const Like = db.define("Like", {
+const CourseItem = db.define("CourseItem", {
     id: {
         type: DataTypes.BIGINT,
         autoIncrement: true,
         primaryKey: true
     },
-    userId: {
+    centerId: {
         type: DataTypes.BIGINT,
         allowNull: false
     },
-    centerId: {
+    courseId: {
         type: DataTypes.BIGINT,
-        allowNull:
-            false
+        allowNull: false
     },
 });
 
-module.exports = Like;
+module.exports = CourseItem;
