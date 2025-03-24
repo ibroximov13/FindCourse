@@ -1,9 +1,9 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
+const {db} = require("../config/db");
 
-const Center = sequelize.define("Center", {
+const Center = db.define("Center", {
     id: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
 
@@ -16,7 +16,7 @@ const Center = sequelize.define("Center", {
         allowNull: false
     },
     regionId: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     address: {
@@ -24,7 +24,7 @@ const Center = sequelize.define("Center", {
         allowNull: false
     },
     userId: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     phone: {
@@ -39,7 +39,7 @@ const Center = sequelize.define("Center", {
         type: DataTypes.INTEGER
     },
     filial: {
-        type: DataTypes.BIGINT
+        type: DataTypes.INTEGER
     },
 });
 

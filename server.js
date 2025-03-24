@@ -7,6 +7,8 @@ app.use(express.json());
 
 connectDb();
 
+const indexRoute = require("./routes/index");
+app.use("/api", indexRoute);
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {

@@ -1,4 +1,5 @@
 const logger = require("../config/log").child({model: "Branch"});
+const { Filial } = require("../models/index.js");
 const { createBranchValidate, updateBranchValidate, branchByIdValidate } = require("../validation/branch.validate");
 
 const createNewBranch = async (req, res) => {
@@ -8,7 +9,7 @@ const createNewBranch = async (req, res) => {
             return res.status(422).send(error.details[0].message);
         }
         let {name, location, ...rest} = value;
-        let branch = await Branch.findOne({
+        let branch = await Filial.findOne({
             where: {
                 name: name,
                 location: location
@@ -20,7 +21,7 @@ const createNewBranch = async (req, res) => {
             return res.status(400).send("There cannot be multiple branches with the same name in the same location.");
         }
 
-        let newBranch = await Branch.create({
+        let newBranch = await Filial.create({
             ...rest,
             name,
             location
@@ -45,7 +46,7 @@ const updateBranch = async (req, res) => {
             return res.status(400).send(error.details[0].message);
         };
         let { name, phone, image, location, regionId, centerId } = value;
-        let branch = await Branch.findByPk(id);
+        let branch = await Filial.findByPk(id);
         
         if (!branch) {
             return res.status(404).send("Branch not found");
@@ -67,4 +68,9 @@ const updateBranch = async (req, res) => {
         logger.error("Error!", error.message);
         console.log(error);
     }
+};
+
+module.exports = {
+    createNewBranch, 
+    updateBranch
 }

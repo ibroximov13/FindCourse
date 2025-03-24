@@ -1,22 +1,22 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
+const {db} = require("../config/db");
 
-const Enrollment = sequelize.define("Enrollment", {
+const Enrollment = db.define("Enrollment", {
     id: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
     userId: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     courseId: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     centerId: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     date: {
@@ -24,7 +24,7 @@ const Enrollment = sequelize.define("Enrollment", {
         allowNull: false
     },
     subjectId: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
 });
