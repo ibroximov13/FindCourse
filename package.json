@@ -1,0 +1,29 @@
+{
+  "name": "findcourse",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibroximov13/FindCourse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ibroximov13/FindCourse/issues"
+  },
+  "homepage": "https://github.com/ibroximov13/FindCourse#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "joi": "^17.13.3",
+    "multer": "^1.4.5-lts.2",
+    "mysql2": "^3.14.0",
+    "sequelize": "^6.37.6"
+  }
+}
