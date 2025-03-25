@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
+const { db } = require("../config/database");
 
-const branchSubItem = sequelize.define("branchSubItem", {
+const branchSubItem = db.define("branchSubItem", {
     id: {
         type: DataTypes.BIGINT,
         autoIncrement: true,
