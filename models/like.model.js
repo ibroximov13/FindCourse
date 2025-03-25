@@ -1,18 +1,18 @@
 const { DataTypes } = require("sequelize");
-const { db } = require("../config/database");
+const {db} = require("../config/db");
 
 const Like = db.define("Like", {
     id: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
     userId: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     centerId: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         allowNull:
             false
     },

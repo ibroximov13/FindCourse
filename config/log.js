@@ -1,29 +1,16 @@
-const { createLogger, transports, format } = require('winston');
-// require('winston-mongodb');
-require('dotenv').config()
+const winston = require("winston");
 
-const logger = createLogger({
-    format: format.combine(
-        format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
-        format.printf(({ timestamp, level, message }) => `${timestamp} [${level.toUpperCase()}]: ${message}`)
+let {json, combine, timestamp} = winston.format
+
+const logger = winston.createLogger({
+    level: "info",
+    format: combine(
+        timestamp(), json()
     ),
     transports: [
-        new transports.Console(),
-        new transports.File({ filename: 'logs/error.log', level: 'error' }),
-        new transports.File({ filename: 'logs/combined.log' }),
-        // new transports.MongoDB({
-        //     level: 'info',  
-        //     db: process.env.MONGO_URI,  
-        //     options: {
-        //         useUnifiedTopology: true
-        //     },
-        //     collection: 'logs',  
-        //     format: format.combine(
-        //         format.timestamp(),
-        //         format.json()
-        //     )
-        // })
+        new winston.transports.Console(),
+        new winston.transports.File({filename: "logger.log"}),
     ]
 });
 
-module.exports = logger;
+module.exports = logger
