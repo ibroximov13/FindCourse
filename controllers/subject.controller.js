@@ -1,5 +1,7 @@
-const { Subject, SubjectItem } = require("../models");
+const { Op } = require("sequelize");
+const { Subject, SubjectItem, FilSubItem } = require("../models");
 const { createSubjectValidate, subjectByIdValidate, updateSubjectValidate } = require("../validation/subject.validate");
+const { Filial, Center } = require("../models/association");
 
 const logger = require("../config/log").child({model: "Subject"});
 
@@ -87,7 +89,91 @@ const deleteSubject = async (req, res) => {
 
 const getAllSubjects = async (req, res) => {
     try {
+        let page = parseInt(req.query.page) || 1;
+        let take = parseInt(req.query.take) || 10;
+        let offset = (page - 1) * take;
+
+        let filter = req.query.filter || "";
+        let order = req.query.order === "DESC" ? "DESC" : "ASC";
+        let allowedColumns = ["id", "name", "phone", "location", "regionId", "centerId"];
+        let column = allowedColumns.includes(req.query.column) ? req.query.column : "id";
+
+        const subject = await Subject.findAll({
+            where: {
+                name: {
+                    [Op.like]: `%${filter}%`
+                }
+            },
+            include: [
+                {
+                    model: FilSubItem,
+                    include: [
+                        {
+                            model: Filial, 
+                            attributes: ["id", "phone", "location"]
+                        },
+                    ]
+                },
+                {
+                    model: SubjectItem,
+                    include: [
+                        {
+                            model: Center,
+                            attributes: ["id", "name", "adress", "location", "star"]
+                        }
+                    ]
+                }
+            ],
+            limit: limit,
+            offset: offset,
+            order: [[column, order]]
+        });
+        logger.info("GetAllSubjects");
+        res.status(200).send(subject);
+    } catch (error) {
+        logger.error(error.message);
+        console.log(error.message);
+    }
+};
+
+const getOneSubject  = async (req, res) => {
+    try {
+        let {error, value} = subjectByIdValidate(req.params);
+        if (error) {
+            return res.status(422).send(error.details[0].message);
+        }
         
+        let id = value.id;
+
+        let subject = await Subject.findOne({
+            where: {
+                id: id,
+            },
+            include: [
+                {
+                    model: FilSubItem,
+                    include: [
+                        {
+                            model: Filial, 
+                            attributes: ["id", "phone", "location"]
+                        },
+                    ]
+                },
+                {
+                    model: SubjectItem,
+                    include: [
+                        {
+                            model: Center,
+                            attributes: ["id", "name", "adress", "location", "star"]
+                        }
+                    ]
+                }
+            ],
+        });
+
+        logger.info("GetOneSubject");
+        res.status(200).send(subject);
+
     } catch (error) {
         logger.error(error.message);
         console.log(error.message);
@@ -97,5 +183,7 @@ const getAllSubjects = async (req, res) => {
 module.exports = {
     createSubject, 
     updateSubject, 
-    deleteSubject
+    deleteSubject,
+    getAllSubjects,
+    getOneSubject
 };

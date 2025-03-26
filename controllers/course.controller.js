@@ -1,4 +1,5 @@
-const { Course } = require("../models");
+const { Course, FilCourseItem } = require("../models");
+const { Filial, CourseItem, Center } = require("../models/association");
 const { createCourseValidate, courseByIdValidate, updateCourseValidate } = require("../validation/course.validate");
 
 const logger = require("../config/log").child({model: "Cource"});
@@ -85,9 +86,92 @@ const deleteCourse = async (req, res) => {
     };
 };
 
-const getAllCourses = async (req, res) => {
+const getAllCourse = async (req, res) => {
     try {
+        let page = parseInt(req.query.page) || 1;
+        let take = parseInt(req.query.take) || 10;
+        let offset = (page - 1) * take;
+
+        let filter = req.query.filter || "";
+        let order = req.query.order === "DESC" ? "DESC" : "ASC";
+        let allowedColumns = ["id", "name", "phone", "location", "regionId", "centerId"];
+        let column = allowedColumns.includes(req.query.column) ? req.query.column : "id";
+
+        const course = await Course.findAll({
+            where: {
+                name: {
+                    [Op.like]: `%${filter}%`
+                }
+            },
+            include: [
+                {
+                    model: FilCourseItem,
+                    include: [
+                        {
+                            model: Filial, 
+                            attributes: ["id", "phone", "location"]
+                        },
+                    ]
+                },
+                {
+                    model: CourseItem,
+                    include: [
+                        {
+                            model: Center,
+                            attributes: ["id", "name", "adress", "location", "star"]
+                        }
+                    ]
+                }
+            ],
+            limit: limit,
+            offset: offset,
+            order: [[column, order]]
+        });
+        logger.info("GetAllCourse");
+        res.status(200).send(course);
+    } catch (error) {
+        logger.error(error.message);
+        console.log(error.message);
+    }
+};
+
+const getOneCourse  = async (req, res) => {
+    try {
+        let {error, value} =courseByIdValidate(req.params);
+        if (error) {
+            return res.status(422).send(error.details[0].message);
+        }
         
+        let id = value.id;
+
+        let course = await Course.findOne({
+            where: {
+                id: id,
+            },
+            include: [
+                {
+                    model: FilCourseItem,
+                    include: [
+                        {
+                            model: Filial, 
+                            attributes: ["id", "phone", "location"]
+                        },
+                    ]
+                },
+                {
+                    model: CourseItem,
+                    include: [
+                        {
+                            model: Center,
+                            attributes: ["id", "name", "adress", "location", "star"]
+                        }
+                    ]
+                }
+            ],
+        })
+
+        logger.info("GetOneCourse");
+        res.status(200).send(course);
     } catch (error) {
         logger.error(error.message);
         console.log(error.message);
@@ -97,5 +181,7 @@ const getAllCourses = async (req, res) => {
 module.exports = {
     createCourse, 
     updateCourse, 
-    deleteCourse
+    deleteCourse,
+    getAllCourse,
+    getOneCourse
 };

@@ -1,6 +1,6 @@
 const logger = require("../config/log").child({model: "Branch"});
 const { Op } = require("sequelize");
-const { Filial, Region, Center, FilSubItem, FilCourseItem } = require("../models/index.js");
+const { Filial, Region, Center, FilSubItem, FilCourseItem, Subject, Course } = require("../models/index.js");
 const { createBranchValidate, updateBranchValidate, branchByIdValidate } = require("../validation/branch.validate");
 
 const createNewBranch = async (req, res) => {
@@ -12,7 +12,7 @@ const createNewBranch = async (req, res) => {
         let {name, location, subjects, courses, ...rest} = value;
         let branch = await Filial.findOne({
             where: {
-                name: name,
+                name: name, 
                 location: location
             }
         });
@@ -125,8 +125,30 @@ const getAllBranchs = async (req, res) => {
         
         let branch = await Filial.findAll({
             include: [
-                {model: Region, attributes: ["name"]},
-                {model: Center}
+                {
+                    model: Region, 
+                    attributes: ["name"]
+                },
+                {
+                    model: Center,
+                    attributes: ["id", "name", "adress", "phone", "location"]
+                },
+                {
+                    model: FilSubItem,
+                    include: [
+                        {
+                            model: Subject,
+                        }
+                    ]
+                },
+                {
+                    model: FilCourseItem,
+                    include: [
+                        {
+                            model: Course,
+                        }
+                    ]
+                },
             ],
             group: ["region.id", "center.id"],
             subQuery: false,
@@ -163,8 +185,30 @@ const getOneBranch = async (req, res) => {
         let branch = await Filial.findOne({
             where: {id},
             include: [
-                {model: Region, attributes: ["name"]},
-                {model: Center}
+                {
+                    model: Region, 
+                    attributes: ["name"]
+                },
+                {
+                    model: Center,
+                    attributes: ["id", "name", "adress", "phone", "location"]
+                },
+                {
+                    model: FilSubItem,
+                    include: [
+                        {
+                            model: Subject,
+                        }
+                    ]
+                },
+                {
+                    model: FilCourseItem,
+                    include: [
+                        {
+                            model: Course,
+                        }
+                    ]
+                },
             ],
             group: ["region.id", "center.id"],
             subQuery: false,

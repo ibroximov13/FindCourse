@@ -1,10 +1,31 @@
+const { SubjectItem, CourseItem } = require("../models");
 const Center = require("../models/center.model");
 const { Op } = require("sequelize");
 const logger = require("../config/log").child({model: "center"})
 
 const createCenter = async (req, res) => {
   try {
-    const center = await Center.create(req.body);
+    let {subjects, courses, ...rest} = req.body;
+    const center = await Center.create({...rest});
+    let centerId = center.id;
+    let a = subjects.map((r) => {
+      return {
+        centerId: centerId,
+        subjectId: r
+      }
+    });
+    
+    await SubjectItem.bulkCreate(a);
+
+    let b = courses.map((r) => {
+      return {
+        centerId: centerId,
+        courseId: r
+      }
+    });
+
+    await CourseItem.bulkCreate(b);
+    
     logger.info(`Center created with ID: ${center.id}`);
     res.status(201).json({ message: "Center created", data: center });
   } catch (error) {
