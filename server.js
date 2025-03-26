@@ -1,7 +1,7 @@
 const express = require("express");
 const { connectDb } = require("./config/db");
-const { initData } = require("./config/initData");
-const route = require("./routes/index");
+const { initData } = require("./utils/initData");
+const indexRoute = require("./routes/index");
 const setupSwagger = require("./config/swagger");
 
 const app = express();
