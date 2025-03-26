@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const centerController = require("../controllers/center.controller");
+const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 
 /**
  * @swagger
@@ -36,7 +37,7 @@ const centerController = require("../controllers/center.controller");
  *       400:
  *         description: Bad request
  */
-router.post("/", centerController.createCenter);
+router.post("/", verifyTokenAndRole(["ADMIN"]), centerController.createCenter);
 
 /**
  * @swagger
@@ -100,50 +101,6 @@ router.get("/:id", centerController.getCenterById);
 /**
  * @swagger
  * /api/centers/{id}:
- *   put:
- *     summary: Fully update center by ID
- *     tags: [Centers]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: Center ID
- *         example: 1
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *                 example: "Updated Center"
- *               regionId:
- *                 type: integer
- *                 example: 3
- *               address:
- *                 type: string
- *                 example: "Yangi manzil, 10-uy"
- *               phone:
- *                 type: string
- *                 example: "+998907654321"
- *               location:
- *                 type: string
- *                 example: "41.311000, 69.240000"
- *     responses:
- *       200:
- *         description: Center fully updated
- *       404:
- *         description: Center not found
- */
-router.put("/:id", centerController.updateCenter);
-
-/**
- * @swagger
- * /api/centers/{id}:
  *   patch:
  *     summary: Partially update center by ID
  *     tags: [Centers]
@@ -171,7 +128,7 @@ router.put("/:id", centerController.updateCenter);
  *       404:
  *         description: Center not found
  */
-router.patch("/:id", centerController.patchCenter);
+router.patch("/:id", verifyTokenAndRole(["ADMIN", "SUPERADMIN"]), centerController.patchCenter);
 
 /**
  * @swagger
@@ -193,6 +150,6 @@ router.patch("/:id", centerController.patchCenter);
  *       404:
  *         description: Center not found
  */
-router.delete("/:id", centerController.deleteCenter);
+router.delete("/:id", verifyTokenAndRole(["ADMIN"]), centerController.deleteCenter);
 
 module.exports = router;

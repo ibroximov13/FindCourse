@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const likeController = require("../controllers/like.controller");
+const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 
 /**
  * @swagger
@@ -36,7 +37,7 @@ const likeController = require("../controllers/like.controller");
  *       400:
  *         description: Validation error
  */
-router.post("/", likeController.createLike);
+router.post("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), likeController.createLike);
 
 /**
  * @swagger
@@ -86,48 +87,6 @@ router.get("/", likeController.getAllLikes);
  */
 router.get("/:id", likeController.getLikeById);
 
-/**
- * @swagger
- * /api/likes/{id}:
- *   put:
- *     summary: Fully update like by ID
- *     tags: [Likes]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: Like ID
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - userId
- *               - postId
- *             properties:
- *               userId:
- *                 type: integer
- *                 example: 2
- *               postId:
- *                 type: integer
- *                 example: 12
- *     responses:
- *       200:
- *         description: Like fully updated
- *         content:
- *           application/json:
- *             example:
- *               id: 1
- *               userId: 2
- *               postId: 12
- *       404:
- *         description: Like not found
- */
-router.put("/:id", likeController.updateLike);
 
 /**
  * @swagger
@@ -167,7 +126,7 @@ router.put("/:id", likeController.updateLike);
  *       404:
  *         description: Like not found
  */
-router.patch("/:id", likeController.patchLike);
+router.patch("/:id", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), likeController.patchLike);
 
 /**
  * @swagger
@@ -192,6 +151,6 @@ router.patch("/:id", likeController.patchLike);
  *       404:
  *         description: Like not found
  */
-router.delete("/:id", likeController.deleteLike);
+router.delete("/:id", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), likeController.deleteLike);
 
 module.exports = router;

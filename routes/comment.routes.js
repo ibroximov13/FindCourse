@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const commentController = require("../controllers/comment.controller");
-const validate = require("../middlewares");
-const { commentCreateSchema, commentUpdateSchema } = require("../validation/comment.validate");
+const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 
 /**
  * @swagger
@@ -43,7 +42,7 @@ const { commentCreateSchema, commentUpdateSchema } = require("../validation/comm
  *       400:
  *         description: Validation error
  */
-router.post("/", validate(commentCreateSchema), commentController.createComment);
+router.post("/", commentController.createComment);
 
 /**
  * @swagger
@@ -99,54 +98,6 @@ router.get("/:id", commentController.getCommentById);
 /**
  * @swagger
  * /api/comments/{id}:
- *   put:
- *     summary: Fully update comment by ID
- *     tags: [Comments]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: Comment ID
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - userId
- *               - postId
- *               - message
- *             properties:
- *               userId:
- *                 type: integer
- *                 example: 4
- *               postId:
- *                 type: integer
- *                 example: 15
- *               message:
- *                 type: string
- *                 example: "This is an updated comment message."
- *     responses:
- *       200:
- *         description: Comment fully updated
- *         content:
- *           application/json:
- *             example:
- *               id: 1
- *               userId: 4
- *               postId: 15
- *               message: "This is an updated comment message."
- *       404:
- *         description: Comment not found
- */
-router.put("/:id", validate(commentUpdateSchema), commentController.updateComment);
-
-/**
- * @swagger
- * /api/comments/{id}:
  *   patch:
  *     summary: Partially update comment by ID
  *     tags: [Comments]
@@ -180,7 +131,7 @@ router.put("/:id", validate(commentUpdateSchema), commentController.updateCommen
  *       404:
  *         description: Comment not found
  */
-router.patch("/:id", validate(commentUpdateSchema), commentController.patchComment);
+router.patch("/:id", commentController.patchComment);
 
 /**
  * @swagger

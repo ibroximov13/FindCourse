@@ -176,12 +176,25 @@ const getOneCourse  = async (req, res) => {
         logger.error(error.message);
         console.log(error.message);
     }
-}
+};
+
+const uploadImage = async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ error: "Rasm yuklanishi kerak" });
+        }
+        const imageUrl = `${req.protocol}://${req.get("host")}/image/${req.file.filename}`;
+        res.status(200).json({ url: imageUrl });
+    } catch (error) {
+        res.status(500).json({ error: "Serverda xatolik yuz berdi" });
+    }
+};
 
 module.exports = {
     createCourse, 
     updateCourse, 
     deleteCourse,
     getAllCourse,
-    getOneCourse
+    getOneCourse,
+    uploadImage
 };

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const regionController = require("../controllers/region.controller");
+const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 
 /**
  * @swagger
@@ -26,7 +27,7 @@ const regionController = require("../controllers/region.controller");
  *       400:
  *         description: Validation error
  */
-router.post("/", regionController.createRegion);
+router.post("/", verifyTokenAndRole(["ADMIN"]), regionController.createRegion);
 
 /**
  * @swagger
@@ -76,44 +77,6 @@ router.get("/:id", regionController.getRegionById);
 /**
  * @swagger
  * /api/regions/{id}:
- *   put:
- *     summary: Fully update region by ID
- *     tags: [Regions]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: Region ID
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - name
- *             properties:
- *               name:
- *                 type: string
- *                 example: Samarkand
- *     responses:
- *       200:
- *         description: Region updated
- *         content:
- *           application/json:
- *             example:
- *               id: 1
- *               name: Samarkand
- *       404:
- *         description: Region not found
- */
-router.put("/:id", regionController.updateRegion);
-
-/**
- * @swagger
- * /api/regions/{id}:
  *   patch:
  *     summary: Partially update region by ID
  *     tags: [Regions]
@@ -145,7 +108,7 @@ router.put("/:id", regionController.updateRegion);
  *       404:
  *         description: Region not found
  */
-router.patch("/:id", regionController.patchRegion);
+router.patch("/:id", verifyTokenAndRole([ "ADMIN", "SUPERADMIN", ]), regionController.patchRegion);
 
 /**
  * @swagger
@@ -170,6 +133,6 @@ router.patch("/:id", regionController.patchRegion);
  *       404:
  *         description: Region not found
  */
-router.delete("/:id", regionController.deleteRegion);
+router.delete("/:id", verifyTokenAndRole([ "ADMIN" ]), regionController.deleteRegion);
 
 module.exports = router;
