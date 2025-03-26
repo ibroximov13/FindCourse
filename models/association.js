@@ -129,19 +129,19 @@ Enrollment.belongsTo(Subject, {foreignKey: "subjectId", onDelete: 'CASCADE', onU
 // Category.hasMany(Resource, { foreignKey: "categoryId" });
 
 module.exports = {
-  User,
-  Region,
-  Filial,
-  Center,
-  Subject,
-  Course,
-  Category,
-  Resource,
-  Enrollment,
-  Comment,
-  Like,
-  FilSubItem,
-  FilCourseItem,
-  SubjectItem,
-  CourseItem
+    User,
+    Region,
+    Center,
+    Branch,
+    Subject,
+    Course,
+    Category,
+    Resource,
+    Like,
+    Comment,
+    Enrollment,
+    SubjectItem,
+    FilSubItem,
+    FilCourseItem,
+    CourseItem
 };

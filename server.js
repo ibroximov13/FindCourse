@@ -1,16 +1,9 @@
 const express = require("express");
-const { connectDb } = require("./config/db");
-
+require("dotenv").config();
 const app = express();
-require("dotenv").config()
 app.use(express.json());
+const PORT = process.env.DB_PORT || 3001;
 
-connectDb();
-
-const indexRoute = require("./routes/index");
-app.use("/api", indexRoute);
-
-const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
-    console.log(`Server started has been on PORT: ${PORT}`)
+    console.log(`Server started has been on PORT: ${PORT}`);
 });
