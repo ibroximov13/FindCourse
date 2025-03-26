@@ -132,7 +132,7 @@ module.exports = {
     User,
     Region,
     Center,
-    Branch,
+    Filial,
     Subject,
     Course,
     Category,

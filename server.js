@@ -1,16 +1,22 @@
 const express = require("express");
 const { connectDb } = require("./config/db");
 const { initData } = require("./config/initData");
-const regionRoutes = require("./routes/region.routes"); 
+const route = require("./routes/index");
+const setupSwagger = require("./config/swagger");
 
 const app = express();
 require("dotenv").config();
 app.use(express.json());
+setupSwagger(app);
+
+app.use("/image", [
+    express.static("uploads/uploadUser"),
+]);
+
+app.use("/api", indexRoute);
 
 connectDb();
 initData();
-
-app.use("/api", regionRoutes);
 
 const PORT = process.env.PORT 
 app.listen(PORT, () => {
