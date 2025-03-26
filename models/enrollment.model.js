@@ -30,4 +30,3 @@ const Enrollment = db.define("Enrollment", {
 });
 
 module.exports = Enrollment;
-
