@@ -17,7 +17,7 @@ const createNewBranch = async (req, res) => {
             }
         });
 
-        if (!branch) {
+        if (branch) {
             logger.warn(`Branch creation attempt failed: A branch with name "${name}" already exists at location "${location}". User ID: ${req.user.id}`);
             return res.status(400).send("There cannot be multiple branches with the same name in the same location.");
         }
@@ -114,14 +114,14 @@ const deleteBranch = async (req, res) => {
 
 const getAllBranchs = async (req, res) => {
     try {
-        let page = req.query.page || 1;
-        let take = req.query.take || 10;
-        let offset = ( page - 1 ) * take;
+        let page = parseInt(req.query.page) || 1;
+        let take = parseInt(req.query.take) || 10;
+        let offset = (page - 1) * take;
 
         let filter = req.query.filter || "";
-        const order = req.query.order === "DESC" ? "DESC" : "ASC";
-        const allowedColumns = ["id", "name", "phone", "location", "regionId", "centerId"];
-        const column = allowedColumns.includes(req.query.column) ? req.query.column : "id";
+        let order = req.query.order === "DESC" ? "DESC" : "ASC";
+        let allowedColumns = ["id", "name", "phone", "location", "regionId", "centerId"];
+        let column = allowedColumns.includes(req.query.column) ? req.query.column : "id";
         
         let branch = await Filial.findAll({
             include: [
@@ -131,15 +131,11 @@ const getAllBranchs = async (req, res) => {
             group: ["region.id", "center.id"],
             subQuery: false,
             where: {
-                name: {
-                    [Op.like]: `%${filter}%`
-                },
-                phone: {
-                    [Op.like]: `%${filter}%`
-                },
-                location: {
-                    [Op.like]: `%${filter}%`
-                },
+                [Op.or]: [
+                    { name: { [Op.like]: `%${filter}%` } },
+                    { phone: { [Op.like]: `%${filter}%` } },
+                    { location: { [Op.like]: `%${filter}%` } }
+                ]
             },
             limit: take,
             offset: offset,

@@ -10,7 +10,7 @@ const createSubject = async (req, res) => {
             return res.status(422).send(error.details[0].message);
         };
 
-        let {name, image, centerId, filialId} = value;
+        let {name, image} = value;
         let subject = await Subject.findOne({where: {name}});
         if (subject) {
             return res.status(400).send("Subject already exists");
@@ -34,13 +34,13 @@ const updateSubject = async (req, res) => {
             return res.status(422).send(errorId.details[0].message);
         };
 
-        let id = valueId
+        let id = valueId.id
         let {error, value} = updateSubjectValidate(req.body);
         if (error) {
             return res.status(422).send(error.details[0].message);
         };
         let {name, image} = value;
-        let subject = await Subject.findOne({where: {id: valueId.id, name: name}});
+        let subject = await Subject.findOne({where: {id: id, name: name}});
         if (!subject) {
             return res.status(400).send("Subject already exists");
         };
@@ -85,7 +85,14 @@ const deleteSubject = async (req, res) => {
     };
 };
 
-
+const getAllSubjects = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        logger.error(error.message);
+        console.log(error.message);
+    }
+}
 
 module.exports = {
     createSubject, 
