@@ -1,34 +1,33 @@
-const { body, query } = require("express-validator");
+const Joi = require('joi');
 
-const createCenterValidation = [
-  body("name").notEmpty().withMessage("Name is required"),
-  body("regionId").notEmpty().withMessage("regionId is required").isInt(),
-  body("address").notEmpty().withMessage("Address is required"),
-  body("userId").notEmpty().withMessage("userId is required").isInt(),
-  body("phone").notEmpty().withMessage("Phone is required"),
-  body("location").notEmpty().withMessage("Location is required"),
-];
+const createCenterValidation = Joi.object({
+  name: Joi.string().required(),
+  regionId: Joi.number().integer().required(),
+  address: Joi.string().required(),
+  phone: Joi.string().required(),
+  location: Joi.string().required(),
+});
 
-const updateCenterValidation = [
-  body("name").optional().notEmpty().withMessage("Name cannot be empty"),
-  body("regionId").optional().isInt().withMessage("regionId must be integer"),
-  body("address").optional().notEmpty().withMessage("Address cannot be empty"),
-  body("userId").optional().isInt().withMessage("userId must be integer"),
-  body("phone").optional().notEmpty().withMessage("Phone cannot be empty"),
-  body("location").optional().notEmpty().withMessage("Location cannot be empty"),
-  body("star").optional().isInt().withMessage("star must be integer"),
-  body("filial").optional().isInt().withMessage("filial must be integer"),
-];
-
-const paginationAndFilterValidation = [
-  query("page").optional().isInt({ min: 1 }).withMessage("Page must be a positive integer"),
-  query("limit").optional().isInt({ min: 1 }).withMessage("Limit must be a positive integer"),
-  query("name").optional().isString(),
-  query("regionId").optional().isInt().withMessage("regionId must be integer"),
-];
-
-module.exports = {
-  createCenterValidation,
-  updateCenterValidation,
-  paginationAndFilterValidation,
-};
+const updateCenterValidation = Joi.object({
+    name: Joi.string().optional(),
+    regionId: Joi.number().integer().optional(),
+    address: Joi.string().optional(),
+    phone: Joi.string().optional(),
+    location: Joi.string().optional(),
+    star: Joi.number().integer().optional(),
+    filial: Joi.number().integer().optional()
+  });
+  
+  const paginationAndFilterValidation = Joi.object({
+    page: Joi.number().integer().min(1).optional(),
+    limit: Joi.number().integer().min(1).optional(),
+    name: Joi.string().optional(),
+    regionId: Joi.number().integer().optional(),
+    order: Joi.string().valid("ASC", "DESC").optional(),
+  });
+  
+  module.exports = {
+    createCenterValidation,
+    updateCenterValidation,
+    paginationAndFilterValidation,
+  };
