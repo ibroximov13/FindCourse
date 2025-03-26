@@ -1,6 +1,6 @@
 
 const { Router } = require("express");
-const { sendOtp, verifyOtp, register, uploadImage, refreshToken, loginUser, createSuperAdmin, getAllUsers, updateUser, deleteUser, getMeProfile, updateMyProfile } = require("../controllers/user.controller");
+const { sendOtp, verifyOtp, register, uploadImage, refreshToken, loginUser, createSuperAdmin, getAllUsers, updateUser, deleteUser, getMeProfile, updateMyProfile, downloadUsersExcel } = require("../controllers/user.controller");
 const upload = require("../multer/user.multer");
 const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 
@@ -537,6 +537,29 @@ router.get("/me", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "SELLER"]),
  *         description: "Ichki server xatosi"
  */
 router.patch("/me/update", verifyTokenAndRole(['USER', 'ADMIN', 'SUPERADMIN', 'SELLER']), updateMyProfile);
+
+/**
+ * @swagger
+ * /users/download-excel:
+ *   get:
+ *     summary: "Foydalanuvchilar ro‘yxatini Excel formatida yuklab olish"
+ *     tags: [Users]
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       200:
+ *         description: "Excel fayl muvaffaqiyatli yuklab olindi"
+ *         content:
+ *           application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+ *             schema:
+ *               type: string
+ *               format: binary
+ *       404:
+ *         description: "Foydalanuvchilar topilmadi"
+ *       500:
+ *         description: "Ichki server xatosi"
+ */
+router.get("/download-excel", verifyTokenAndRole(["ADMIN"]), downloadUsersExcel);
 
 module.exports = router;
   

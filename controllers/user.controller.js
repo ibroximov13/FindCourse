@@ -1,12 +1,14 @@
 const { totp } = require("otplib")
 const bcrypt = require("bcrypt")
-// const { sendSms } = require("../config/eskiz")
+// const { sendSms } = require("../utils/eskiz")
 const nodemailer = require('nodemailer')
 const jwt = require("jsonwebtoken")
 const dotenv = require("dotenv");
 const { User, Region } = require("../models");
 const { createUserValidate, sendOtpValidate, verifyOtpValidate, userLoginValidate, refreshTokenValidate, patchUserValidate, updateMyProfileValidate } = require("../validation/user.validate");
 const { Op } = require("sequelize");
+const { generateUsersExcel } = require("../utils/exel");
+
 dotenv.config()
 
 totp.options = {
@@ -22,7 +24,7 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-const SECRET_KEY = 'xusniddin';
+const SECRET_KEY = process.env.SECRET_KEY;
 const JWT_SECRET = process.env.JWT_SECRET;
 const REFRESH_SECRET = process.env.REFRESH_SECRET;
 
@@ -97,7 +99,7 @@ async function register(req, res) {
 
         let hashedPassword = bcrypt.hashSync(password, 10);
         let newUser = await User.create({
-            ...rest, 
+            ...rest,
             phone: phone,
             password: hashedPassword,
             role: role
@@ -120,8 +122,8 @@ async function loginUser(req, res) {
         let newUser = await User.findOne({
             where: {
                 [Op.and]: [
-                    {phone: phone},
-                    {email: email}
+                    { phone: phone },
+                    { email: email }
                 ]
             }
         });
@@ -213,13 +215,13 @@ async function getAllUsers(req, res) {
 
 async function updateUser(req, res) {
     try {
-        let {error, value} = patchUserValidate(req.body);
+        let { error, value } = patchUserValidate(req.body);
         if (error) {
             return res.status(400).send(error.details[0].message);
         };
         let user = await User.findByPk(req.params.id);
         if (!user) {
-            return res.status(404).send({message: "User not found"});
+            return res.status(404).send({ message: "User not found" });
         };
 
         if (Object.keys(value).length === 0) {
@@ -235,13 +237,13 @@ async function updateUser(req, res) {
 
 async function deleteUser(req, res) {
     try {
-    let id = req.params.id;
-    let user = await User.findByPk(id);
-    if (!user) {
-        return res.status(404).send({message: "User not found"});
-    };
-    const deleteUser = await user.destroy();
-    res.send(deleteUser);
+        let id = req.params.id;
+        let user = await User.findByPk(id);
+        if (!user) {
+            return res.status(404).send({ message: "User not found" });
+        };
+        const deleteUser = await user.destroy();
+        res.send(deleteUser);
     } catch (error) {
         console.log(error);
     }
@@ -300,7 +302,7 @@ async function getMeProfile(req, res) {
 
 async function updateMyProfile(req, res) {
     try {
-        let {error, value} = updateMyProfileValidate(req.body);
+        let { error, value } = updateMyProfileValidate(req.body);
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
@@ -332,5 +334,31 @@ async function updateMyProfile(req, res) {
     }
 }
 
+async function downloadUsersExcel(req, res) {
+    try {
+        const users = await User.findAll();
 
-module.exports = { findUser, sendOtp, verifyOtp, register, uploadImage, refreshToken, loginUser, getAllUsers, updateUser, deleteUser, uploadImage, createSuperAdmin, getMeProfile, updateMyProfile }
+        if (users.length === 0) {
+            return res.status(404).json({ error: "Foydalanuvchilar topilmadi" });
+        }
+
+        const workbook = await generateUsersExcel(users);
+
+        res.setHeader(
+            "Content-Type",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        );
+        res.setHeader(
+            "Content-Disposition",
+            "attachment; filename=users.xlsx"
+        );
+
+        await workbook.xlsx.write(res);
+        res.end();
+    } catch (error) {
+        res.status(500).json({ error: "Excel fayl yaratishda xatolik yuz berdi" });
+    }
+}
+
+
+module.exports = { findUser, sendOtp, verifyOtp, register, uploadImage, refreshToken, loginUser, getAllUsers, updateUser, deleteUser, uploadImage, createSuperAdmin, getMeProfile, updateMyProfile, downloadUsersExcel }
