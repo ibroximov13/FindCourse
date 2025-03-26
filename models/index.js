@@ -3,7 +3,7 @@ require("./association.js");
 
 const User = require("./user.model");
 const Region = require("./region.model");
-const Filial = require("./branch.model");
+const Branch = require("./branch.model");
 const Center = require("./center.model");
 const Subject = require("./subject.model");
 const Course = require("./course.model");
@@ -20,7 +20,7 @@ const CourseItem = require("./courseItem.model");
 module.exports = {
     User,
     Region,
-    Filial,
+    Branch,
     Center,
     Subject,
     Course,
