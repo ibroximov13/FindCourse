@@ -104,25 +104,15 @@ const getAllCourse = async (req, res) => {
             },
             include: [
                 {
-                    model: BranchCourseItem,
-                    include: [
-                        {
-                            model: Branch,
-                            attributes: ["id", "phone", "location"]
-                        },
-                    ]
+                    model: Branch,
+                    attributes: ["id", "phone", "location"] 
                 },
                 {
-                    model: CourseItem,
-                    include: [
-                        {
-                            model: Center,
-                            attributes: ["id", "name", "adress", "location", "star"]
-                        }
-                    ]
+                    model: Center,
+                    attributes: ["id", "name", "adress", "location", "star"]
                 }
             ],
-            limit: limit,
+            limit: take,
             offset: offset,
             order: [[column, order]]
         });
@@ -149,22 +139,12 @@ const getOneCourse = async (req, res) => {
             },
             include: [
                 {
-                    model: BranchCourseItem,
-                    include: [
-                        {
-                            model: Branch,
-                            attributes: ["id", "phone", "location"]
-                        },
-                    ]
+                    model: Branch,
+                    attributes: ["id", "phone", "location"] 
                 },
                 {
-                    model: CourseItem,
-                    include: [
-                        {
-                            model: Center,
-                            attributes: ["id", "name", "adress", "location", "star"]
-                        }
-                    ]
+                    model: Center,
+                    attributes: ["id", "name", "adress", "location", "star"]
                 }
             ],
         })

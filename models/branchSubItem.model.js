@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { db } = require("../config/db");
 
-const branchSubItem = db.define("branchSubItem", {
+const BranchSubItem = db.define("branchSubItems", {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -17,4 +17,4 @@ const branchSubItem = db.define("branchSubItem", {
     },
 });
 
-module.exports = branchSubItem;
+module.exports = BranchSubItem;

@@ -1,2 +1,47 @@
 {"level":"error","message":"Cannot read properties of undefined (reading 'findAll')","model":"Branch","timestamp":"2025-03-26T22:47:13.612Z"}
 {"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-26T22:49:56.601Z"}
+{"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-27T05:20:40.531Z"}
+{"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-27T05:33:27.159Z"}
+{"level":"error","message":"Unknown column 'Center.adress' in 'field list'","model":"Branch","timestamp":"2025-03-27T05:38:49.026Z"}
+{"level":"error","message":"Expression #16 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.Subjects.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"Branch","timestamp":"2025-03-27T05:41:00.629Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-27T05:42:14.215Z"}
+{"level":"info","message":"getAllCategory","model":"Category","timestamp":"2025-03-27T05:42:56.693Z"}
+{"level":"error","message":"getAllCenters error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ILIKE '%Olmazor%' AND `Center`.`regionId` = '2' ORDER BY `Center`.`id` DESC LIMI' at line 1","model":"center","timestamp":"2025-03-27T05:43:31.242Z"}
+{"level":"info","message":"OTP sent successfully to ilyosbekibroximov23@gmail.com","model":"user","timestamp":"2025-03-27T07:57:32.087Z"}
+{"level":"info","message":"OTP verified successfully for +998910128133","model":"user","timestamp":"2025-03-27T07:57:55.290Z"}
+{"level":"info","message":"User registered successfully with ID: 58","model":"user","timestamp":"2025-03-27T07:58:25.137Z"}
+{"level":"error","message":"JWT_SECRET is not defined in environment variables","model":"user","timestamp":"2025-03-27T07:58:49.363Z"}
+{"level":"error","message":"JWT_SECRET is not defined in environment variables","model":"user","timestamp":"2025-03-27T08:04:54.720Z"}
+{"level":"error","message":"JWT_SECRET is not defined in environment variables","model":"user","timestamp":"2025-03-27T08:05:00.765Z"}
+{"level":"error","message":"JWT_SECRET is not defined in environment variables","model":"user","timestamp":"2025-03-27T08:07:07.118Z"}
+{"level":"error","message":"JWT_SECRET is not defined in environment variables","model":"user","timestamp":"2025-03-27T08:07:09.467Z"}
+{"level":"error","message":"JWT_SECRET is not defined in environment variables","model":"user","timestamp":"2025-03-27T08:07:10.237Z"}
+{"level":"error","message":"JWT_SECRET is not defined in environment variables","model":"user","timestamp":"2025-03-27T08:07:10.914Z"}
+{"level":"warn","message":"Login attempt for non-existent user: +998901234567","model":"user","timestamp":"2025-03-27T08:08:13.605Z"}
+{"level":"info","message":"User logged in successfully: 59","model":"user","timestamp":"2025-03-27T08:08:20.045Z"}
+{"level":"info","message":"User logged in successfully: 59","model":"user","timestamp":"2025-03-27T08:08:26.526Z"}
+{"level":"info","message":"User logged in successfully: 60","model":"user","timestamp":"2025-03-27T08:08:53.480Z"}
+{"level":"info","message":"Image uploaded successfully: http://localhost:3000/image/1743062987200-807118821.png","model":"user","timestamp":"2025-03-27T08:09:47.207Z"}
+{"level":"info","message":"Fetched 1 users (Page: 1)","model":"user","timestamp":"2025-03-27T08:10:12.760Z"}
+{"level":"info","message":"Fetched 1 users (Page: 1)","model":"user","timestamp":"2025-03-27T08:11:44.092Z"}
+{"level":"info","message":"User updated successfully with ID: 60","model":"user","timestamp":"2025-03-27T08:14:09.606Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'update')","model":"Subject","timestamp":"2025-03-27T08:16:41.646Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'update')","model":"Subject","timestamp":"2025-03-27T08:16:51.040Z"}
+{"level":"info","message":"Subject updated","model":"Subject","timestamp":"2025-03-27T08:19:30.071Z"}
+{"level":"info","message":"Subject updated","model":"Subject","timestamp":"2025-03-27T08:19:43.783Z"}
+{"level":"info","message":"Deleted subject - id: 2","model":"Subject","timestamp":"2025-03-27T08:20:01.963Z"}
+{"level":"error","message":"branchSubItem is not associated to Subject!","model":"Subject","timestamp":"2025-03-27T08:20:15.269Z"}
+{"level":"error","message":"branchSubItems is not associated to Subject!","model":"Subject","timestamp":"2025-03-27T08:25:05.798Z"}
+{"level":"error","message":"limit is not defined","model":"Subject","timestamp":"2025-03-27T08:27:22.161Z"}
+{"level":"error","message":"limit is not defined","model":"Subject","timestamp":"2025-03-27T08:27:47.669Z"}
+{"level":"error","message":"Include unexpected. Element has to be either a Model, an Association or an object.","model":"Subject","timestamp":"2025-03-27T08:28:58.747Z"}
+{"level":"error","message":"Unknown column 'Centers.adress' in 'field list'","model":"Subject","timestamp":"2025-03-27T08:34:21.689Z"}
+{"level":"error","message":"Unknown column 'Centers.adress' in 'field list'","model":"Subject","timestamp":"2025-03-27T08:34:51.796Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T08:35:23.367Z"}
+{"level":"error","message":"Subject is associated to Branch using an alias. You must use the 'as' keyword to specify the alias within your include statement.","model":"Branch","timestamp":"2025-03-27T09:16:32.471Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-27T09:17:57.435Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T09:18:20.256Z"}
+{"level":"info","message":"User logged in successfully: 2","model":"user","timestamp":"2025-03-27T09:22:56.179Z"}
+{"level":"info","message":"User logged in successfully: 3","model":"user","timestamp":"2025-03-27T09:30:19.636Z"}
+{"level":"info","message":"User logged in successfully: 4","model":"user","timestamp":"2025-03-27T09:39:43.109Z"}
+{"level":"info","message":"User logged in successfully: 6","model":"user","timestamp":"2025-03-27T09:42:34.713Z"}
