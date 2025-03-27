@@ -164,3 +164,6 @@
 {"level":"info","message":"Fetched 0 enrollments on page 1","model":"enrollment","timestamp":"2025-03-27T17:04:07.970Z"}
 {"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T18:14:00.159Z"}
 >>>>>>> 4a355074ad9d5eb5f64ec41ad4c02dba8c8ed940
+{"level":"error","message":"createCenter error: notNull Violation: Center.adress cannot be null,\nnotNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T18:17:47.818Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T19:35:06.072Z"}
+{"level":"error","message":"createComment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`comments`, CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"comment","timestamp":"2025-03-27T19:35:26.946Z"}
