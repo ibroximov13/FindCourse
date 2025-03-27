@@ -9,7 +9,7 @@ const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
  *     summary: Create a new region
  *     tags: [Regions]
  *     security:
- *       - bearerAuth: []
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:

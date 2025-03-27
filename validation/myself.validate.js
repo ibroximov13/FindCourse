@@ -2,7 +2,6 @@ const Joi = require("joi");
 
 const sendOtpByResetPasswordValidate = (data) => {
     const schema = Joi.object({
-        phone: Joi.string().pattern(/^\+998[0-9]{9}$/).opt(),
         email: Joi.string().email().required(),
     });
     return schema.validate(data);
@@ -10,6 +9,7 @@ const sendOtpByResetPasswordValidate = (data) => {
 
 const resetPasswordValidate = (data) => {
     const schema = Joi.object({
+        email: Joi.string().email().required(),
         otp: Joi.string().min(4).max(4).required(),
         newPassword: Joi.string().min(6).required()
     });
