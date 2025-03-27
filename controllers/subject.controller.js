@@ -34,30 +34,38 @@ const updateSubject = async (req, res) => {
         let { error: errorId, value: valueId } = subjectByIdValidate(req.params);
         if (errorId) {
             return res.status(422).send(errorId.details[0].message);
-        };
+        }
 
-        let id = valueId.id
+        let id = valueId.id;
         let { error, value } = updateSubjectValidate(req.body);
         if (error) {
             return res.status(422).send(error.details[0].message);
-        };
+        }
+
         let { name, image } = value;
-        let subject = await Subject.findOne({ where: { id: id, name: name } });
+        let subject = await Subject.findOne({ where: { id: id } });
+
         if (!subject) {
+            return res.status(404).send("Subject not found");
+        }
+
+        let exists = await Subject.findOne({ where: { name: name } });
+        if (exists) {
             return res.status(400).send("Subject already exists");
-        };
+        }
 
         let updatedSubject = await subject.update({
             name: name || subject.name,
             image: image || subject.image
         });
 
-        logger.info("subject updated");
+        logger.info("Subject updated");
         res.status(200).send(updatedSubject);
     } catch (error) {
-        logger.error(error.message)
+        b
         console.log(error.message);
-    };
+        res.status(500).send("Internal server error");
+    }
 };
 
 
@@ -106,28 +114,19 @@ const getAllSubjects = async (req, res) => {
             },
             include: [
                 {
-                    model: FilSubItem,
-                    include: [
-                        {
-                            model: Branch,
-                            attributes: ["id", "phone", "location"]
-                        },
-                    ]
+                    model: Branch,
+                    attributes: ["id", "phone", "location"]
                 },
                 {
-                    model: SubjectItem,
-                    include: [
-                        {
-                            model: Center,
-                            attributes: ["id", "name", "adress", "location", "star"]
-                        }
-                    ]
+                    model: Center,
+                    attributes: ["id", "name", "adress", "location", "star"]
                 }
             ],
-            limit: limit,
+            limit: take,
             offset: offset,
             order: [[column, order]]
         });
+
         logger.info("GetAllSubjects");
         res.status(200).send(subject);
     } catch (error) {
@@ -151,22 +150,12 @@ const getOneSubject = async (req, res) => {
             },
             include: [
                 {
-                    model: BranchSubItem,
-                    include: [
-                        {
-                            model: Branch,
-                            attributes: ["id", "phone", "location"]
-                        },
-                    ]
+                    model: Branch,
+                    attributes: ["id", "phone", "location"]
                 },
                 {
-                    model: SubjectItem,
-                    include: [
-                        {
-                            model: Center,
-                            attributes: ["id", "name", "adress", "location", "star"]
-                        }
-                    ]
+                    model: Center,
+                    attributes: ["id", "name", "adress", "location", "star"]
                 }
             ],
         });

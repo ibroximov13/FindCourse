@@ -19,7 +19,7 @@ const Center = db.define("Center", {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    address: {
+    adress: {
         type: DataTypes.STRING,
         allowNull: false
     },

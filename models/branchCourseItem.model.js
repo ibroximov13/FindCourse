@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { db } = require("../config/db");
 
-const branchCourseItem = db.define("branchCourseItem", {
+const BranchCourseItem = db.define("branchCourseItems", {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -17,4 +17,4 @@ const branchCourseItem = db.define("branchCourseItem", {
     },
 });
 
-module.exports = branchCourseItem;
+module.exports = BranchCourseItem;

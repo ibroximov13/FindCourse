@@ -120,7 +120,8 @@ const getAllBranchs = async (req, res) => {
         let filter = req.query.filter || "";
         let order = req.query.order === "DESC" ? "DESC" : "ASC";
         let allowedColumns = ["id", "name", "phone", "location", "regionId", "centerId"];
-        let column = allowedColumns.includes(req.query.column) ? req.query.column : "id"
+        let column = allowedColumns.includes(req.query.column) ? req.query.column : "id";
+
         let branch = await Branch.findAll({
             include: [
                 {
@@ -129,26 +130,18 @@ const getAllBranchs = async (req, res) => {
                 },
                 {
                     model: Center,
-                    attributes: ["id", "name", "adress", "phone", "location"]
+                    attributes: ["id", "name", "phone", "location"]
                 },
                 {
-                    model: BranchSubItem,
-                    include: [
-                        {
-                            model: Subject,
-                        }
-                    ]
+                    model: Subject, 
+                    through: { attributes: [] } 
                 },
                 {
-                    model: BranchCourseItem,
-                    include: [
-                        {
-                            model: Course,
-                        }
-                    ]
+                    model: Course, 
+                    through: { attributes: [] } 
                 },
             ],
-            group: ["region.id", "center.id"],
+            // group: ["Branch.id", "region.id", "center.id"], 
             subQuery: false,
             where: {
                 [Op.or]: [
@@ -162,13 +155,13 @@ const getAllBranchs = async (req, res) => {
             order: [[column, order]]
         });
 
-
         logger.info(`Get all branches`);
         res.status(200).send(branch);
 
     } catch (error) {
         logger.error(error.message);
         console.log(error);
+        res.status(500).send({ message: "Server error" }); 
     }
 };
 

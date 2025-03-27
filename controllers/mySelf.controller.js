@@ -1,5 +1,7 @@
-const logger = require("../config/log");
+const logger = require("../config/log").child({model: "MySelf"});
 const { User, Center, CourseItem, Course } = require("../models");
+const { sendOtpByResetPasswordValidate } = require("../validation/myself.validate");
+const bcrypt = require("bcrypt");
 
 const getAll = async (req, res) => {
     try {
@@ -35,5 +37,21 @@ const getAll = async (req, res) => {
         console.log(error);
     }
 };
+
+const sendOtpResetPassword = async (req, res) => {
+    try {
+        let {error, value} = sendOtpByResetPasswordValidate(req.data);
+        if (error) {
+            return res.status(422).send(error.details[0].message);
+        };
+
+        let { phone, email } = value;
+        
+        
+    } catch (error) {
+        logger.error(error.message);
+        console.log(error.message);
+    }
+}
 
 module.exports = {getAll}

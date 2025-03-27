@@ -1,6 +1,5 @@
 const User = require("./user.model");
 const Region = require("./region.model");
-const Branch = require("./branch.model");
 const Center = require("./center.model");
 const Subject = require("./subject.model");
 const Course = require("./course.model");
@@ -9,8 +8,9 @@ const Resource = require("./resource.model");
 const Enrollment = require("./enrollment.model");
 const Comment = require("./comment.model");
 const Like = require("./like.model");
-const branchSubItem = require("./branchSubItem.model");
-const branchCourseItem = require("./branchCourseItem.model");
+const BranchSubItem = require("./branchSubItem.model");
+const Branch = require("./branch.model");
+const BranchCourseItem = require("./branchCourseItem.model");
 const SubjectItem = require("./subjectItem.model");
 const CourseItem = require("./courseItem.model");
 
@@ -53,11 +53,11 @@ Branch.belongsTo(Center, { foreignKey: "centerId", onDelete: 'CASCADE', onUpdate
 Region.hasMany(Branch, { foreignKey: "regionId" });
 Branch.belongsTo(Region, { foreignKey: "regionId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-Branch.belongsToMany(Subject, { through: branchSubItem, foreignKey: 'branchId', otherKey: 'subjectId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
-Subject.belongsToMany(Branch, { through: branchSubItem, foreignKey: 'subjectId', otherKey: 'branchId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
+Branch.belongsToMany(Subject, { through: BranchSubItem, foreignKey: 'branchId', otherKey: 'subjectId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
+Subject.belongsToMany(Branch, { through: BranchSubItem, foreignKey: 'subjectId', otherKey: 'branchId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-Branch.belongsToMany(Course, { through: branchCourseItem, foreignKey: 'branchId', otherKey: 'courseId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
-Course.belongsToMany(Branch, { through: branchCourseItem, foreignKey: 'courseId', otherKey: 'branchId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
+Branch.belongsToMany(Course, { through: BranchCourseItem, foreignKey: 'branchId', otherKey: 'courseId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
+Course.belongsToMany(Branch, { through: BranchCourseItem, foreignKey: 'courseId', otherKey: 'branchId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
 Center.belongsToMany(Subject, { through: SubjectItem, foreignKey: 'centerId', otherKey: 'subjectId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
 Subject.belongsToMany(Center, { through: SubjectItem, foreignKey: 'subjectId', otherKey: 'centerId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
@@ -141,7 +141,7 @@ module.exports = {
     Comment,
     Enrollment,
     SubjectItem,
-    branchSubItem,
-    branchCourseItem,
+    BranchSubItem,
+    BranchCourseItem,
     CourseItem
 };
