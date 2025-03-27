@@ -6,12 +6,27 @@ const logger = require("../config/log").child({model: "region"})
 
 const createRegion = async (req, res) => {
   try {
-    const { error } = createRegionSchema.validate(req.body);
+    const { error, value } = createRegionSchema.validate(req.body);
     if (error) return res.status(400).json({ error: error.details[0].message });
 
-    const region = await Region.create(req.body);
-    logger.info(`region create: ${region.id}`);
-    res.status(201).json({ message: "region create successfully", data: region });
+    let { name } = value;
+
+    const region = await Region.findOne({
+      where: {
+        name: name,
+      }
+    });
+
+    if (region) {
+      return res.status(400).send({message: "Region already exists"});
+    }
+
+    let newRegion = await Region.create({
+      name: name
+    });
+
+    logger.info(`region create: ${newRegion.id}`);
+    res.status(201).json({data: newRegion });
   } catch (err) {
     logger.error(`error creating region: ${err.message}`);
     res.status(400).json({ error: err.message });

@@ -13,21 +13,10 @@ const updateCenterValidation = Joi.object({
   regionId: Joi.number().integer().optional(),
   address: Joi.string().optional(),
   phone: Joi.string().optional(),
-  location: Joi.string().optional(),
-  star: Joi.number().integer().optional(),
-  branch: Joi.number().integer().optional()
-});
-
-const paginationAndFilterValidation = Joi.object({
-  page: Joi.number().integer().min(1).optional(),
-  limit: Joi.number().integer().min(1).optional(),
-  name: Joi.string().optional(),
-  regionId: Joi.number().integer().optional(),
-  order: Joi.string().valid("ASC", "DESC").optional(),
+  location: Joi.string().optional()
 });
 
 module.exports = {
   createCenterValidation,
   updateCenterValidation,
-  paginationAndFilterValidation,
 };

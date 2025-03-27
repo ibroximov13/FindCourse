@@ -14,7 +14,7 @@ const Subject = db.define("Subject", {
     image: {
         type: DataTypes.STRING
     },
-});
+}, {timestamps: false});
 
 module.exports = Subject;
 

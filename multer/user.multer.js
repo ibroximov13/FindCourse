@@ -5,9 +5,9 @@ const path = require("path");
 const uploadDir = path.join(__dirname, "../uploads/uploadUser");
 
 fs.promises.mkdir(uploadDir, { recursive: true }).then(() => {
-    console.log("✅ uploadCategory papkasi tayyor.");
+    console.log("upoladUser`s folder created");
 }).catch(err => {
-    console.error("❌ Papka yaratishda xatolik:", err);
+    console.error("Error creating folder", err);
 });
 
 const storage = multer.diskStorage({
@@ -27,7 +27,7 @@ const fileFilter = (req, file, cb) => {
     if (allowedTypes.includes(file.mimetype)) {
         cb(null, true);
     } else {
-        cb(new Error("Faqat rasm fayllari yuklanishi mumkin!"), false);
+        cb(new Error("Only image files can be uploaded!"), false);
     }
 };
 

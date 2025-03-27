@@ -7,6 +7,7 @@ const { User, Region } = require("../models");
 const { createUserValidate, sendOtpValidate, verifyOtpValidate, userLoginValidate, refreshTokenValidate, patchUserValidate, updateMyProfileValidate } = require("../validation/user.validate");
 const { Op } = require("sequelize");
 const { generateUsersExcel } = require("../utils/exel");
+const sendEmail = require("../utils/sendEmail");
 const logger = require("../config/log").child({ model: "user" });
 
 dotenv.config();
@@ -49,12 +50,14 @@ async function sendOtp(req, res) {
 
         let otp = totp.generate(phone + email + "soz");
 
-        await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-            to: email,
-            subject: "Sizning OTP kodingiz",
-            text: `Sizning tasdiqlash kodingiz: ${otp}`,
-        });
+        // await transporter.sendMail({
+        //     from: process.env.EMAIL_USER,
+        //     to: email,
+        //     subject: "Sizning OTP kodingiz",
+        //     text: `Sizning tasdiqlash kodingiz: ${otp}`,
+        // });
+
+        await sendEmail(email, otp);
 
         logger.info(`OTP sent successfully to ${email}`);
         res.send({ otp });
@@ -169,6 +172,7 @@ async function loginUser(req, res) {
         refreshTokens.add(refreshtoken);
 
         logger.info(`User logged in successfully: ${newUser.id}`);
+        console.log("asdadadasd");
         res.send({ accesstoken, refreshtoken });
     } catch (error) {
         logger.error(`loginUser error: ${error.message}`);

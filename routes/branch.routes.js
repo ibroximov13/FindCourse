@@ -12,13 +12,11 @@ const route = Router();
  *     description: Creates a new branch with the provided details. Requires admin access.
  *     tags: [Branches]
  *     security:
- *       - bearerAuth: []
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/CreateBranch'
  *           example:
  *             name: "Main Branch"
  *             phone: "+998901234567"
@@ -33,8 +31,6 @@ const route = Router();
  *         description: Branch created successfully
  *         content:
  *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/BranchResponse'
  *             example:
  *               id: 1
  *               name: "Main Branch"
@@ -61,94 +57,6 @@ const route = Router();
  *           application/json:
  *             example:
  *               message: "Admin access required"
- */
-
-/**
- * @swagger
- * components:
- *   schemas:
- *     CreateBranch:
- *       type: object
- *       required:
- *         - name
- *         - phone
- *         - location
- *         - regionId
- *         - centerId
- *         - subjects
- *         - courses
- *       properties:
- *         name:
- *           type: string
- *           minLength: 3
- *           maxLength: 100
- *           example: "Main Branch"
- *         phone:
- *           type: string
- *           pattern: ^\+[0-9]{11,12}$
- *           example: "+998901234567"
- *           description: Phone number in international format
- *         location:
- *           type: string
- *           minLength: 5
- *           maxLength: 200
- *           example: "123 Business Street"
- *         regionId:
- *           type: integer
- *           minimum: 1
- *           example: 1
- *         centerId:
- *           type: integer
- *           minimum: 1
- *           example: 1
- *         image:
- *           type: string
- *           format: uri
- *           maxLength: 500
- *           example: "http://example.com/images/branch.jpg"
- *           description: Optional URL of the branch image
- *         subjects:
- *           type: array
- *           minItems: 1
- *           items:
- *             type: integer
- *             minimum: 1
- *           example: [1, 2, 3]
- *           description: Array of subject IDs
- *         courses:
- *           type: array
- *           minItems: 1
- *           items:
- *             type: integer
- *             minimum: 1
- *           example: [4, 5]
- *           description: Array of course IDs
- *     BranchResponse:
- *       type: object
- *       properties:
- *         id:
- *           type: integer
- *           example: 1
- *         name:
- *           type: string
- *           example: "Main Branch"
- *         phone:
- *           type: string
- *           example: "+998901234567"
- *         location:
- *           type: string
- *           example: "123 Business Street"
- *         regionId:
- *           type: integer
- *           example: 1
- *         centerId:
- *           type: integer
- *           example: 1
- *         image:
- *           type: string
- *           format: uri
- *           nullable: true
- *           example: "http://example.com/images/branch.jpg"
  */
 
 route.post("/", verifyTokenAndRole(["ADMIN"]), createNewBranch);
@@ -182,7 +90,7 @@ route.post("/upload-image", upload.single("branchImage"), verifyTokenAndRole(["A
  *     summary: Update a branch
  *     tags: [Branches]
  *     security:
- *       - bearerAuth: []
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -193,8 +101,6 @@ route.post("/upload-image", upload.single("branchImage"), verifyTokenAndRole(["A
  *     requestBody:
  *       content:
  *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Branch'
  *           example:
  *             name: "Updated Branch"
  *             phone: "+998901234568"
@@ -215,7 +121,7 @@ route.patch("/:id", verifyTokenAndRole(["ADMIN", "SUPERADMIN"]), updateBranch);
  *     summary: Delete a branch
  *     tags: [Branches]
  *     security:
- *       - bearerAuth: []
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -239,6 +145,29 @@ route.delete("/:id", verifyTokenAndRole(["ADMIN"]), deleteBranch);
  *   get:
  *     summary: Get all branches
  *     tags: [Branches]
+ *     parameters:
+ *       - in: query
+ *         name: regionId
+ *         schema:
+ *           type: integer
+ *         description: Filter branches by region ID
+ *       - in: query
+ *         name: centerId
+ *         schema:
+ *           type: integer
+ *         description: Filter branches by center ID
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           default: 1
+ *         description: Page number for pagination
+ *       - in: query
+ *         name: take
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *         description: Number of branches per page
  *     responses:
  *       200:
  *         description: List of all branches
@@ -246,8 +175,6 @@ route.delete("/:id", verifyTokenAndRole(["ADMIN"]), deleteBranch);
  *           application/json:
  *             schema:
  *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Branch'
  */
 route.get("/", getAllBranchs);
 
@@ -269,8 +196,6 @@ route.get("/", getAllBranchs);
  *         description: Branch details
  *         content:
  *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Branch'
  *       404:
  *         description: Branch not found
  */

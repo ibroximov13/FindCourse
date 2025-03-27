@@ -13,6 +13,6 @@ const Region = db.define("regions", {
     }
 }, {
     timestamps: false
-});
+}, {timestamps: false});
 
 module.exports = Region;

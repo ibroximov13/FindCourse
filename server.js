@@ -20,7 +20,7 @@ connectDb();
 // initData();
 fullData();
 
-const PORT = process.env.DB_PORT 
+const PORT = process.env.DB_PORT || 3001
 app.listen(PORT, () => {
     console.log(`Server has been started on PORT: ${PORT}`)
 });

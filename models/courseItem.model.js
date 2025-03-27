@@ -15,6 +15,6 @@ const CourseItem = db.define("CourseItem", {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-});
+}, {timestamps: false});
 
 module.exports = CourseItem;

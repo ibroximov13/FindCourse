@@ -20,7 +20,6 @@ async function fullData() {
     await db.query("ALTER TABLE courses AUTO_INCREMENT = 1");
     await db.query("ALTER TABLE users AUTO_INCREMENT = 1");
 
-
     const regionNames = [
       "Toshkent",
       "Andijon",

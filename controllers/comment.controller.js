@@ -35,8 +35,8 @@ const getAllComments = async (req, res) => {
     const offset = (page - 1) * limit;
 
     const where = {};
-    if (userId) where.user_id = userId;
-    if (centerId) where.center_id = centerId;
+    if (userId) where.userId = userId;
+    if (centerId) where.centerId = centerId;
     if (star) where.star = star;
     if (messageSearch) {
       where.message = { [Op.iLike]: `%${messageSearch}%` };

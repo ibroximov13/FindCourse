@@ -1,5 +1,7 @@
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+require("dotenv").config();
+const DB_PORT = process.env.DB_PORT || 3001;
 
 const options = {
   definition: {
@@ -11,7 +13,7 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:3001/api',
+        url: `http://localhost:3000/api`,
       },
     ],
     components: {

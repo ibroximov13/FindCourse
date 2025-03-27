@@ -35,12 +35,7 @@ const Center = db.define("Center", {
         type: DataTypes.STRING,
         allowNull: false
     },
-    star: {
-        type: DataTypes.INTEGER
-    },
-    filial: {
-        type: DataTypes.INTEGER
-    },
-});
+    
+}, {timestamps: false});
 
 module.exports = Center;
