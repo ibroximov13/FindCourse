@@ -205,3 +205,40 @@
 {"level":"info","message":"Center created with ID: 16","model":"center","timestamp":"2025-03-27T19:33:11.689Z"}
 {"level":"info","message":"Center created with ID: 17","model":"center","timestamp":"2025-03-27T19:33:16.083Z"}
 {"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T19:33:23.809Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T19:40:02.162Z"}
+{"level":"info","message":"Center created with ID: 18","model":"center","timestamp":"2025-03-27T19:40:47.980Z"}
+{"level":"info","message":"Center created with ID: 19","model":"center","timestamp":"2025-03-27T19:40:55.756Z"}
+{"level":"info","message":"Center created with ID: 20","model":"center","timestamp":"2025-03-27T19:41:00.201Z"}
+{"level":"error","message":"getAllCenters error: Comment is not defined","model":"center","timestamp":"2025-03-27T19:41:07.260Z"}
+{"level":"info","message":"Fetched 0 comments","model":"comment","timestamp":"2025-03-27T19:41:35.704Z"}
+{"level":"error","message":"createComment error: Field 'ceneterId' doesn't have a default value","model":"comment","timestamp":"2025-03-27T19:42:08.636Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T20:25:40.995Z"}
+{"level":"info","message":"Center created with ID: 21","model":"center","timestamp":"2025-03-27T20:26:33.329Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T20:28:41.323Z"}
+{"level":"error","message":"patchCenter error: let is not defined","model":"center","timestamp":"2025-03-27T20:29:09.813Z"}
+{"level":"info","message":"Center created with ID: 22","model":"center","timestamp":"2025-03-27T20:29:33.324Z"}
+{"level":"error","message":"patchCenter error: let is not defined","model":"center","timestamp":"2025-03-27T20:29:46.882Z"}
+{"level":"error","message":"patchCenter error: let is not defined","model":"center","timestamp":"2025-03-27T20:29:51.427Z"}
+{"level":"warn","message":"Center not found for patch with ID: 22","model":"center","timestamp":"2025-03-27T20:31:02.187Z"}
+{"level":"warn","message":"Center not found for patch with ID: 22","model":"center","timestamp":"2025-03-27T20:31:15.568Z"}
+{"level":"warn","message":"Center not found for patch with ID: 22","model":"center","timestamp":"2025-03-27T20:32:16.649Z"}
+{"level":"warn","message":"Center not found for patch with ID: 22","model":"center","timestamp":"2025-03-27T20:32:40.941Z"}
+{"level":"warn","message":"Center not found for patch with ID: 22","model":"center","timestamp":"2025-03-27T20:33:04.648Z"}
+{"level":"error","message":"getAllCenters error: Comment is not defined","model":"center","timestamp":"2025-03-27T20:38:36.926Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T20:48:14.336Z"}
+{"level":"info","message":"Center created with ID: 23","model":"center","timestamp":"2025-03-27T20:48:54.468Z"}
+{"level":"error","message":"getAllCenters error: Comment is not defined","model":"center","timestamp":"2025-03-27T20:49:12.829Z"}
+{"level":"warn","message":"Center not found for patch with ID: undefined","model":"center","timestamp":"2025-03-27T20:49:32.834Z"}
+{"level":"info","message":"Center created with ID: 24","model":"center","timestamp":"2025-03-27T20:52:02.358Z"}
+{"level":"info","message":"Center created with ID: 25","model":"center","timestamp":"2025-03-27T20:52:13.368Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T20:52:22.787Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T20:52:26.117Z"}
+{"level":"warn","message":"Center not found for patch with ID: undefined","model":"center","timestamp":"2025-03-27T20:52:48.983Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T20:55:03.778Z"}
+{"level":"info","message":"Center created with ID: 26","model":"center","timestamp":"2025-03-27T20:55:43.586Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T20:55:54.613Z"}
+{"level":"info","message":"Center partially updated with ID: 26","model":"center","timestamp":"2025-03-27T20:56:15.295Z"}
+{"level":"info","message":"Center partially updated with ID: 26","model":"center","timestamp":"2025-03-27T20:56:32.508Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T20:59:01.686Z"}
+{"level":"info","message":"Center created with ID: 27","model":"center","timestamp":"2025-03-27T20:59:31.610Z"}
+{"level":"info","message":"Center deleted with ID: 27","model":"center","timestamp":"2025-03-27T20:59:43.521Z"}

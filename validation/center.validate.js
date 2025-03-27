@@ -15,7 +15,9 @@ const updateCenterValidation = Joi.object({
   regionId: Joi.number().integer().optional(),
   adress: Joi.string().optional(),
   phone: Joi.string().optional(),
-  location: Joi.string().optional()
+  location: Joi.string().optional(),
+  subjects: Joi.array().items(Joi.number().integer()).optional(),
+  courses: Joi.array().items(Joi.number().integer()).optional(),
 });
 
 module.exports = {
