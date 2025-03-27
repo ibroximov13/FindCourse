@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { Subject, SubjectItem, FilSubItem } = require("../models");
+const { Subject, SubjectItem, FilSubItem, BranchSubItem } = require("../models");
 const { createSubjectValidate, subjectByIdValidate, updateSubjectValidate } = require("../validation/subject.validate");
 const { Branch, Center } = require("../models/association");
 
@@ -151,7 +151,7 @@ const getOneSubject = async (req, res) => {
             },
             include: [
                 {
-                    model: FilSubItem,
+                    model: BranchSubItem,
                     include: [
                         {
                             model: Branch,

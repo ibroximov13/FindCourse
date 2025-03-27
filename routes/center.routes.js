@@ -5,7 +5,7 @@ const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 
 /**
  * @swagger
- * /api/centers:
+ * /centers:
  *   post:
  *     summary: Create a new center
  *     tags: [Centers]
@@ -41,7 +41,7 @@ router.post("/", verifyTokenAndRole(["ADMIN"]), centerController.createCenter);
 
 /**
  * @swagger
- * /api/centers:
+ * /centers:
  *   get:
  *     summary: Get all centers with pagination and filters
  *     tags: [Centers]
@@ -78,7 +78,7 @@ router.get("/", centerController.getAllCenters);
 
 /**
  * @swagger
- * /api/centers/{id}:
+ * /centers/{id}:
  *   get:
  *     summary: Get center by ID
  *     tags: [Centers]
@@ -100,7 +100,7 @@ router.get("/:id", centerController.getCenterById);
 
 /**
  * @swagger
- * /api/centers/{id}:
+ * /centers/{id}:
  *   patch:
  *     summary: Partially update center by ID
  *     tags: [Centers]
@@ -132,7 +132,7 @@ router.patch("/:id", verifyTokenAndRole(["ADMIN", "SUPERADMIN"]), centerControll
 
 /**
  * @swagger
- * /api/centers/{id}:
+ * /centers/{id}:
  *   delete:
  *     summary: Delete center by ID
  *     tags: [Centers]

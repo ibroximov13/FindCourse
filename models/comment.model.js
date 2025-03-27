@@ -7,11 +7,11 @@ const Comment = db.define("comments", {
         autoIncrement: true,
         primaryKey: true
     },
-    user_id: {
+    userId: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    center_id: {
+    ceneterId: {
         type: DataTypes.INTEGER,
         allowNull: false
     },

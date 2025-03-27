@@ -1,5 +1,4 @@
-const { Course, FilCourseItem } = require("../models");
-const { Branch, CourseItem, Center } = require("../models/association");
+const { Course, BranchCourseItem, Branch, CourseItem, Center } = require("../models");
 const { createCourseValidate, courseByIdValidate, updateCourseValidate } = require("../validation/course.validate");
 
 const logger = require("../config/log").child({ model: "Cource" });
@@ -105,7 +104,7 @@ const getAllCourse = async (req, res) => {
             },
             include: [
                 {
-                    model: FilCourseItem,
+                    model: BranchCourseItem,
                     include: [
                         {
                             model: Branch,
@@ -150,7 +149,7 @@ const getOneCourse = async (req, res) => {
             },
             include: [
                 {
-                    model: FilCourseItem,
+                    model: BranchCourseItem,
                     include: [
                         {
                             model: Branch,

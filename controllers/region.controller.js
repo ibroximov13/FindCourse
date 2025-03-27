@@ -20,7 +20,7 @@ const createRegion = async (req, res) => {
 
 const getAllRegions = async (req, res) => {
   try {
-    const { name, page = 1, limit = 10, order = "DESC" } = req.query;
+    const { name, page = 1, limit = 15, order = "ASC" } = req.query;
     const offset = (page - 1) * limit;
 
     const where = {};
@@ -30,7 +30,7 @@ const getAllRegions = async (req, res) => {
       where,
       limit: parseInt(limit),
       offset: parseInt(offset),
-      order: [["id", order.toUpperCase() === "ASC" ? "ASC" : "DESC"]],
+      order: [["id", order.toUpperCase() === "DESC" ? "DESC" : "ASC"]],
     });
 
     res.json({

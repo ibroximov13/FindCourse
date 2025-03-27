@@ -1,6 +1,6 @@
 const logger = require("../config/log").child({ model: "Branch" });
 const { Op } = require("sequelize");
-const { Branch, Region, Center, FilSubItem, FilCourseItem, Subject, Course } = require("../models/index.js");
+const { Region, Center, BranchSubItem, BranchCourseItem, Subject, Course, Branch } = require("../models/index.js");
 const { createBranchValidate, updateBranchValidate, branchByIdValidate } = require("../validation/branch.validate");
 
 const createNewBranch = async (req, res) => {
@@ -35,7 +35,7 @@ const createNewBranch = async (req, res) => {
                 branchId: branchId
             }
         });
-        await FilSubItem.bulkCreate(a);
+        await BranchSubItem.bulkCreate(a);
 
         let b = courses.map((r) => {
             return {
@@ -44,7 +44,7 @@ const createNewBranch = async (req, res) => {
             }
         });
 
-        await FilCourseItem.bulkCreate(b);
+        await BranchCourseItem.bulkCreate(b);
 
         logger.info(`A new branch was created by ${req.user?.id || "an unknown user"}`);
         res.status(201).send(newBranch);
@@ -67,7 +67,6 @@ const updateBranch = async (req, res) => {
         };
         let { name, phone, image, location, regionId, centerId } = value;
         let branch = await Branch.findByPk(id);
-
         if (!branch) {
             return res.status(404).send("Branch not found");
         };
@@ -122,7 +121,6 @@ const getAllBranchs = async (req, res) => {
         let order = req.query.order === "DESC" ? "DESC" : "ASC";
         let allowedColumns = ["id", "name", "phone", "location", "regionId", "centerId"];
         let column = allowedColumns.includes(req.query.column) ? req.query.column : "id";
-
         let branch = await Branch.findAll({
             include: [
                 {
@@ -134,7 +132,7 @@ const getAllBranchs = async (req, res) => {
                     attributes: ["id", "name", "adress", "phone", "location"]
                 },
                 {
-                    model: FilSubItem,
+                    model: BranchSubItem,
                     include: [
                         {
                             model: Subject,
@@ -142,7 +140,7 @@ const getAllBranchs = async (req, res) => {
                     ]
                 },
                 {
-                    model: FilCourseItem,
+                    model: BranchCourseItem,
                     include: [
                         {
                             model: Course,
@@ -194,7 +192,7 @@ const getOneBranch = async (req, res) => {
                     attributes: ["id", "name", "adress", "phone", "location"]
                 },
                 {
-                    model: FilSubItem,
+                    model: BranchSubItem,
                     include: [
                         {
                             model: Subject,
@@ -202,7 +200,7 @@ const getOneBranch = async (req, res) => {
                     ]
                 },
                 {
-                    model: FilCourseItem,
+                    model: BranchCourseItem,
                     include: [
                         {
                             model: Course,

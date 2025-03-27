@@ -1,1 +1,3 @@
 {"level":"info","message":"User logged in successfully: 51","model":"user","timestamp":"2025-03-27T03:41:57.902Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'findAll')","model":"Branch","timestamp":"2025-03-26T22:47:13.612Z"}
+{"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-26T22:49:56.601Z"}

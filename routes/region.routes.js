@@ -5,7 +5,7 @@ const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 
 /**
  * @swagger
- * /api/regions:
+ * /regions:
  *   post:
  *     summary: Create a new region
  *     tags: [Regions]
@@ -31,7 +31,7 @@ router.post("/", verifyTokenAndRole(["ADMIN"]), regionController.createRegion);
 
 /**
  * @swagger
- * /api/regions:
+ * /regions:
  *   get:
  *     summary: Get all regions
  *     tags: [Regions]
@@ -50,7 +50,7 @@ router.get("/", regionController.getAllRegions);
 
 /**
  * @swagger
- * /api/regions/{id}:
+ * /regions/{id}:
  *   get:
  *     summary: Get region by ID
  *     tags: [Regions]
@@ -76,7 +76,7 @@ router.get("/:id", regionController.getRegionById);
 
 /**
  * @swagger
- * /api/regions/{id}:
+ * /regions/{id}:
  *   patch:
  *     summary: Partially update region by ID
  *     tags: [Regions]
@@ -112,7 +112,7 @@ router.patch("/:id", verifyTokenAndRole([ "ADMIN", "SUPERADMIN", ]), regionContr
 
 /**
  * @swagger
- * /api/regions/{id}:
+ * /regions/{id}:
  *   delete:
  *     summary: Delete region by ID
  *     tags: [Regions]
