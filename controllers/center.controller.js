@@ -9,8 +9,20 @@ const createCenter = async (req, res) => {
     if (error) {
       return res.status(422).send(error.details[0].message);
     }
-    let {subjects, courses, ...rest} = value;
-    const center = await Center.create({...rest});
+
+    let userId = req.user.id;
+    let {subjects, courses, name, regionId, ...rest} = value;
+    let findOne = await Center.findOne({
+      where: {
+        name, regionId
+      }
+    });
+
+    if (findOne) {
+      return res.status(400).send({message: "Center already exists"});
+    }
+    const center = await Center.create({...rest, name, regionId, userId});
+
     let centerId = center.id;
     let a = subjects.map((r) => {
       return {
@@ -31,7 +43,7 @@ const createCenter = async (req, res) => {
     await CourseItem.bulkCreate(b);
     
     logger.info(`Center created with ID: ${center.id}`);
-    res.status(201).json({ message: "Center created", data: center });
+    res.status(201).send(center);
   } catch (error) {
     logger.error(`createCenter error: ${error.message}`);
     res.status(400).json({ error: error.message });
@@ -56,6 +68,16 @@ const getAllCenters = async (req, res) => {
         },
         {
           model: Region
+        },
+        {
+          model: User,
+          attributes: ["id", "fullName"]
+        },
+        {
+          model: Comment,
+          attributes: [
+            [Sequelize.fn('AVG', Sequelize.col('Comment.star')), 'averageStar'], 
+          ],
         }
       ],
       subQuery: false,
@@ -65,6 +87,9 @@ const getAllCenters = async (req, res) => {
           { phone: { [Op.like]: `%${filter}%` } },
           { location: { [Op.like]: `%${filter}%` } },
         ],
+      },
+      attributes: {
+        exclude: ["regionId", "userId"]
       },
       limit: take,
       offset: offset,

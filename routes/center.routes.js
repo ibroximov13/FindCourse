@@ -2,13 +2,14 @@ const express = require("express");
 const router = express.Router();
 const centerController = require("../controllers/center.controller");
 const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
-
 /**
  * @swagger
  * /centers:
  *   post:
- *     summary: Create a new center
- *     tags: [Centers]
+ *     summary: Creates a new center
+ *     description: Adds a new center to the system with the provided details. Requires admin authorization.
+ *     tags: 
+ *       - Centers
  *     security:
  *       - BearerAuth: []
  *     requestBody:
@@ -17,28 +18,79 @@ const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
  *         application/json:
  *           schema:
  *             type: object
+ *             required:
+ *               - name
+ *               - regionId
+ *               - address
+ *               - phone
+ *               - location
  *             properties:
  *               name:
  *                 type: string
+ *                 description: The name of the center
  *                 example: "Olmazor Center"
  *               regionId:
  *                 type: integer
+ *                 description: The ID of the region where the center is located
  *                 example: 2
- *               address:
+ *               adress:
  *                 type: string
+ *                 description: The physical address of the center
  *                 example: "Olmazor tumani, 34-uy"
  *               phone:
  *                 type: string
+ *                 description: Contact phone number for the center
  *                 example: "+998901234567"
  *               location:
  *                 type: string
+ *                 description: Geographic coordinates of the center (latitude, longitude)
  *                 example: "41.311081, 69.240562"
- * 
+ *               subjects:
+ *                 type: array
+ *                 description: List of subject IDs available at the center
+ *                 items:
+ *                   type: integer
+ *                 example: [1, 2, 3]
+ *               courses:
+ *                 type: array
+ *                 description: List of course IDs offered at the center
+ *                 items:
+ *                   type: integer
+ *                 example: [4, 5, 6]
  *     responses:
  *       201:
- *         description: Center created
+ *         description: Center successfully created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Center created"
+ *                 data:
+ *                   type: object
+ *                   description: The created center object
  *       400:
- *         description: Bad request
+ *         description: Bad request due to invalid input or server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Invalid input data"
+ *       422:
+ *         description: Validation error due to missing or incorrect fields
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "\"name\" is required"
  */
 router.post("/", verifyTokenAndRole(["ADMIN"]), centerController.createCenter);
 

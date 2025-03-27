@@ -123,10 +123,11 @@ const getAllBranchs = async (req, res) => {
         let column = allowedColumns.includes(req.query.column) ? req.query.column : "id";
 
         let branch = await Branch.findAll({
+            
             include: [
                 {
                     model: Region,
-                    attributes: ["name"]
+                    attributes: ["name"],
                 },
                 {
                     model: Center,

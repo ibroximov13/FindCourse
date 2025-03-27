@@ -85,7 +85,7 @@
 {"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T11:13:33.187Z"}
 {"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T11:27:56.603Z"}
 {"level":"info","message":"GetOneSubject","model":"Subject","timestamp":"2025-03-27T11:29:05.972Z"}
-<<<<<<< HEAD
+<<<<<<<<< Temporary merge branch 1
 {"level":"info","message":"User logged in successfully: 17","model":"user","timestamp":"2025-03-27T12:03:55.439Z"}
 {"level":"info","message":"User logged in successfully: 17","model":"user","timestamp":"2025-03-27T12:46:45.151Z"}
 {"level":"info","message":"User logged in successfully: 17","model":"user","timestamp":"2025-03-27T12:51:44.875Z"}
@@ -112,11 +112,7 @@
 {"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T17:54:00.751Z"}
 {"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T17:58:59.321Z"}
 {"level":"error","message":"createComment error: notNull Violation: comments.centerId cannot be null,\nnotNull Violation: comments.message cannot be null,\nnotNull Violation: comments.star cannot be null","model":"comment","timestamp":"2025-03-27T17:59:17.714Z"}
-{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T18:09:34.126Z"}
-{"level":"info","message":"Fetched 0 comments","model":"comment","timestamp":"2025-03-27T18:10:14.132Z"}
-{"level":"error","message":"createComment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`comments`, CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"comment","timestamp":"2025-03-27T18:10:21.754Z"}
-{"level":"error","message":"createCenter error: notNull Violation: Center.adress cannot be null,\nnotNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T18:12:02.592Z"}
-=======
+=========
 >>>>>>> 59268fa262aa080b7b9b915adf29794cec632ee5
 {"level":"info","message":"User logged in successfully: 241","model":"user","timestamp":"2025-03-27T12:20:50.530Z"}
 {"level":"info","message":"User logged in successfully: 250","model":"user","timestamp":"2025-03-27T12:41:12.497Z"}
@@ -163,7 +159,4 @@
 {"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T16:54:45.938Z"}
 {"level":"info","message":"Fetched 0 enrollments on page 1","model":"enrollment","timestamp":"2025-03-27T17:04:07.970Z"}
 {"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T18:14:00.159Z"}
->>>>>>> 4a355074ad9d5eb5f64ec41ad4c02dba8c8ed940
-{"level":"error","message":"createCenter error: notNull Violation: Center.adress cannot be null,\nnotNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T18:17:47.818Z"}
-{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T19:35:06.072Z"}
-{"level":"error","message":"createComment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`comments`, CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"comment","timestamp":"2025-03-27T19:35:26.946Z"}
+>>>>>>>>> Temporary merge branch 2
