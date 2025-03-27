@@ -96,7 +96,7 @@ const route = Router();
 
 /**
  * @swagger
- * /api/resources:
+ * /resources:
  *   post:
  *     summary: Create a new resource
  *     tags: [Resources]
@@ -127,7 +127,7 @@ route.post("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), crea
 
 /**
  * @swagger
- * /api/resources/{id}:
+ * /resources/{id}:
  *   patch:
  *     summary: Update resource
  *     tags: [Resources]
@@ -167,7 +167,7 @@ route.patch("/:id", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), 
 
 /**
  * @swagger
- * /api/resources/{id}:
+ * /resources/{id}:
  *   delete:
  *     summary: Delete resource
  *     tags: [Resources]
@@ -197,7 +197,7 @@ route.delete("/:id", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]),
 
 /**
  * @swagger
- * /api/resources:
+ * /resources:
  *   get:
  *     summary: Get all resources
  *     tags: [Resources]
@@ -222,7 +222,7 @@ route.get("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), getAl
 
 /**
  * @swagger
- * /api/resources/{id}:
+ * /resources/{id}:
  *   get:
  *     summary: Get resource by ID
  *     tags: [Resources]

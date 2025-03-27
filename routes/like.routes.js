@@ -5,7 +5,7 @@ const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 
 /**
  * @swagger
- * /api/likes:
+ * /likes:
  *   post:
  *     summary: Create a new like
  *     tags: [Likes]
@@ -41,7 +41,7 @@ router.post("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), lik
 
 /**
  * @swagger
- * /api/likes:
+ * /likes:
  *   get:
  *     summary: Get all likes
  *     tags: [Likes]
@@ -62,7 +62,7 @@ router.get("/", likeController.getAllLikes);
 
 /**
  * @swagger
- * /api/likes/{id}:
+ * /likes/{id}:
  *   get:
  *     summary: Get like by ID
  *     tags: [Likes]
@@ -90,7 +90,7 @@ router.get("/:id", likeController.getLikeById);
 
 /**
  * @swagger
- * /api/likes/{id}:
+ * /likes/{id}:
  *   patch:
  *     summary: Partially update like by ID
  *     tags: [Likes]
@@ -130,7 +130,7 @@ router.patch("/:id", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]),
 
 /**
  * @swagger
- * /api/likes/{id}:
+ * /likes/{id}:
  *   delete:
  *     summary: Delete like by ID
  *     tags: [Likes]

@@ -54,7 +54,7 @@ const route = Router();
 
 /**
  * @swagger
- * /api/subjects:
+ * /subjects:
  *   post:
  *     summary: Create a new subject
  *     tags: [Subjects]
@@ -85,7 +85,7 @@ route.post("/", verifyTokenAndRole(["ADMIN", "CEO"]), createSubject);
 
 /**
  * @swagger
- * /api/subjects/{id}:
+ * /subjects/{id}:
  *   patch:
  *     summary: Update subject
  *     tags: [Subjects]
@@ -125,7 +125,7 @@ route.patch("/:id", verifyTokenAndRole(["ADMIN", "SUPERADMIN", "CEO"]), updateSu
 
 /**
  * @swagger
- * /api/subjects/{id}:
+ * /subjects/{id}:
  *   delete:
  *     summary: Delete subject
  *     tags: [Subjects]
@@ -155,7 +155,7 @@ route.delete("/:id", verifyTokenAndRole(["ADMIN", "CEO"]), deleteSubject);
 
 /**
  * @swagger
- * /api/subjects:
+ * /subjects:
  *   get:
  *     summary: Get all subjects
  *     tags: [Subjects]
@@ -174,7 +174,7 @@ route.get("/", getAllSubjects);
 
 /**
  * @swagger
- * /api/subjects/{id}:
+ * /subjects/{id}:
  *   get:
  *     summary: Get subject by ID
  *     tags: [Subjects]

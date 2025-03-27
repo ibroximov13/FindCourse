@@ -5,7 +5,7 @@ const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 
 /**
  * @swagger
- * /api/comments:
+ * /comments:
  *   post:
  *     summary: Create a new comment
  *     tags: [Comments]
@@ -46,7 +46,7 @@ router.post("/", commentController.createComment);
 
 /**
  * @swagger
- * /api/comments:
+ * /comments:
  *   get:
  *     summary: Get all comments
  *     tags: [Comments]
@@ -69,7 +69,7 @@ router.get("/", commentController.getAllComments);
 
 /**
  * @swagger
- * /api/comments/{id}:
+ * /comments/{id}:
  *   get:
  *     summary: Get comment by ID
  *     tags: [Comments]
@@ -97,7 +97,7 @@ router.get("/:id", commentController.getCommentById);
 
 /**
  * @swagger
- * /api/comments/{id}:
+ * /comments/{id}:
  *   patch:
  *     summary: Partially update comment by ID
  *     tags: [Comments]
@@ -135,7 +135,7 @@ router.patch("/:id", commentController.patchComment);
 
 /**
  * @swagger
- * /api/comments/{id}:
+ * /comments/{id}:
  *   delete:
  *     summary: Delete comment by ID
  *     tags: [Comments]

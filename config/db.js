@@ -14,7 +14,7 @@ async function connectDb() {
         // await db.sync({force: true});
         // console.log("Db synced");
     } catch (error) {
-        console.log(error);
+        console.log(error)
     }
 };
 

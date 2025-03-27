@@ -5,7 +5,7 @@ const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 
 /**
  * @swagger
- * /api/enrollments:
+ * /enrollments:
  *   post:
  *     summary: Create a new enrollment
  *     tags: [Enrollments]
@@ -46,7 +46,7 @@ router.post("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), enr
 
 /**
  * @swagger
- * /api/enrollments:
+ * /enrollments:
  *   get:
  *     summary: Get all enrollments
  *     tags: [Enrollments]
@@ -69,7 +69,7 @@ router.get("/", enrollmentController.getAllEnrollments);
 
 /**
  * @swagger
- * /api/enrollments/{id}:
+ * /enrollments/{id}:
  *   get:
  *     summary: Get enrollment by ID
  *     tags: [Enrollments]
@@ -97,7 +97,7 @@ router.get("/:id", enrollmentController.getEnrollmentById);
 
 /**
  * @swagger
- * /api/enrollments/{id}:
+ * /enrollments/{id}:
  *   patch:
  *     summary: Partially update enrollment by ID
  *     tags: [Enrollments]
@@ -135,7 +135,7 @@ router.patch("/:id", verifyTokenAndRole(["ADMIN", "SUPERADMIN", "CEO"]), enrollm
 
 /**
  * @swagger
- * /api/enrollments/{id}:
+ * /enrollments/{id}:
  *   delete:
  *     summary: Delete enrollment by ID
  *     tags: [Enrollments]

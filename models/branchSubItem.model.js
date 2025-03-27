@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const {db} = require("../config/db");
+const { db } = require("../config/db");
 
 const branchSubItem = db.define("branchSubItem", {
     id: {
@@ -7,7 +7,7 @@ const branchSubItem = db.define("branchSubItem", {
         autoIncrement: true,
         primaryKey: true
     },
-    filialId: {
+    branchId: {
         type: DataTypes.INTEGER,
         allowNull: false
     },

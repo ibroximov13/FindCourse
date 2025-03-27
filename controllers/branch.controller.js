@@ -1,18 +1,18 @@
-const logger = require("../config/log").child({model: "Branch"});
+const logger = require("../config/log").child({ model: "Branch" });
 const { Op } = require("sequelize");
-const { Region, Center, FilSubItem, FilCourseItem, Subject, Course, Branch } = require("../models/index.js");
+const { Region, Center, BranchSubItem, BranchCourseItem, Subject, Course, Branch } = require("../models/index.js");
 const { createBranchValidate, updateBranchValidate, branchByIdValidate } = require("../validation/branch.validate");
 
 const createNewBranch = async (req, res) => {
     try {
-        let {error, value} = createBranchValidate(req.body);
+        let { error, value } = createBranchValidate(req.body);
         if (error) {
             return res.status(422).send(error.details[0].message);
         }
-        let {name, location, subjects, courses, ...rest} = value;
+        let { name, location, subjects, courses, ...rest } = value;
         let branch = await Branch.findOne({
             where: {
-                name: name, 
+                name: name,
                 location: location
             }
         });
@@ -35,7 +35,7 @@ const createNewBranch = async (req, res) => {
                 branchId: branchId
             }
         });
-        await FilSubItem.bulkCreate(a);
+        await BranchSubItem.bulkCreate(a);
 
         let b = courses.map((r) => {
             return {
@@ -44,7 +44,7 @@ const createNewBranch = async (req, res) => {
             }
         });
 
-        await FilCourseItem.bulkCreate(b);
+        await BranchCourseItem.bulkCreate(b);
 
         logger.info(`A new branch was created by ${req.user?.id || "an unknown user"}`);
         res.status(201).send(newBranch);
@@ -56,18 +56,17 @@ const createNewBranch = async (req, res) => {
 
 const updateBranch = async (req, res) => {
     try {
-        let {error: errorId, value: valueId} = branchByIdValidate(req.params);
+        let { error: errorId, value: valueId } = branchByIdValidate(req.params);
         if (errorId) {
             return res.status(400).send(errorId.details[0].message);
         };
         let id = valueId.id;
-        let {error, value} = updateBranchValidate(req.body);
+        let { error, value } = updateBranchValidate(req.body);
         if (error) {
             return res.status(400).send(error.details[0].message);
         };
         let { name, phone, image, location, regionId, centerId } = value;
         let branch = await Branch.findByPk(id);
-        
         if (!branch) {
             return res.status(404).send("Branch not found");
         };
@@ -81,7 +80,7 @@ const updateBranch = async (req, res) => {
             centerId: centerId || branch.centerId
         });
 
-        let updateData = {...branch.toJson(), ...value};
+        let updateData = { ...branch.toJson(), ...value };
 
         res.send(updatedBranch)
     } catch (error) {
@@ -92,7 +91,7 @@ const updateBranch = async (req, res) => {
 
 const deleteBranch = async (req, res) => {
     try {
-        let {error, value} = branchByIdValidate(req.params);
+        let { error, value } = branchByIdValidate(req.params);
         if (error) {
             return res.status(422).send(error.details[0].message);
         }
@@ -122,11 +121,10 @@ const getAllBranchs = async (req, res) => {
         let order = req.query.order === "DESC" ? "DESC" : "ASC";
         let allowedColumns = ["id", "name", "phone", "location", "regionId", "centerId"];
         let column = allowedColumns.includes(req.query.column) ? req.query.column : "id";
-        
         let branch = await Branch.findAll({
             include: [
                 {
-                    model: Region, 
+                    model: Region,
                     attributes: ["name"]
                 },
                 {
@@ -134,7 +132,7 @@ const getAllBranchs = async (req, res) => {
                     attributes: ["id", "name", "adress", "phone", "location"]
                 },
                 {
-                    model: FilSubItem,
+                    model: BranchSubItem,
                     include: [
                         {
                             model: Subject,
@@ -142,7 +140,7 @@ const getAllBranchs = async (req, res) => {
                     ]
                 },
                 {
-                    model: FilCourseItem,
+                    model: BranchCourseItem,
                     include: [
                         {
                             model: Course,
@@ -167,7 +165,7 @@ const getAllBranchs = async (req, res) => {
 
         logger.info(`Get all branches`);
         res.status(200).send(branch);
-        
+
     } catch (error) {
         logger.error(error.message);
         console.log(error);
@@ -176,17 +174,17 @@ const getAllBranchs = async (req, res) => {
 
 const getOneBranch = async (req, res) => {
     try {
-        let {error, value} = branchByIdValidate(req.params);
+        let { error, value } = branchByIdValidate(req.params);
         if (error) {
             return res.status(422).send(error.details[0].message);
         }
         let id = value.id;
 
         let branch = await Branch.findOne({
-            where: {id},
+            where: { id },
             include: [
                 {
-                    model: Region, 
+                    model: Region,
                     attributes: ["name"]
                 },
                 {
@@ -194,7 +192,7 @@ const getOneBranch = async (req, res) => {
                     attributes: ["id", "name", "adress", "phone", "location"]
                 },
                 {
-                    model: FilSubItem,
+                    model: BranchSubItem,
                     include: [
                         {
                             model: Subject,
@@ -202,7 +200,7 @@ const getOneBranch = async (req, res) => {
                     ]
                 },
                 {
-                    model: FilCourseItem,
+                    model: BranchCourseItem,
                     include: [
                         {
                             model: Course,
@@ -236,7 +234,7 @@ const uploadImage = async (req, res) => {
 };
 
 module.exports = {
-    createNewBranch, 
+    createNewBranch,
     updateBranch,
     deleteBranch,
     getAllBranchs,

@@ -54,7 +54,7 @@ const route = Router();
 
 /**
  * @swagger
- * /api/courses:
+ * /courses:
  *   post:
  *     summary: Create a new course
  *     tags: [Courses]
@@ -85,7 +85,7 @@ route.post("/", verifyTokenAndRole(["ADMIN"]), createCourse);
 
 /**
  * @swagger
- * /api/courses/{id}:
+ * /courses/{id}:
  *   patch:
  *     summary: Update course
  *     tags: [Courses]
@@ -125,7 +125,7 @@ route.patch("/:id", verifyTokenAndRole(["ADMIN"]), updateCourse);
 
 /**
  * @swagger
- * /api/courses/{id}:
+ * /courses/{id}:
  *   delete:
  *     summary: Delete course
  *     tags: [Courses]
@@ -155,7 +155,7 @@ route.delete("/:id", verifyTokenAndRole(["ADMIN"]), deleteCourse);
 
 /**
  * @swagger
- * /api/courses:
+ * /courses:
  *   get:
  *     summary: Get all courses
  *     tags: [Courses]
@@ -174,7 +174,7 @@ route.get("/", getAllCourse);
 
 /**
  * @swagger
- * /api/courses/{id}:
+ * /courses/{id}:
  *   get:
  *     summary: Get course by ID
  *     tags: [Courses]

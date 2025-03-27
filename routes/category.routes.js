@@ -55,10 +55,10 @@ const route = Router();
 
 /**
  * @swagger
- * /api/categories:
+ * /categories:
  *   post:
  *     summary: Create a new category
- *     tags: [Category]
+ *     tags: [Categories]
  *     description: Creates a new category (Admin only)
  *     security:
  *       - BearerAuth: []
@@ -108,10 +108,10 @@ route.post("/upload-image", upload.single("categoryImage"), verifyTokenAndRole([
 
 /**
  * @swagger
- * /api/categories/{id}:
+ * /categories/{id}:
  *   patch:
  *     summary: Update category
- *     tags: [Category]
+ *     tags: [Categories]
  *     description: Updates an existing category (Admin or Superadmin only)
  *     security:
  *       - BearerAuth: []
@@ -148,10 +148,10 @@ route.patch("/:id", verifyTokenAndRole(["ADMIN", "SUPERADMIN"]), updateCategory)
 
 /**
  * @swagger
- * /api/categories/{id}:
+ * /categories/{id}:
  *   delete:
  *     summary: Delete category
- *     tags: [Category]
+ *     tags: [Categories]
  *     description: Deletes a category by ID (Admin only)
  *     security:
  *       - BearerAuth: []
@@ -178,10 +178,10 @@ route.delete("/:id", verifyTokenAndRole(["ADMIN"]), deleteCategory);
 
 /**
  * @swagger
- * /api/categories:
+ * /categories:
  *   get:
  *     summary: Get all categories
- *     tags: [Category]
+ *     tags: [Categories]
  *     description: Retrieves a list of all categories
  *     responses:
  *       200:
@@ -197,10 +197,10 @@ route.get("/", getAllCategory);
 
 /**
  * @swagger
- * /api/categories/{id}:
+ * /categories/{id}:
  *   get:
  *     summary: Get category by ID
- *     tags: [Category]
+ *     tags: [Categories]
  *     description: Retrieves a single category by its ID
  *     parameters:
  *       - in: path
