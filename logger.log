@@ -160,3 +160,11 @@
 {"level":"info","message":"Fetched 0 enrollments on page 1","model":"enrollment","timestamp":"2025-03-27T17:04:07.970Z"}
 {"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T18:14:00.159Z"}
 >>>>>>>>> Temporary merge branch 2
+{"level":"error","message":"createComment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`comments`, CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"comment","timestamp":"2025-03-27T19:45:07.802Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T19:57:19.156Z"}
+{"level":"error","message":"createComment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`comments`, CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"comment","timestamp":"2025-03-27T19:58:16.168Z"}
+{"level":"error","message":"createComment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`comments`, CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"comment","timestamp":"2025-03-27T19:58:34.420Z"}
+{"level":"error","message":"createCenter error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`courseitems`, CONSTRAINT `courseitems_ibfk_2` FOREIGN KEY (`courseId`) REFERENCES `courses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"center","timestamp":"2025-03-27T19:58:49.970Z"}
+{"level":"error","message":"getAllCenters error: Comment is not defined","model":"center","timestamp":"2025-03-27T19:59:44.127Z"}
+{"level":"error","message":"getAllCenters error: Comment is not defined","model":"center","timestamp":"2025-03-27T20:03:31.521Z"}
+{"level":"error","message":"getAllCenters error: Comment is not defined","model":"center","timestamp":"2025-03-27T20:41:14.322Z"}

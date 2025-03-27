@@ -63,7 +63,7 @@ const getAllComments = async (req, res) => {
 };
 
 const getCommentById = async (req, res) => {
-  try {
+  try { 
     const comment = await Comment.findByPk(req.params.id);
     if (!comment) {
       logger.warn(`Comment not found with ID: ${req.params.id}`);
@@ -75,7 +75,7 @@ const getCommentById = async (req, res) => {
     logger.error(`getCommentById error: ${error.message}`);
     res.status(500).json({ error: error.message });
   }
-};
+};                                                                                                                                          
 
 const updateComment = async (req, res) => {
   try {
