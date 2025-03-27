@@ -1,18 +1,18 @@
 const { Course, FilCourseItem } = require("../models");
-const { Filial, CourseItem, Center } = require("../models/association");
+const { Branch, CourseItem, Center } = require("../models/association");
 const { createCourseValidate, courseByIdValidate, updateCourseValidate } = require("../validation/course.validate");
 
-const logger = require("../config/log").child({model: "Cource"});
+const logger = require("../config/log").child({ model: "Cource" });
 
 const createCourse = async (req, res) => {
     try {
-        let {error, value} = createCourseValidate(req.body);
+        let { error, value } = createCourseValidate(req.body);
         if (error) {
             return res.status(422).send(error.details[0].message);
         };
 
-        let {name, image} = value;
-        let course = await Course.findOne({where: {name}});
+        let { name, image } = value;
+        let course = await Course.findOne({ where: { name } });
         if (course) {
             return res.status(400).send("Course already exists");
         };
@@ -30,18 +30,18 @@ const createCourse = async (req, res) => {
 
 const updateCourse = async (req, res) => {
     try {
-        let {error: errorId, value: valueId} = courseByIdValidate(req.params);
+        let { error: errorId, value: valueId } = courseByIdValidate(req.params);
         if (errorId) {
             return res.status(422).send(errorId.details[0].message);
         };
 
         let id = valueId.id
-        let {error, value} = updateCourseValidate(req.body);
+        let { error, value } = updateCourseValidate(req.body);
         if (error) {
             return res.status(422).send(error.details[0].message);
         };
-        let {name, image} = value;
-        let course = await Course.findOne({where: {id: id, name: name}});
+        let { name, image } = value;
+        let course = await Course.findOne({ where: { id: id, name: name } });
         if (!course) {
             return res.status(400).send("Course already exists");
         };
@@ -63,14 +63,14 @@ const updateCourse = async (req, res) => {
 
 const deleteCourse = async (req, res) => {
     try {
-        let {error, value} = courseByIdValidate(req.params);
+        let { error, value } = courseByIdValidate(req.params);
         if (error) {
             return res.status(422).send(error.details[0].message)
         };
 
         let id = value.id;
         let course = await Course.findOne({
-            where: {id}
+            where: { id }
         });
 
         if (!course) {
@@ -108,7 +108,7 @@ const getAllCourse = async (req, res) => {
                     model: FilCourseItem,
                     include: [
                         {
-                            model: Filial, 
+                            model: Branch,
                             attributes: ["id", "phone", "location"]
                         },
                     ]
@@ -135,13 +135,13 @@ const getAllCourse = async (req, res) => {
     }
 };
 
-const getOneCourse  = async (req, res) => {
+const getOneCourse = async (req, res) => {
     try {
-        let {error, value} =courseByIdValidate(req.params);
+        let { error, value } = courseByIdValidate(req.params);
         if (error) {
             return res.status(422).send(error.details[0].message);
         }
-        
+
         let id = value.id;
 
         let course = await Course.findOne({
@@ -153,7 +153,7 @@ const getOneCourse  = async (req, res) => {
                     model: FilCourseItem,
                     include: [
                         {
-                            model: Filial, 
+                            model: Branch,
                             attributes: ["id", "phone", "location"]
                         },
                     ]
@@ -191,8 +191,8 @@ const uploadImage = async (req, res) => {
 };
 
 module.exports = {
-    createCourse, 
-    updateCourse, 
+    createCourse,
+    updateCourse,
     deleteCourse,
     getAllCourse,
     getOneCourse,

@@ -1,18 +1,18 @@
-const logger = require("../config/log").child({model: "Branch"});
+const logger = require("../config/log").child({ model: "Branch" });
 const { Op } = require("sequelize");
-const { Filial, Region, Center, FilSubItem, FilCourseItem, Subject, Course } = require("../models/index.js");
+const { Branch, Region, Center, FilSubItem, FilCourseItem, Subject, Course } = require("../models/index.js");
 const { createBranchValidate, updateBranchValidate, branchByIdValidate } = require("../validation/branch.validate");
 
 const createNewBranch = async (req, res) => {
     try {
-        let {error, value} = createBranchValidate(req.body);
+        let { error, value } = createBranchValidate(req.body);
         if (error) {
             return res.status(422).send(error.details[0].message);
         }
-        let {name, location, subjects, courses, ...rest} = value;
-        let branch = await Filial.findOne({
+        let { name, location, subjects, courses, ...rest } = value;
+        let branch = await Branch.findOne({
             where: {
-                name: name, 
+                name: name,
                 location: location
             }
         });
@@ -22,17 +22,17 @@ const createNewBranch = async (req, res) => {
             return res.status(400).send("There cannot be multiple branches with the same name in the same location.");
         }
 
-        let newBranch = await Filial.create({
+        let newBranch = await Branch.create({
             ...rest,
             name,
             location
         });
 
-        let filialId = newBranch.id;
+        let branchId = newBranch.id;
         let a = subjects.map((r) => {
             return {
                 subjectId: r,
-                filialId: filialId
+                branchId: branchId
             }
         });
         await FilSubItem.bulkCreate(a);
@@ -40,7 +40,7 @@ const createNewBranch = async (req, res) => {
         let b = courses.map((r) => {
             return {
                 courseId: r,
-                filialId: filialId
+                branchId: branchId
             }
         });
 
@@ -56,18 +56,18 @@ const createNewBranch = async (req, res) => {
 
 const updateBranch = async (req, res) => {
     try {
-        let {error: errorId, value: valueId} = branchByIdValidate(req.params);
+        let { error: errorId, value: valueId } = branchByIdValidate(req.params);
         if (errorId) {
             return res.status(400).send(errorId.details[0].message);
         };
         let id = valueId.id;
-        let {error, value} = updateBranchValidate(req.body);
+        let { error, value } = updateBranchValidate(req.body);
         if (error) {
             return res.status(400).send(error.details[0].message);
         };
         let { name, phone, image, location, regionId, centerId } = value;
-        let branch = await Filial.findByPk(id);
-        
+        let branch = await Branch.findByPk(id);
+
         if (!branch) {
             return res.status(404).send("Branch not found");
         };
@@ -81,7 +81,7 @@ const updateBranch = async (req, res) => {
             centerId: centerId || branch.centerId
         });
 
-        let updateData = {...branch.toJson(), ...value};
+        let updateData = { ...branch.toJson(), ...value };
 
         res.send(updatedBranch)
     } catch (error) {
@@ -92,13 +92,13 @@ const updateBranch = async (req, res) => {
 
 const deleteBranch = async (req, res) => {
     try {
-        let {error, value} = branchByIdValidate(req.params);
+        let { error, value } = branchByIdValidate(req.params);
         if (error) {
             return res.status(422).send(error.details[0].message);
         }
         let id = value.id;
 
-        let branch = await Filial.findByPk(id);
+        let branch = await Branch.findByPk(id);
         if (!branch) {
             return res.status(404).send("Branch not found");
         };
@@ -122,11 +122,11 @@ const getAllBranchs = async (req, res) => {
         let order = req.query.order === "DESC" ? "DESC" : "ASC";
         let allowedColumns = ["id", "name", "phone", "location", "regionId", "centerId"];
         let column = allowedColumns.includes(req.query.column) ? req.query.column : "id";
-        
-        let branch = await Filial.findAll({
+
+        let branch = await Branch.findAll({
             include: [
                 {
-                    model: Region, 
+                    model: Region,
                     attributes: ["name"]
                 },
                 {
@@ -167,7 +167,7 @@ const getAllBranchs = async (req, res) => {
 
         logger.info(`Get all branches`);
         res.status(200).send(branch);
-        
+
     } catch (error) {
         logger.error(error.message);
         console.log(error);
@@ -176,17 +176,17 @@ const getAllBranchs = async (req, res) => {
 
 const getOneBranch = async (req, res) => {
     try {
-        let {error, value} = branchByIdValidate(req.params);
+        let { error, value } = branchByIdValidate(req.params);
         if (error) {
             return res.status(422).send(error.details[0].message);
         }
         let id = value.id;
 
-        let branch = await Filial.findOne({
-            where: {id},
+        let branch = await Branch.findOne({
+            where: { id },
             include: [
                 {
-                    model: Region, 
+                    model: Region,
                     attributes: ["name"]
                 },
                 {
@@ -236,7 +236,7 @@ const uploadImage = async (req, res) => {
 };
 
 module.exports = {
-    createNewBranch, 
+    createNewBranch,
     updateBranch,
     deleteBranch,
     getAllBranchs,

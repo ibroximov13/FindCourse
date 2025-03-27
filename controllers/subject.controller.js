@@ -1,19 +1,19 @@
 const { Op } = require("sequelize");
 const { Subject, SubjectItem, FilSubItem } = require("../models");
 const { createSubjectValidate, subjectByIdValidate, updateSubjectValidate } = require("../validation/subject.validate");
-const { Filial, Center } = require("../models/association");
+const { Branch, Center } = require("../models/association");
 
-const logger = require("../config/log").child({model: "Subject"});
+const logger = require("../config/log").child({ model: "Subject" });
 
 const createSubject = async (req, res) => {
     try {
-        let {error, value} = createSubjectValidate(req.body);
+        let { error, value } = createSubjectValidate(req.body);
         if (error) {
             return res.status(422).send(error.details[0].message);
         };
 
-        let {name, image} = value;
-        let subject = await Subject.findOne({where: {name}});
+        let { name, image } = value;
+        let subject = await Subject.findOne({ where: { name } });
         if (subject) {
             return res.status(400).send("Subject already exists");
         };
@@ -31,18 +31,18 @@ const createSubject = async (req, res) => {
 
 const updateSubject = async (req, res) => {
     try {
-        let {error: errorId, value: valueId} = subjectByIdValidate(req.params);
+        let { error: errorId, value: valueId } = subjectByIdValidate(req.params);
         if (errorId) {
             return res.status(422).send(errorId.details[0].message);
         };
 
         let id = valueId.id
-        let {error, value} = updateSubjectValidate(req.body);
+        let { error, value } = updateSubjectValidate(req.body);
         if (error) {
             return res.status(422).send(error.details[0].message);
         };
-        let {name, image} = value;
-        let subject = await Subject.findOne({where: {id: id, name: name}});
+        let { name, image } = value;
+        let subject = await Subject.findOne({ where: { id: id, name: name } });
         if (!subject) {
             return res.status(400).send("Subject already exists");
         };
@@ -64,14 +64,14 @@ const updateSubject = async (req, res) => {
 
 const deleteSubject = async (req, res) => {
     try {
-        let {error, value} = subjectByIdValidate(req.params);
+        let { error, value } = subjectByIdValidate(req.params);
         if (error) {
             return res.status(422).send(error.details[0].message)
         };
 
         let id = value.id;
         let subject = await Subject.findOne({
-            where: {id}
+            where: { id }
         });
 
         if (!subject) {
@@ -109,7 +109,7 @@ const getAllSubjects = async (req, res) => {
                     model: FilSubItem,
                     include: [
                         {
-                            model: Filial, 
+                            model: Branch,
                             attributes: ["id", "phone", "location"]
                         },
                     ]
@@ -136,13 +136,13 @@ const getAllSubjects = async (req, res) => {
     }
 };
 
-const getOneSubject  = async (req, res) => {
+const getOneSubject = async (req, res) => {
     try {
-        let {error, value} = subjectByIdValidate(req.params);
+        let { error, value } = subjectByIdValidate(req.params);
         if (error) {
             return res.status(422).send(error.details[0].message);
         }
-        
+
         let id = value.id;
 
         let subject = await Subject.findOne({
@@ -154,7 +154,7 @@ const getOneSubject  = async (req, res) => {
                     model: FilSubItem,
                     include: [
                         {
-                            model: Filial, 
+                            model: Branch,
                             attributes: ["id", "phone", "location"]
                         },
                     ]
@@ -193,8 +193,8 @@ const uploadImage = async (req, res) => {
 };
 
 module.exports = {
-    createSubject, 
-    updateSubject, 
+    createSubject,
+    updateSubject,
     deleteSubject,
     getAllSubjects,
     getOneSubject,
