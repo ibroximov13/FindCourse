@@ -21,6 +21,7 @@ const getAllCenters = async (req, res) => {
     const where = {};
     if (name) where.name = { [Op.iLike]: `%${name}%` };
     if (regionId) where.regionId = regionId;
+    
 
     const centers = await Center.findAndCountAll({
       where,
