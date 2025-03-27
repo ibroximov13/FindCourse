@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const enrollmentController = require("../controllers/enrollment.controller");
+const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 
 /**
  * @swagger
- * /api/enrollments:
+ * /enrollments:
  *   post:
  *     summary: Create a new enrollment
  *     tags: [Enrollments]
@@ -41,11 +42,11 @@ const enrollmentController = require("../controllers/enrollment.controller");
  *       400:
  *         description: Validation error
  */
-router.post("/", enrollmentController.createEnrollment);
+router.post("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), enrollmentController.createEnrollment);
 
 /**
  * @swagger
- * /api/enrollments:
+ * /enrollments:
  *   get:
  *     summary: Get all enrollments
  *     tags: [Enrollments]
@@ -68,7 +69,7 @@ router.get("/", enrollmentController.getAllEnrollments);
 
 /**
  * @swagger
- * /api/enrollments/{id}:
+ * /enrollments/{id}:
  *   get:
  *     summary: Get enrollment by ID
  *     tags: [Enrollments]
@@ -96,55 +97,7 @@ router.get("/:id", enrollmentController.getEnrollmentById);
 
 /**
  * @swagger
- * /api/enrollments/{id}:
- *   put:
- *     summary: Fully update enrollment by ID
- *     tags: [Enrollments]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: Enrollment ID
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - userId
- *               - courseId
- *               - status
- *             properties:
- *               userId:
- *                 type: integer
- *                 example: 2
- *               courseId:
- *                 type: integer
- *                 example: 7
- *               status:
- *                 type: string
- *                 example: "completed"
- *     responses:
- *       200:
- *         description: Enrollment fully updated
- *         content:
- *           application/json:
- *             example:
- *               id: 1
- *               userId: 2
- *               courseId: 7
- *               status: "completed"
- *       404:
- *         description: Enrollment not found
- */
-router.put("/:id", enrollmentController.updateEnrollment);
-
-/**
- * @swagger
- * /api/enrollments/{id}:
+ * /enrollments/{id}:
  *   patch:
  *     summary: Partially update enrollment by ID
  *     tags: [Enrollments]
@@ -178,11 +131,11 @@ router.put("/:id", enrollmentController.updateEnrollment);
  *       404:
  *         description: Enrollment not found
  */
-router.patch("/:id", enrollmentController.patchEnrollment);
+router.patch("/:id", verifyTokenAndRole(["ADMIN", "SUPERADMIN", "CEO"]), enrollmentController.patchEnrollment);
 
 /**
  * @swagger
- * /api/enrollments/{id}:
+ * /enrollments/{id}:
  *   delete:
  *     summary: Delete enrollment by ID
  *     tags: [Enrollments]
@@ -203,6 +156,6 @@ router.patch("/:id", enrollmentController.patchEnrollment);
  *       404:
  *         description: Enrollment not found
  */
-router.delete("/:id", enrollmentController.deleteEnrollment);
+router.delete("/:id",verifyTokenAndRole(["ADMIN", "SUPERADMIN", "CEO"]), enrollmentController.deleteEnrollment);
 
 module.exports = router;

@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const likeController = require("../controllers/like.controller");
+const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 
 /**
  * @swagger
- * /api/likes:
+ * /likes:
  *   post:
  *     summary: Create a new like
  *     tags: [Likes]
@@ -36,11 +37,11 @@ const likeController = require("../controllers/like.controller");
  *       400:
  *         description: Validation error
  */
-router.post("/", likeController.createLike);
+router.post("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), likeController.createLike);
 
 /**
  * @swagger
- * /api/likes:
+ * /likes:
  *   get:
  *     summary: Get all likes
  *     tags: [Likes]
@@ -61,7 +62,7 @@ router.get("/", likeController.getAllLikes);
 
 /**
  * @swagger
- * /api/likes/{id}:
+ * /likes/{id}:
  *   get:
  *     summary: Get like by ID
  *     tags: [Likes]
@@ -86,52 +87,10 @@ router.get("/", likeController.getAllLikes);
  */
 router.get("/:id", likeController.getLikeById);
 
-/**
- * @swagger
- * /api/likes/{id}:
- *   put:
- *     summary: Fully update like by ID
- *     tags: [Likes]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: Like ID
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - userId
- *               - postId
- *             properties:
- *               userId:
- *                 type: integer
- *                 example: 2
- *               postId:
- *                 type: integer
- *                 example: 12
- *     responses:
- *       200:
- *         description: Like fully updated
- *         content:
- *           application/json:
- *             example:
- *               id: 1
- *               userId: 2
- *               postId: 12
- *       404:
- *         description: Like not found
- */
-router.put("/:id", likeController.updateLike);
 
 /**
  * @swagger
- * /api/likes/{id}:
+ * /likes/{id}:
  *   patch:
  *     summary: Partially update like by ID
  *     tags: [Likes]
@@ -167,11 +126,11 @@ router.put("/:id", likeController.updateLike);
  *       404:
  *         description: Like not found
  */
-router.patch("/:id", likeController.patchLike);
+router.patch("/:id", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), likeController.patchLike);
 
 /**
  * @swagger
- * /api/likes/{id}:
+ * /likes/{id}:
  *   delete:
  *     summary: Delete like by ID
  *     tags: [Likes]
@@ -192,6 +151,6 @@ router.patch("/:id", likeController.patchLike);
  *       404:
  *         description: Like not found
  */
-router.delete("/:id", likeController.deleteLike);
+router.delete("/:id", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), likeController.deleteLike);
 
 module.exports = router;

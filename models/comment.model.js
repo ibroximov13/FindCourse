@@ -7,11 +7,11 @@ const Comment = db.define("comments", {
         autoIncrement: true,
         primaryKey: true
     },
-    user_id: {
+    userId: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    center_id: {
+    centerId: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
@@ -23,6 +23,6 @@ const Comment = db.define("comments", {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-});
+}, {timestamps: false});
 
 module.exports = Comment;

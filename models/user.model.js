@@ -28,7 +28,7 @@ const User = db.define("users", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  region_id: {
+  regionId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {

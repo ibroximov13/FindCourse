@@ -1,46 +1,102 @@
 const express = require("express");
 const router = express.Router();
 const centerController = require("../controllers/center.controller");
-
+const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 /**
  * @swagger
- * /api/centers:
+ * /centers:
  *   post:
- *     summary: Create a new center
- *     tags: [Centers]
+ *     summary: Creates a new center
+ *     description: Adds a new center to the system with the provided details. Requires admin authorization.
+ *     tags: 
+ *       - Centers
+ *     security:
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
  *             type: object
+ *             required:
+ *               - name
+ *               - regionId
+ *               - address
+ *               - phone
+ *               - location
  *             properties:
  *               name:
  *                 type: string
+ *                 description: The name of the center
  *                 example: "Olmazor Center"
  *               regionId:
  *                 type: integer
+ *                 description: The ID of the region where the center is located
  *                 example: 2
- *               address:
+ *               adress:
  *                 type: string
+ *                 description: The physical address of the center
  *                 example: "Olmazor tumani, 34-uy"
  *               phone:
  *                 type: string
+ *                 description: Contact phone number for the center
  *                 example: "+998901234567"
  *               location:
  *                 type: string
+ *                 description: Geographic coordinates of the center (latitude, longitude)
  *                 example: "41.311081, 69.240562"
+ *               subjects:
+ *                 type: array
+ *                 description: List of subject IDs available at the center
+ *                 items:
+ *                   type: integer
+ *                 example: [1, 2, 3]
+ *               courses:
+ *                 type: array
+ *                 description: List of course IDs offered at the center
+ *                 items:
+ *                   type: integer
+ *                 example: [4, 5, 6]
  *     responses:
  *       201:
- *         description: Center created
+ *         description: Center successfully created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Center created"
+ *                 data:
+ *                   type: object
+ *                   description: The created center object
  *       400:
- *         description: Bad request
+ *         description: Bad request due to invalid input or server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Invalid input data"
+ *       422:
+ *         description: Validation error due to missing or incorrect fields
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "\"name\" is required"
  */
-router.post("/", centerController.createCenter);
+router.post("/", verifyTokenAndRole(["ADMIN"]), centerController.createCenter);
 
 /**
  * @swagger
- * /api/centers:
+ * /centers:
  *   get:
  *     summary: Get all centers with pagination and filters
  *     tags: [Centers]
@@ -77,7 +133,7 @@ router.get("/", centerController.getAllCenters);
 
 /**
  * @swagger
- * /api/centers/{id}:
+ * /centers/{id}:
  *   get:
  *     summary: Get center by ID
  *     tags: [Centers]
@@ -99,51 +155,7 @@ router.get("/:id", centerController.getCenterById);
 
 /**
  * @swagger
- * /api/centers/{id}:
- *   put:
- *     summary: Fully update center by ID
- *     tags: [Centers]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: Center ID
- *         example: 1
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *                 example: "Updated Center"
- *               regionId:
- *                 type: integer
- *                 example: 3
- *               address:
- *                 type: string
- *                 example: "Yangi manzil, 10-uy"
- *               phone:
- *                 type: string
- *                 example: "+998907654321"
- *               location:
- *                 type: string
- *                 example: "41.311000, 69.240000"
- *     responses:
- *       200:
- *         description: Center fully updated
- *       404:
- *         description: Center not found
- */
-router.put("/:id", centerController.updateCenter);
-
-/**
- * @swagger
- * /api/centers/{id}:
+ * /centers/{id}:
  *   patch:
  *     summary: Partially update center by ID
  *     tags: [Centers]
@@ -171,11 +183,11 @@ router.put("/:id", centerController.updateCenter);
  *       404:
  *         description: Center not found
  */
-router.patch("/:id", centerController.patchCenter);
+router.patch("/:id", verifyTokenAndRole(["ADMIN", "SUPERADMIN"]), centerController.patchCenter);
 
 /**
  * @swagger
- * /api/centers/{id}:
+ * /centers/{id}:
  *   delete:
  *     summary: Delete center by ID
  *     tags: [Centers]
@@ -193,6 +205,6 @@ router.patch("/:id", centerController.patchCenter);
  *       404:
  *         description: Center not found
  */
-router.delete("/:id", centerController.deleteCenter);
+router.delete("/:id", verifyTokenAndRole(["ADMIN"]), centerController.deleteCenter);
 
 module.exports = router;

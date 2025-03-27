@@ -1,6 +1,5 @@
 const User = require("./user.model");
 const Region = require("./region.model");
-const Filial = require("./branch.model");
 const Center = require("./center.model");
 const Subject = require("./subject.model");
 const Course = require("./course.model");
@@ -9,55 +8,56 @@ const Resource = require("./resource.model");
 const Enrollment = require("./enrollment.model");
 const Comment = require("./comment.model");
 const Like = require("./like.model");
-const FilSubItem = require("./branchSubItem.model");
-const FilCourseItem = require("./branchCourseItem.model");
+const BranchSubItem = require("./branchSubItem.model");
+const Branch = require("./branch.model");
+const BranchCourseItem = require("./branchCourseItem.model");
 const SubjectItem = require("./subjectItem.model");
 const CourseItem = require("./courseItem.model");
 
-User.hasMany(Resource, {foreignKey: "userId"});
-Resource.belongsTo(User, {foreignKey: "userId", onDelete: 'CASCADE', onUpdate: "CASCADE"});
+User.hasMany(Resource, { foreignKey: "userId" });
+Resource.belongsTo(User, { foreignKey: "userId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-Category.hasMany(Resource, {foreignKey: "categoryId"});
-Resource.belongsTo(Category, {foreignKey: "categoryId", onDelete: 'CASCADE', onUpdate: "CASCADE"});
+Category.hasMany(Resource, { foreignKey: "categoryId" });
+Resource.belongsTo(Category, { foreignKey: "categoryId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-User.hasMany(Like, {foreignKey: "userId"});
-Like.belongsTo(User, {foreignKey: "userId", onDelete: 'CASCADE', onUpdate: "CASCADE"});
+User.hasMany(Like, { foreignKey: "userId" });
+Like.belongsTo(User, { foreignKey: "userId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-Center.hasMany(Like, {foreignKey: "centerId"});
-Like.belongsTo(Center, {foreignKey: "centerId", onDelete: 'CASCADE', onUpdate: "CASCADE"})
+Center.hasMany(Like, { foreignKey: "centerId" });
+Like.belongsTo(Center, { foreignKey: "centerId", onDelete: 'CASCADE', onUpdate: "CASCADE" })
 
-User.hasMany(Comment, {foreignKey: "userId"});
-Comment.belongsTo(User, {foreignKey: "userId", onDelete: 'CASCADE', onUpdate: "CASCADE"});
+User.hasMany(Comment, { foreignKey: "userId" });
+Comment.belongsTo(User, { foreignKey: "userId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-User.hasMany(Center, {foreignKey: "userId"});
-Center.belongsTo(User, {foreignKey: "userId", onDelete: 'CASCADE', onUpdate: "CASCADE"});
+User.hasMany(Center, { foreignKey: "userId" });
+Center.belongsTo(User, { foreignKey: "userId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-User.hasMany(Enrollment, {foreignKey: "userId"})
-Enrollment.belongsTo(User, {foreignKey: "userId", onDelete: 'CASCADE', onUpdate: "CASCADE"});
+User.hasMany(Enrollment, { foreignKey: "userId" })
+Enrollment.belongsTo(User, { foreignKey: "userId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-Region.hasMany(User, {foreignKey: "regionId"});
-User.belongsTo(Region, {foreignKey: "regionId", onDelete: 'CASCADE', onUpdate: "CASCADE"});
+Region.hasMany(User, { foreignKey: "regionId" })
+User.belongsTo(Region, { foreignKey: "regionId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-Region.hasMany(Center, {foreignKey: "regionId"});
-Center.belongsTo(Region, {foreignKey: "regionId", onDelete: 'CASCADE', onUpdate: "CASCADE"});
+Region.hasMany(Center, { foreignKey: "regionId" });
+Center.belongsTo(Region, { foreignKey: "regionId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-Center.hasMany(Enrollment, {foreignKey: "centerId"});
-Enrollment.belongsTo(Center, {foreignKey: "centerId", onDelete: 'CASCADE', onUpdate: "CASCADE"});
+Center.hasMany(Enrollment, { foreignKey: "centerId" });
+Enrollment.belongsTo(Center, { foreignKey: "centerId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-Center.hasMany(Comment, {foreignKey: "centerId"});
-Comment.belongsTo(Center, {foreignKey: "centerId", onDelete: 'CASCADE', onUpdate: "CASCADE"});
+Center.hasMany(Comment, { foreignKey: "centerId" });
+Comment.belongsTo(Center, { foreignKey: "centerId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-Center.hasMany(Filial, {foreignKey: "centerId"});
-Filial.belongsTo(Center, {foreignKey: "centerId", onDelete: 'CASCADE', onUpdate: "CASCADE"});
+Center.hasMany(Branch, { foreignKey: "centerId" });
+Branch.belongsTo(Center, { foreignKey: "centerId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-Region.hasMany(Filial, {foreignKey: "regionId"});
-Filial.belongsTo(Region, {foreignKey: "regionId", onDelete: 'CASCADE', onUpdate: "CASCADE"});
+Region.hasMany(Branch, { foreignKey: "regionId" });
+Branch.belongsTo(Region, { foreignKey: "regionId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-Filial.belongsToMany(Subject, { through: FilSubItem, foreignKey: 'filialId', otherKey: 'subjectId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
-Subject.belongsToMany(Filial, { through: FilSubItem, foreignKey: 'subjectId', otherKey: 'filialId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
+Branch.belongsToMany(Subject, { through: BranchSubItem, foreignKey: 'branchId', otherKey: 'subjectId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
+Subject.belongsToMany(Branch, { through: BranchSubItem, foreignKey: 'subjectId', otherKey: 'branchId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-Filial.belongsToMany(Course, { through: FilCourseItem, foreignKey: 'filialId', otherKey: 'courseId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
-Course.belongsToMany(Filial, { through: FilCourseItem, foreignKey: 'courseId', otherKey: 'filialId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
+Branch.belongsToMany(Course, { through: BranchCourseItem, foreignKey: 'branchId', otherKey: 'courseId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
+Course.belongsToMany(Branch, { through: BranchCourseItem, foreignKey: 'courseId', otherKey: 'branchId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
 Center.belongsToMany(Subject, { through: SubjectItem, foreignKey: 'centerId', otherKey: 'subjectId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
 Subject.belongsToMany(Center, { through: SubjectItem, foreignKey: 'subjectId', otherKey: 'centerId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
@@ -65,8 +65,8 @@ Subject.belongsToMany(Center, { through: SubjectItem, foreignKey: 'subjectId', o
 Center.belongsToMany(Course, { through: CourseItem, foreignKey: 'centerId', otherKey: 'courseId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
 Course.belongsToMany(Center, { through: CourseItem, foreignKey: 'courseId', otherKey: 'centerId', onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-Subject.hasMany(Enrollment, {foreignKey: "subjectId"});
-Enrollment.belongsTo(Subject, {foreignKey: "subjectId", onDelete: 'CASCADE', onUpdate: "CASCADE"});
+Subject.hasMany(Enrollment, { foreignKey: "subjectId" });
+Enrollment.belongsTo(Subject, { foreignKey: "subjectId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
 
 
@@ -86,14 +86,14 @@ Enrollment.belongsTo(Subject, {foreignKey: "subjectId", onDelete: 'CASCADE', onU
 // Center.belongsTo(Region, { foreignKey: "regionId" });
 // Region.hasMany(Center, { foreignKey: "regionId" });
 
-// Center.belongsTo(Filial, { foreignKey: "FilialId" });
-// Filial.hasMany(Center, { foreignKey: "filialId" });
+// Center.belongsTo(Branch, { foreignKey: "BranchId" });
+// Branch.hasMany(Center, { foreignKey: "branchId" });
 
 // Center.belongsTo(User, { foreignKey: "userId" });
 // User.hasMany(Center, { foreignKey: "userId" });
 
-// Filial.belongsTo(Region, { foreignKey: "regionId" });
-// Region.hasMany(Filial, { foreignKey: "regionId" });
+// Branch.belongsTo(Region, { foreignKey: "regionId" });
+// Region.hasMany(Branch, { foreignKey: "regionId" });
 
 // Course.belongsToMany(Subject, { through: SubjectItem });
 // Subject.belongsToMany(Course, { through: SubjectItem });
@@ -101,11 +101,11 @@ Enrollment.belongsTo(Subject, {foreignKey: "subjectId", onDelete: 'CASCADE', onU
 // Center.belongsToMany(Course, { through: CourseItem });
 // Course.belongsToMany(Center, { through: CourseItem });
 
-// Filial.belongsToMany(Subject, { through: FilSubItem });
-// Subject.belongsToMany(Filial, { through: FilSubItem });
+// Branch.belongsToMany(Subject, { through: branchSubItem });
+// Subject.belongsToMany(Branch, { through: branchSubItem });
 
-// Filial.belongsToMany(Course, { through: FilCourseItem });
-// Course.belongsToMany(Filial, { through: FilCourseItem });
+// Branch.belongsToMany(Course, { through: branchCourseItem });
+// Course.belongsToMany(Branch, { through: branchCourseItem });
 
 // Enrollment.belongsTo(User, { foreignKey: "userId" });
 // User.hasMany(Enrollment, { foreignKey: "userId" });
@@ -129,19 +129,19 @@ Enrollment.belongsTo(Subject, {foreignKey: "subjectId", onDelete: 'CASCADE', onU
 // Category.hasMany(Resource, { foreignKey: "categoryId" });
 
 module.exports = {
-  User,
-  Region,
-  Filial,
-  Center,
-  Subject,
-  Course,
-  Category,
-  Resource,
-  Enrollment,
-  Comment,
-  Like,
-  FilSubItem,
-  FilCourseItem,
-  SubjectItem,
-  CourseItem
+    User,
+    Region,
+    Center,
+    Branch,
+    Subject,
+    Course,
+    Category,
+    Resource,
+    Like,
+    Comment,
+    Enrollment,
+    SubjectItem,
+    BranchSubItem,
+    BranchCourseItem,
+    CourseItem
 };

@@ -1,6 +1,6 @@
 const Like = require("../models/like.model");
 const { Op } = require("sequelize");
-const { createLikeSchema, updateLikeSchema } = require("../validations/like.validation");
+const { createLikeSchema, updateLikeSchema } = require("../validation/like.validate");
 const logger = require("../config/log").child({model: "like"})
 
 const createLike = async (req, res) => {
