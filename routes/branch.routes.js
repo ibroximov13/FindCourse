@@ -4,53 +4,12 @@ const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 const upload = require("../multer/user.multer");
 const route = Router();
 
-// Swagger documentation setup (typically in a separate file, but shown here for clarity)
-/**
- * @swagger
- * components:
- *   securitySchemes:
- *     bearerAuth:
- *       type: http
- *       scheme: bearer
- *       bearerFormat: JWT
- *   schemas:
- *     Branch:
- *       type: object
- *       required:
- *         - name
- *         - phone
- *         - location
- *         - regionId
- *         - centerId
- *       properties:
- *         name:
- *           type: string
- *           description: The branch name
- *         phone:
- *           type: string
- *           description: Branch phone number in +998XXXXXXXXX format
- *         location:
- *           type: string
- *           description: Branch location
- *         regionId:
- *           type: integer
- *           description: ID of the region
- *         centerId:
- *           type: integer
- *           description: ID of the center
- *       example:
- *         name: "Main Branch"
- *         phone: "+998901234567"
- *         location: "123 Business Street"
- *         regionId: 1
- *         centerId: 1
- */
-
 /**
  * @swagger
  * /branches:
  *   post:
  *     summary: Create a new branch
+ *     description: Creates a new branch with the provided details. Requires admin access.
  *     tags: [Branches]
  *     security:
  *       - bearerAuth: []
@@ -67,8 +26,8 @@ const route = Router();
  *             regionId: 1
  *             centerId: 1
  *             image: "http://example.com/images/branch.jpg"
- *             subjects: [1, 2, 3]  # Subject ID lar massivi
- *             courses: [4, 5]      # Course ID lar massivi
+ *             subjects: [1, 2, 3]
+ *             courses: [4, 5]
  *     responses:
  *       201:
  *         description: Branch created successfully
@@ -85,15 +44,23 @@ const route = Router();
  *               centerId: 1
  *               image: "http://example.com/images/branch.jpg"
  *       400:
- *         description: Validation error or duplicate branch
+ *         description: Bad request - Validation error or duplicate branch
  *         content:
  *           application/json:
  *             example:
- *               message: "There cannot be multiple branches with the same name in the same location."
+ *               message: "Branch with the same name and location already exists"
  *       401:
- *         description: Unauthorized
+ *         description: Unauthorized - Invalid or missing token
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: "Authentication required"
  *       403:
- *         description: Forbidden - Admin access required
+ *         description: Forbidden - Insufficient permissions
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: "Admin access required"
  */
 
 /**
@@ -114,35 +81,48 @@ const route = Router();
  *         name:
  *           type: string
  *           minLength: 3
+ *           maxLength: 100
  *           example: "Main Branch"
  *         phone:
  *           type: string
+ *           pattern: ^\+[0-9]{11,12}$
  *           example: "+998901234567"
+ *           description: Phone number in international format
  *         location:
  *           type: string
+ *           minLength: 5
+ *           maxLength: 200
  *           example: "123 Business Street"
  *         regionId:
  *           type: integer
+ *           minimum: 1
  *           example: 1
  *         centerId:
  *           type: integer
+ *           minimum: 1
  *           example: 1
  *         image:
  *           type: string
+ *           format: uri
+ *           maxLength: 500
  *           example: "http://example.com/images/branch.jpg"
- *           description: URL of the branch image (optional)
+ *           description: Optional URL of the branch image
  *         subjects:
  *           type: array
+ *           minItems: 1
  *           items:
  *             type: integer
+ *             minimum: 1
  *           example: [1, 2, 3]
- *           description: Array of subject IDs to associate with the branch
+ *           description: Array of subject IDs
  *         courses:
  *           type: array
+ *           minItems: 1
  *           items:
  *             type: integer
+ *             minimum: 1
  *           example: [4, 5]
- *           description: Array of course IDs to associate with the branch
+ *           description: Array of course IDs
  *     BranchResponse:
  *       type: object
  *       properties:
@@ -166,10 +146,12 @@ const route = Router();
  *           example: 1
  *         image:
  *           type: string
+ *           format: uri
  *           nullable: true
  *           example: "http://example.com/images/branch.jpg"
  */
-route.post("/", upload.single(), verifyTokenAndRole(["ADMIN"]), createNewBranch);
+
+route.post("/", verifyTokenAndRole(["ADMIN"]), createNewBranch);
 
 /**
  * @swagger

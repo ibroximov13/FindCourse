@@ -1,6 +1,7 @@
 const { Router } = require("express");
-const { createCategory, updateCategory, deleteCategory, getAllCategory, getOneCategory } = require("../controllers/category.controller");
+const { createCategory, updateCategory, deleteCategory, getAllCategory, getOneCategory, uploadImage } = require("../controllers/category.controller");
 const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
+const upload = require("../multer/category.multer");
 
 const route = Router();
 
@@ -82,6 +83,28 @@ const route = Router();
  *         description: Forbidden - Admin access required
  */
 route.post("/", verifyTokenAndRole(["ADMIN"]), createCategory);
+
+/**
+ * @swagger
+ * /categories/upload-image:
+ *   post:
+ *     summary: Upload user image
+ *     tags: [Categories]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               branchImage:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: Image uploaded successfully.
+ */
+route.post("/upload-image", upload.single("categoryImage"), verifyTokenAndRole(["ADMIN"]) , uploadImage);
 
 /**
  * @swagger
