@@ -81,3 +81,29 @@
 {"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T11:13:33.187Z"}
 {"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T11:27:56.603Z"}
 {"level":"info","message":"GetOneSubject","model":"Subject","timestamp":"2025-03-27T11:29:05.972Z"}
+{"level":"info","message":"User logged in successfully: 17","model":"user","timestamp":"2025-03-27T12:03:55.439Z"}
+{"level":"info","message":"User logged in successfully: 17","model":"user","timestamp":"2025-03-27T12:46:45.151Z"}
+{"level":"info","message":"User logged in successfully: 17","model":"user","timestamp":"2025-03-27T12:51:44.875Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T13:07:07.972Z"}
+{"level":"info","message":"User logged in successfully: 19","model":"user","timestamp":"2025-03-27T13:09:48.720Z"}
+{"level":"error","message":"createCenter error: notNull Violation: Center.adress cannot be null,\nnotNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T13:10:16.642Z"}
+{"level":"error","message":"createCenter error: notNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T13:10:47.629Z"}
+{"level":"error","message":"createCenter error: notNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T13:12:11.686Z"}
+{"level":"info","message":"Fetched 1 users (Page: 1)","model":"user","timestamp":"2025-03-27T14:53:53.610Z"}
+{"level":"info","message":"Image uploaded successfully: http://localhost:3001/image/1743087255818-987941367.png","model":"user","timestamp":"2025-03-27T14:54:15.862Z"}
+{"level":"info","message":"User updated successfully with ID: 1","model":"user","timestamp":"2025-03-27T14:54:54.259Z"}
+{"level":"error","message":"Error fetching regions: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ILIKE '%toshkent%' ORDER BY `regions`.`id` DESC LIMIT 0, 15' at line 1","model":"region","timestamp":"2025-03-27T15:16:14.239Z"}
+{"level":"error","message":"Error fetching regions: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ILIKE '%Toshkent%'' at line 1","model":"region","timestamp":"2025-03-27T15:16:54.019Z"}
+{"level":"error","message":"Error fetching regions: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ILIKE '%Surxondaryo%'' at line 1","model":"region","timestamp":"2025-03-27T15:17:41.063Z"}
+{"level":"error","message":"Error fetching regions: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ILIKE '%Surxondaryo%'' at line 1","model":"region","timestamp":"2025-03-27T15:17:48.307Z"}
+{"level":"error","message":"Error fetching regions: Invalid value { undefined: '%Surxondaryo%' }","model":"region","timestamp":"2025-03-27T15:19:13.446Z"}
+{"level":"error","message":"Error fetching regions: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-45, 15' at line 1","model":"region","timestamp":"2025-03-27T15:49:30.891Z"}
+{"level":"error","message":"Error fetching regions: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-45, 15' at line 1","model":"region","timestamp":"2025-03-27T15:51:33.179Z"}
+{"level":"error","message":"Error fetching regions: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-45, 15' at line 1","model":"region","timestamp":"2025-03-27T15:51:47.988Z"}
+{"level":"error","message":"Error fetching regions: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-42, 14' at line 1","model":"region","timestamp":"2025-03-27T15:56:22.729Z"}
+{"level":"error","message":"createComment error: notNull Violation: comments.userId cannot be null","model":"comment","timestamp":"2025-03-27T17:08:28.897Z"}
+{"level":"error","message":"createComment error: notNull Violation: comments.userId cannot be null","model":"comment","timestamp":"2025-03-27T17:09:08.215Z"}
+{"level":"error","message":"createComment error: Cannot read properties of undefined (reading 'id')","model":"comment","timestamp":"2025-03-27T17:12:03.552Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T17:54:00.751Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T17:58:59.321Z"}
+{"level":"error","message":"createComment error: notNull Violation: comments.centerId cannot be null,\nnotNull Violation: comments.message cannot be null,\nnotNull Violation: comments.star cannot be null","model":"comment","timestamp":"2025-03-27T17:59:17.714Z"}
