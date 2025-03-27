@@ -1,34 +1,30 @@
 const Joi = require("joi");
 
 const createUserValidate = (data) => {
+  const currentYear = new Date().getFullYear();
   const schema = Joi.object({
     fullName: Joi.string().min(3).max(100).required(),
     year: Joi.number()
       .integer()
       .min(1900)
-      .max(new Date().getFullYear())
+      .max(currentYear - 15)
       .required()
-      .custom((value, helpers) => {
-        const currentYear = new Date().getFullYear();
-        const age = currentYear - value;
-        if (age < 15) {
-          return helpers.error("any.custom", { message: "Foydalanuvchi yoshi 15 dan katta bo'lishi kerak" });
-        }
-        return value;
+      .messages({
+        "number.max": "User must be over 15 years old.",
       }),
     phone: Joi.string().pattern(/^\+998[0-9]{9}$/).required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(6).required(),
-    regionId: Joi.number().integer().required().when("role", {
+    regionId: Joi.when("role", {
       is: Joi.string().valid("ADMIN", "SUPERADMIN"),
       then: Joi.forbidden(),
-      otherwise: Joi.number().integer().required()
+      otherwise: Joi.number().integer().required(),
     }),
     photo: Joi.string().required(),
-    role: Joi.string().valid("USER", "SELLER").required(),
+    role: Joi.string().valid("USER", "CEO").required(),
   });
   return schema.validate(data);
-};
+}
 
 const patchUserValidate = (data) => {
   const schema = Joi.object({
@@ -47,7 +43,7 @@ const patchUserValidate = (data) => {
     password: Joi.string().min(4).optional(),
     regionId: Joi.number().integer().optional(),
     photo: Joi.string().optional(),
-    role: Joi.string().valid("USER", "ADMIN", "SUPERADMIN", "SELLER").optional(),
+    role: Joi.string().valid("USER", "ADMIN", "SUPERADMIN", "CEO").optional(),
   });
   return schema.validate(data);
 };

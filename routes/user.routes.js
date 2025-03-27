@@ -261,7 +261,7 @@ router.post("/refresh", refreshToken);
  *                     example: "https://example.com/uploads/johndoe.jpg"
  *                   role:
  *                     type: string
- *                     enum: [USER, ADMIN, SUPERADMIN, SELLER]
+ *                     enum: [USER, ADMIN, SUPERADMIN, CEO]
  *                     example: "USER"
  *                   Region:
  *                     type: object
@@ -432,7 +432,7 @@ router.delete("/:id", deleteUser);
  *                   type: string
  *                   example: "Internal Server Error"
 */
-  router.post("/createAdminOrSuperAdmin", verifyTokenAndRole(['ADMIN']), createAdminOrSuperAdmin);
+router.post("/createAdminOrSuperAdmin", verifyTokenAndRole(['ADMIN']), createAdminOrSuperAdmin);
 
 /**
  * @swagger
@@ -471,7 +471,7 @@ router.delete("/:id", deleteUser);
  *       500:
  *         description: Internal Server Error
  */
-router.get("/me", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "SELLER"]), getMeProfile)
+router.get("/me", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), getMeProfile)
 
 /**
  * @swagger
@@ -535,7 +535,7 @@ router.get("/me", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "SELLER"]),
  *       500:
  *         description: "Ichki server xatosi"
  */
-router.patch("/me/update", verifyTokenAndRole(['USER', 'ADMIN', 'SUPERADMIN', 'SELLER']), updateMyProfile);
+router.patch("/me/update", verifyTokenAndRole(['USER', 'ADMIN', 'SUPERADMIN', 'CEO']), updateMyProfile)
 
 /**
  * @swagger
@@ -561,4 +561,3 @@ router.patch("/me/update", verifyTokenAndRole(['USER', 'ADMIN', 'SUPERADMIN', 'S
 router.get("/download-excel", verifyTokenAndRole(["ADMIN"]), downloadUsersExcel);
 
 module.exports = router;
-  

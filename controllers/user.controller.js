@@ -44,7 +44,7 @@ async function sendOtp(req, res) {
 
         if (!phone || !email) {
             logger.warn("Missing phone or email in OTP request");
-            return res.status(400).send({ message: "Telefon raqam va email majburiy!" });
+            return res.status(400).send({ message: "Phone number and email are required!" });
         }
 
         let otp = totp.generate(phone + email + "soz");

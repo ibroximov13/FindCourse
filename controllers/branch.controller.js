@@ -120,7 +120,7 @@ const getAllBranchs = async (req, res) => {
         let filter = req.query.filter || "";
         let order = req.query.order === "DESC" ? "DESC" : "ASC";
         let allowedColumns = ["id", "name", "phone", "location", "regionId", "centerId"];
-        let column = allowedColumns.includes(req.query.column) ? req.query.column : "id";
+        let column = allowedColumns.includes(req.query.column) ? req.query.column : "id"
         let branch = await Branch.findAll({
             include: [
                 {

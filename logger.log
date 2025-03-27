@@ -1,3 +1,23 @@
 {"level":"info","message":"User logged in successfully: 51","model":"user","timestamp":"2025-03-27T03:41:57.902Z"}
 {"level":"error","message":"Cannot read properties of undefined (reading 'findAll')","model":"Branch","timestamp":"2025-03-26T22:47:13.612Z"}
 {"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-26T22:49:56.601Z"}
+{"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-27T05:10:34.410Z"}
+{"level":"error","message":"branchSubItem is not defined","model":"Branch","timestamp":"2025-03-27T05:23:46.951Z"}
+{"level":"error","message":"branchSubItem is not defined","model":"Branch","timestamp":"2025-03-27T05:23:57.942Z"}
+{"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-27T05:25:52.314Z"}
+{"level":"warn","message":"Registration validation failed: \"year\" failed custom validation because ","model":"user","timestamp":"2025-03-27T05:28:44.768Z"}
+{"level":"warn","message":"Registration validation failed: \"year\" must be less than or equal to 2025","model":"user","timestamp":"2025-03-27T05:28:55.903Z"}
+{"level":"warn","message":"Registration validation failed: \"year\" must be greater than or equal to 1900","model":"user","timestamp":"2025-03-27T05:29:04.754Z"}
+{"level":"warn","message":"Registration validation failed: \"year\" failed custom validation because ","model":"user","timestamp":"2025-03-27T05:29:23.768Z"}
+{"level":"warn","message":"Registration validation failed: \"year\" must be less than or equal to 2010","model":"user","timestamp":"2025-03-27T05:32:44.566Z"}
+{"level":"warn","message":"Registration validation failed: User must be over 15 years old.","model":"user","timestamp":"2025-03-27T05:36:14.123Z"}
+{"level":"info","message":"User registered successfully with ID: 22","model":"user","timestamp":"2025-03-27T05:36:39.646Z"}
+{"level":"warn","message":"Registration attempt with existing phone: +998910128133","model":"user","timestamp":"2025-03-27T05:36:46.500Z"}
+{"level":"warn","message":"Registration validation failed: \"phone\" with value \"+99891012813\" fails to match the required pattern: /^\\+998[0-9]{9}$/","model":"user","timestamp":"2025-03-27T05:36:51.511Z"}
+{"level":"warn","message":"Registration validation failed: \"role\" must be one of [USER, CEO]","model":"user","timestamp":"2025-03-27T05:37:05.232Z"}
+{"level":"warn","message":"Registration validation failed: \"role\" must be one of [USER, CEO]","model":"user","timestamp":"2025-03-27T05:38:26.359Z"}
+{"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-27T08:42:00.386Z"}
+{"level":"info","message":"User logged in successfully: 25","model":"user","timestamp":"2025-03-27T08:42:41.237Z"}
+{"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-27T09:11:27.709Z"}
+{"level":"info","message":"OTP sent successfully to xamel10n.xs@gmail.com","model":"user","timestamp":"2025-03-27T09:28:18.513Z"}
+{"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-27T09:44:24.599Z"}
