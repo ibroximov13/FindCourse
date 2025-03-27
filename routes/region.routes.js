@@ -9,7 +9,7 @@ const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
  *     summary: Create a new region
  *     tags: [Regions]
  *     security:
- *       - bearerAuth: []
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -30,7 +30,6 @@ const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
  *                   name: Tashkent
  *     responses:
  *       201:
- *         description: Region created successfully
  *         content:
  *           application/json:
  *             schema:

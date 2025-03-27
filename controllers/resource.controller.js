@@ -8,7 +8,7 @@ const createResource = async (req, res) => {
     try {
         let {error, value} = createResourceValidate(req.body);
         if (error) {
-            return res.status(422).send(error.details[0].message);
+            return res.status(422).send(error.details[0].message)
         };
 
         let {name} = value;

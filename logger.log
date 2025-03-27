@@ -66,3 +66,18 @@
 {"level":"info","message":"User logged in successfully: 3","model":"user","timestamp":"2025-03-27T09:30:19.636Z"}
 {"level":"info","message":"User logged in successfully: 4","model":"user","timestamp":"2025-03-27T09:39:43.109Z"}
 {"level":"info","message":"User logged in successfully: 6","model":"user","timestamp":"2025-03-27T09:42:34.713Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-27T09:47:14.588Z"}
+{"level":"info","message":"User logged in successfully: 35","model":"user","timestamp":"2025-03-27T09:47:43.437Z"}
+{"level":"info","message":"User logged in successfully: 41","model":"user","timestamp":"2025-03-27T10:06:41.083Z"}
+{"level":"info","message":"User logged in successfully: 42","model":"user","timestamp":"2025-03-27T10:18:27.956Z"}
+{"level":"info","message":"region create: 14","model":"region","timestamp":"2025-03-27T10:19:18.372Z"}
+{"level":"info","message":"User logged in successfully: 43","model":"user","timestamp":"2025-03-27T10:21:11.147Z"}
+{"level":"info","message":"region create: 14","model":"region","timestamp":"2025-03-27T10:21:26.224Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T10:25:37.938Z"}
+{"level":"info","message":"User logged in successfully: 5","model":"user","timestamp":"2025-03-27T10:32:05.225Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T10:38:26.212Z"}
+{"level":"info","message":"User logged in successfully: 6","model":"user","timestamp":"2025-03-27T10:39:02.044Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T10:39:39.298Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T11:13:33.187Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T11:27:56.603Z"}
+{"level":"info","message":"GetOneSubject","model":"Subject","timestamp":"2025-03-27T11:29:05.972Z"}

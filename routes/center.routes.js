@@ -9,6 +9,8 @@ const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
  *   post:
  *     summary: Create a new center
  *     tags: [Centers]
+ *     security:
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -31,6 +33,7 @@ const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
  *               location:
  *                 type: string
  *                 example: "41.311081, 69.240562"
+ * 
  *     responses:
  *       201:
  *         description: Center created
