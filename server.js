@@ -1,8 +1,9 @@
 const express = require("express");
 const { connectDb } = require("./config/db");
-const { initData } = require("./config/initData");
-const route = require("./routes/index");
+// const { initData } = require("./utils/initData");
+const { fullData } = require("./utils/fullData");
 const setupSwagger = require("./config/swagger");
+const indexRoute = require("./routes/index");
 
 const app = express();
 require("dotenv").config();
@@ -16,9 +17,10 @@ app.use("/image", [
 app.use("/api", indexRoute);
 
 connectDb();
-initData();
+// initData();
+fullData();
 
-const PORT = process.env.PORT 
+const PORT = process.env.DB_PORT || 3001
 app.listen(PORT, () => {
-    console.log(`Server has been started on PORT: ${PORT}`);
+    console.log(`Server has been started on PORT: ${PORT}`)
 });

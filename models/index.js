@@ -12,8 +12,8 @@ const Resource = require("./resource.model");
 const Enrollment = require("./enrollment.model");
 const Comment = require("./comment.model");
 const Like = require("./like.model");
-const FilSubItem = require("./branchSubItem.model");
-const FilCourseItem = require("./branchCourseItem.model");
+const BranchSubItem = require("./branchSubItem.model");
+const BranchCourseItem = require("./branchCourseItem.model");
 const SubjectItem = require("./subjectItem.model");
 const CourseItem = require("./courseItem.model");
 
@@ -29,8 +29,8 @@ module.exports = {
     Enrollment,
     Comment,
     Like,
-    FilSubItem,
-    FilCourseItem,
+    BranchSubItem,
+    BranchCourseItem,
     SubjectItem,
     CourseItem
   };
