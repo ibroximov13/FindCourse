@@ -18,7 +18,7 @@ app.use("/api", indexRoute);
 connectDb();
 initData();
 
-const PORT = process.env.DB_PORT || 3001
+const PORT = process.env.DB_PORT 
 app.listen(PORT, () => {
     console.log(`Server has been started on PORT: ${PORT}`)
 });
