@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { Comment } = require("../model");
+const { Comment } = require("../models");
 const { CommentValidationCreate, CommentValidationUpdate } = require("../validation/comment.validate");
 const logger = require("../config/log").child({model: "comment"})
 
@@ -10,8 +10,9 @@ const createComment = async (req, res) => {
       logger.error(`Validation error on createComment: ${error.details[0].message}`);
       return res.status(400).json({ message: error.details[0].message });
     }
-
-    const comment = await Comment.create(value);
+    let userId = req.user.id
+    let {message, centerId, star} = value;
+    const comment = await Comment.create({message, centerId, star, userId: userId});
     logger.info(`Comment created with ID: ${comment.id}`);
     res.status(201).json({ message: "comment created successfully", data: comment });
   } catch (error) {

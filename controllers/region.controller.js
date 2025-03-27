@@ -38,8 +38,15 @@ const getAllRegions = async (req, res) => {
     const { name, page = 1, limit = 15, order = "ASC" } = req.query;
     const offset = (page - 1) * limit;
 
+    if (!page || isNaN(page) || page <= 0) {
+      return res.status(400).json({ error: "Page must be a positive integer" });
+    }
+    if (!limit || isNaN(limit) || limit <= 0) {
+      return res.status(400).json({ error: "Limit must be a positive integer" });
+    }
+
     const where = {};
-    if (name) where.name = { [Op.iLike]: `%${name}%` };
+    if (name) where.name = { [Op.like]: `%${name}%` };
 
     const regions = await Region.findAndCountAll({
       where,
@@ -53,7 +60,7 @@ const getAllRegions = async (req, res) => {
       totalPages: Math.ceil(regions.count / limit),
       currentPage: parseInt(page),
       data: regions.rows,
-    });
+    })
   } catch (err) {
     logger.error(`Error fetching regions: ${err.message}`);
     res.status(500).json({ error: err.message });

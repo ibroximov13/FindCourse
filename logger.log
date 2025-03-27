@@ -85,6 +85,7 @@
 {"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T11:13:33.187Z"}
 {"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T11:27:56.603Z"}
 {"level":"info","message":"GetOneSubject","model":"Subject","timestamp":"2025-03-27T11:29:05.972Z"}
+<<<<<<< HEAD
 >>>>>>> 59268fa262aa080b7b9b915adf29794cec632ee5
 {"level":"info","message":"User logged in successfully: 241","model":"user","timestamp":"2025-03-27T12:20:50.530Z"}
 {"level":"info","message":"User logged in successfully: 250","model":"user","timestamp":"2025-03-27T12:41:12.497Z"}
@@ -131,3 +132,76 @@
 {"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T16:54:45.938Z"}
 {"level":"info","message":"Fetched 0 enrollments on page 1","model":"enrollment","timestamp":"2025-03-27T17:04:07.970Z"}
 {"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T18:14:00.159Z"}
+=======
+{"level":"info","message":"User logged in successfully: 17","model":"user","timestamp":"2025-03-27T12:03:55.439Z"}
+{"level":"info","message":"User logged in successfully: 17","model":"user","timestamp":"2025-03-27T12:46:45.151Z"}
+{"level":"info","message":"User logged in successfully: 17","model":"user","timestamp":"2025-03-27T12:51:44.875Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T13:07:07.972Z"}
+{"level":"info","message":"User logged in successfully: 19","model":"user","timestamp":"2025-03-27T13:09:48.720Z"}
+{"level":"error","message":"createCenter error: notNull Violation: Center.adress cannot be null,\nnotNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T13:10:16.642Z"}
+{"level":"error","message":"createCenter error: notNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T13:10:47.629Z"}
+{"level":"error","message":"createCenter error: notNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T13:12:11.686Z"}
+{"level":"info","message":"Fetched 1 users (Page: 1)","model":"user","timestamp":"2025-03-27T14:53:53.610Z"}
+{"level":"info","message":"Image uploaded successfully: http://localhost:3001/image/1743087255818-987941367.png","model":"user","timestamp":"2025-03-27T14:54:15.862Z"}
+{"level":"info","message":"User updated successfully with ID: 1","model":"user","timestamp":"2025-03-27T14:54:54.259Z"}
+{"level":"error","message":"Error fetching regions: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ILIKE '%toshkent%' ORDER BY `regions`.`id` DESC LIMIT 0, 15' at line 1","model":"region","timestamp":"2025-03-27T15:16:14.239Z"}
+{"level":"error","message":"Error fetching regions: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ILIKE '%Toshkent%'' at line 1","model":"region","timestamp":"2025-03-27T15:16:54.019Z"}
+{"level":"error","message":"Error fetching regions: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ILIKE '%Surxondaryo%'' at line 1","model":"region","timestamp":"2025-03-27T15:17:41.063Z"}
+{"level":"error","message":"Error fetching regions: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ILIKE '%Surxondaryo%'' at line 1","model":"region","timestamp":"2025-03-27T15:17:48.307Z"}
+{"level":"error","message":"Error fetching regions: Invalid value { undefined: '%Surxondaryo%' }","model":"region","timestamp":"2025-03-27T15:19:13.446Z"}
+{"level":"error","message":"Error fetching regions: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-45, 15' at line 1","model":"region","timestamp":"2025-03-27T15:49:30.891Z"}
+{"level":"error","message":"Error fetching regions: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-45, 15' at line 1","model":"region","timestamp":"2025-03-27T15:51:33.179Z"}
+{"level":"error","message":"Error fetching regions: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-45, 15' at line 1","model":"region","timestamp":"2025-03-27T15:51:47.988Z"}
+{"level":"error","message":"Error fetching regions: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-42, 14' at line 1","model":"region","timestamp":"2025-03-27T15:56:22.729Z"}
+{"level":"error","message":"createComment error: notNull Violation: comments.userId cannot be null","model":"comment","timestamp":"2025-03-27T17:08:28.897Z"}
+{"level":"error","message":"createComment error: notNull Violation: comments.userId cannot be null","model":"comment","timestamp":"2025-03-27T17:09:08.215Z"}
+{"level":"error","message":"createComment error: Cannot read properties of undefined (reading 'id')","model":"comment","timestamp":"2025-03-27T17:12:03.552Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T17:54:00.751Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T17:58:59.321Z"}
+{"level":"error","message":"createComment error: notNull Violation: comments.centerId cannot be null,\nnotNull Violation: comments.message cannot be null,\nnotNull Violation: comments.star cannot be null","model":"comment","timestamp":"2025-03-27T17:59:17.714Z"}
+>>>>>>> f87d7c48b18aa47494b2889a01a3c201f65c047f
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T18:18:43.234Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T18:48:41.205Z"}
+{"level":"error","message":"createCenter error: notNull Violation: Center.adress cannot be null,\nnotNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T18:53:15.276Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T18:58:33.922Z"}
+{"level":"error","message":"createCenter error: notNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T18:59:15.542Z"}
+{"level":"error","message":"createCenter error: object is not iterable (cannot read property Symbol(Symbol.iterator))","model":"center","timestamp":"2025-03-27T19:02:50.949Z"}
+{"level":"error","message":"createCenter error: notNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T19:03:39.918Z"}
+{"level":"error","message":"createCenter error: notNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T19:03:46.620Z"}
+{"level":"error","message":"createCenter error: notNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T19:03:50.827Z"}
+{"level":"error","message":"createCenter error: notNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T19:05:32.259Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T19:05:42.678Z"}
+{"level":"error","message":"createCenter error: notNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T19:05:52.334Z"}
+{"level":"error","message":"createCenter error: notNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T19:10:47.297Z"}
+{"level":"error","message":"createCenter error: notNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T19:10:49.770Z"}
+{"level":"error","message":"createCenter error: notNull Violation: Center.userId cannot be null","model":"center","timestamp":"2025-03-27T19:11:13.937Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-27T19:12:21.526Z"}
+{"level":"info","message":"Center created with ID: 2","model":"center","timestamp":"2025-03-27T19:13:27.697Z"}
+{"level":"error","message":"createCenter error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`centers`, CONSTRAINT `centers_ibfk_1` FOREIGN KEY (`regionId`) REFERENCES `regions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"center","timestamp":"2025-03-27T19:13:53.095Z"}
+{"level":"info","message":"Center created with ID: 4","model":"center","timestamp":"2025-03-27T19:13:56.366Z"}
+{"level":"info","message":"Center created with ID: 5","model":"center","timestamp":"2025-03-27T19:14:11.279Z"}
+{"level":"info","message":"Center created with ID: 6","model":"center","timestamp":"2025-03-27T19:14:30.364Z"}
+{"level":"info","message":"Center created with ID: 7","model":"center","timestamp":"2025-03-27T19:19:19.153Z"}
+{"level":"info","message":"Center created with ID: 8","model":"center","timestamp":"2025-03-27T19:19:32.323Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T19:22:28.334Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T19:25:52.334Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T19:25:56.129Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T19:26:30.046Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T19:26:32.515Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T19:26:33.742Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T19:26:42.078Z"}
+{"level":"info","message":"Center created with ID: 9","model":"center","timestamp":"2025-03-27T19:27:16.750Z"}
+{"level":"info","message":"Center created with ID: 10","model":"center","timestamp":"2025-03-27T19:27:31.112Z"}
+{"level":"info","message":"Center created with ID: 11","model":"center","timestamp":"2025-03-27T19:27:39.243Z"}
+{"level":"info","message":"Center created with ID: 12","model":"center","timestamp":"2025-03-27T19:27:48.578Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T19:27:56.095Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T19:29:33.112Z"}
+{"level":"info","message":"Center created with ID: 13","model":"center","timestamp":"2025-03-27T19:30:01.047Z"}
+{"level":"info","message":"Center created with ID: 14","model":"center","timestamp":"2025-03-27T19:30:12.095Z"}
+{"level":"info","message":"Center created with ID: 15","model":"center","timestamp":"2025-03-27T19:30:20.203Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T19:30:26.690Z"}
+{"level":"error","message":"getAllCenters error: Unknown column 'user.name' in 'field list'","model":"center","timestamp":"2025-03-27T19:31:47.796Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T19:33:04.350Z"}
+{"level":"info","message":"Center created with ID: 16","model":"center","timestamp":"2025-03-27T19:33:11.689Z"}
+{"level":"info","message":"Center created with ID: 17","model":"center","timestamp":"2025-03-27T19:33:16.083Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T19:33:23.809Z"}

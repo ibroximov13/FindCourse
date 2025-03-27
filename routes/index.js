@@ -8,7 +8,9 @@ route.use("/categories", require("./category.routes"));
 route.use("/courses", require("./course.routes"));
 route.use("/centers", require("./center.routes"));
 route.use("/enrollments", require("./enrollment.routes"));
-route.use("/regions", require("./region.routes"));
+route.use("/regions", require("./1.region.routes"));
 route.use("/likes", require("./like.routes"));
 route.use("/myself", require("./mySelf.routes"));
+route.use("/comments", require("./comment.routes"));
+
 module.exports = route
