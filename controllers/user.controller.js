@@ -86,7 +86,8 @@ async function register(req, res) {
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
-        const { phone, password, role, ...rest } = value;
+
+        const { phone, password, role, photo, regionId, ...rest } = value; 
 
         if (role && (role.toUpperCase() === "ADMIN" || role.toUpperCase() === "SUPERADMIN")) {
             return res.status(403).send({ message: "Siz bu rolni tanlay olmaysiz!" });
@@ -97,12 +98,19 @@ async function register(req, res) {
             return res.status(400).send({ message: "User already exists" });
         }
 
+        let region = await Region.findByPk(regionId);
+        if (!region) {
+            return res.status(400).send({ message: "Region not found" });
+        }
+
         let hashedPassword = bcrypt.hashSync(password, 10);
         let newUser = await User.create({
             ...rest,
-            phone: phone,
+            phone,
             password: hashedPassword,
-            role: role
+            role,
+            photo: photo || null,
+            regionId: region.id 
         });
 
         res.status(201).send(newUser);
@@ -111,6 +119,7 @@ async function register(req, res) {
         return res.status(500).send({ message: "Internal Server Error" });
     }
 }
+
 
 async function loginUser(req, res) {
     try {
@@ -145,15 +154,19 @@ async function loginUser(req, res) {
         console.log(error);
     }
 }
+
 const uploadImage = async (req, res) => {
     try {
         if (!req.file) {
             return res.status(400).json({ error: "Rasm yuklanishi kerak" });
         }
+
         const imageUrl = `${req.protocol}://${req.get("host")}/image/${req.file.filename}`;
-        res.status(200).json({ url: imageUrl });
+
+        return res.status(200).json({ message: "Rasm muvaffaqiyatli yuklandi", url: imageUrl });
+
     } catch (error) {
-        res.status(500).json({ error: "Serverda xatolik yuz berdi" });
+        return res.status(500).json({ error: error.message || "Serverda xatolik yuz berdi" });
     }
 };
 
@@ -198,14 +211,7 @@ async function getAllUsers(req, res) {
             limit: limit,
             offset: offset,
             order: [[column, order]],
-            include: [
-                {
-                    model: Region
-                }
-            ],
-            attributes: {
-                exclude: ["region_id"]
-            }
+            include: [{ model: Region, attributes: ["id", "name"] }]
         });
         res.status(200).send(user)
     } catch (error) {

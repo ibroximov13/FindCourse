@@ -7,9 +7,9 @@ const createUserValidate = (data) => {
     phone: Joi.string().pattern(/^\+998[0-9]{9}$/).required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(6).required(),
-    region_id: Joi.number().integer().required(),
+    regionId: Joi.number().integer().required(),
     photo: Joi.string().required(),
-    role: Joi.string().valid("USER", "ADMIN", "SUPERADMIN", "SELLER").required(),
+    role: Joi.string().valid("USER", "SELLER").required(),
   });
   return schema.validate(data);
 };
@@ -21,7 +21,7 @@ const patchUserValidate = (data) => {
     phone: Joi.string().pattern(/^\+998[0-9]{9}$/).optional(),
     email: Joi.string().email().optional(),
     password: Joi.string().min(4).optional(),
-    region_id: Joi.number().integer().optional(),
+    regionId: Joi.number().integer().optional(),
     photo: Joi.string().optional(),
     role: Joi.string().valid("USER", "ADMIN", "SUPERADMIN", "SELLER").optional(),
   });

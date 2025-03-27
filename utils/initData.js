@@ -39,7 +39,7 @@ async function initData() {
                 email: "admin@example.com",
                 password: bcrypt.hashSync("admin123", 10),
                 role: "ADMIN",
-                region_id: region.id
+                regionId: region.id
             });
             console.log("Admin created!");
         } else {

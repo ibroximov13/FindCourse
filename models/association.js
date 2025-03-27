@@ -35,7 +35,7 @@ Center.belongsTo(User, {foreignKey: "userId", onDelete: 'CASCADE', onUpdate: "CA
 User.hasMany(Enrollment, {foreignKey: "userId"})
 Enrollment.belongsTo(User, {foreignKey: "userId", onDelete: 'CASCADE', onUpdate: "CASCADE"});
 
-Region.hasMany(User, {foreignKey: "regionId"});
+Region.hasMany(User, {foreignKey: "regionId"})
 User.belongsTo(Region, {foreignKey: "regionId", onDelete: 'CASCADE', onUpdate: "CASCADE"});
 
 Region.hasMany(Center, {foreignKey: "regionId"});

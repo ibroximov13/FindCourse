@@ -20,5 +20,5 @@ initData();
 
 const PORT = process.env.PORT 
 app.listen(PORT, () => {
-    console.log(`Server has been started on PORT: ${PORT}`);
+    console.log(`Server has been started on PORT: ${PORT}`)
 });

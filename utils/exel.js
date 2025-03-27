@@ -10,7 +10,7 @@ async function generateUsersExcel(users) {
         { header: "Email", key: "email", width: 30 },
         { header: "Phone", key: "phone", width: 20 },
         { header: "Role", key: "role", width: 15 },
-        { header: "Region ID", key: "region_id", width: 15 },
+        { header: "Region ID", key: "regionId", width: 15 },
     ];
 
     users.forEach(user => {

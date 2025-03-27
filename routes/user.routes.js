@@ -94,7 +94,7 @@ router.post('/verify-otp', verifyOtp);
  *               email:
  *                 type: string
  *                 example: "ilyosbekibroximov23@gmail.com"
- *               region_id:
+ *               regionId:
  *                 type: integer
  *                 example: 1
  *               photo:
@@ -343,7 +343,7 @@ router.delete("/:id", deleteUser);
  *               - phone
  *               - email
  *               - password
- *               - region_id
+ *               - regionId
  *               - photo
  *               - role
  *             properties:
@@ -365,7 +365,7 @@ router.delete("/:id", deleteUser);
  *                 type: string
  *                 format: password
  *                 example: "StrongP@ssw0rd"
- *               region_id:
+ *               regionId:
  *                 type: integer
  *                 example: 1
  *               photo:
