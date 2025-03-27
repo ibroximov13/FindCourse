@@ -45,7 +45,7 @@ async function sendOtp(req, res) {
 
         if (!phone || !email) {
             logger.warn("Missing phone or email in OTP request");
-            return res.status(400).send({ message: "Telefon raqam va email majburiy!" });
+            return res.status(400).send({ message: "Phone number and email are required!" });
         }
 
         let otp = totp.generate(phone + email + "soz");
@@ -101,11 +101,6 @@ async function register(req, res) {
         }
 
         const { phone, password, role, photo, regionId, ...rest } = value;
-
-        if (role && (role.toUpperCase() === "ADMIN" || role.toUpperCase() === "SUPERADMIN")) {
-            logger.warn(`Unauthorized role selection attempt: ${role}`);
-            return res.status(403).send({ message: "Siz bu rolni tanlay olmaysiz!" });
-        }
 
         let existingUser = await User.findOne({ where: { phone } });
         if (existingUser) {
@@ -177,6 +172,7 @@ async function loginUser(req, res) {
         refreshTokens.add(refreshtoken);
 
         logger.info(`User logged in successfully: ${newUser.id}`);
+        console.log("asdadadasd");
         res.send({ accesstoken, refreshtoken });
     } catch (error) {
         logger.error(`loginUser error: ${error.message}`);
@@ -197,6 +193,11 @@ async function refreshToken(req, res) {
         if (!token || !refreshTokens.has(token)) {
             logger.warn("Invalid or expired refresh token attempt");
             return res.status(403).send({ message: "Refresh token noto'g'ri yoki eskirgan" });
+        }
+
+        if (!REFRESH_SECRET) {
+            logger.error("REFRESH_SECRET is not defined in environment variables");
+            return res.status(500).send({ message: "Server konfiguratsiyasida xatolik: REFRESH_SECRET topilmadi" });
         }
 
         const payload = jwt.verify(token, REFRESH_SECRET);
@@ -285,39 +286,52 @@ async function deleteUser(req, res) {
     }
 }
 
-async function createSuperAdmin(req, res) {
+async function createAdminOrSuperAdmin(req, res) {
     try {
-        let { error, value } = createUserValidate(req.body);
+        let { error, value } = createUserValidate(req.body, {
+            stripUnknown: true,
+            context: { isAdminCreation: true }
+        });
         if (error) {
-            logger.warn(`SuperAdmin creation validation failed: ${error.details[0].message}`);
+            logger.warn(`Admin/SuperAdmin creation validation failed: ${error.details[0].message}`);
             return res.status(400).send(error.details[0].message);
         }
 
         const { phone, password, role, ...rest } = value;
 
+        if (!role || !["ADMIN", "SUPERADMIN"].includes(role.toUpperCase())) {
+            logger.warn(`Invalid role provided for admin creation: ${role}`);
+            return res.status(400).send({ message: "Role faqat ADMIN yoki SUPERADMIN bo'lishi kerak" });
+        }
+
         if (req.user.role !== "ADMIN") {
-            logger.warn(`Unauthorized SuperAdmin creation attempt by role: ${req.user.role}`);
-            return res.status(403).send({ message: "SuperAdmin yaratishga ruxsatingiz yo'q!" });
+            logger.warn(`Unauthorized admin creation attempt by role: ${req.user.role}`);
+            return res.status(403).send({ message: "Admin yoki SuperAdmin yaratishga ruxsatingiz yo'q!" });
         }
 
         let existingUser = await User.findOne({ where: { phone } });
         if (existingUser) {
-            logger.warn(`SuperAdmin creation attempt with existing phone: ${phone}`);
+            logger.warn(`Admin creation attempt with existing phone: ${phone}`);
             return res.status(400).send({ message: "User already exists" });
         }
 
+        if ("regionId" in rest) {
+            logger.warn("RegionId provided for Admin/SuperAdmin creation");
+            return res.status(400).send({ message: "ADMIN va SUPERADMIN uchun regionId kiritilmaydi" });
+        }
+
         let hashedPassword = bcrypt.hashSync(password, 10);
-        let newSuperAdmin = await User.create({
+        let newAdmin = await User.create({
             ...rest,
             phone,
             password: hashedPassword,
-            role: "SUPERADMIN"
+            role: role.toUpperCase() // ADMIN yoki SUPERADMIN
         });
 
-        logger.info(`SuperAdmin created successfully with ID: ${newSuperAdmin.id}`);
-        res.status(201).json({ user: newSuperAdmin });
+        logger.info(`${role} created successfully with ID: ${newAdmin.id}`);
+        res.status(201).json({ user: newAdmin });
     } catch (error) {
-        logger.error(`createSuperAdmin error: ${error.message}`);
+        logger.error(`createAdminOrSuperAdmin error: ${error.message}`);
         res.status(500).send({ message: "Internal Server Error" });
     }
 }
@@ -403,7 +417,7 @@ async function downloadUsersExcel(req, res) {
         res.end();
     } catch (error) {
         logger.error(`downloadUsersExcel error: ${error.message}`);
-        res.status(500).json({ error: "Excel fayl yaratishda xatolik yuz berdi" });
+        res.status(500).json({ error: "Excel fayq yaratishda xatolik yuz berdi" });
     }
 }
 
@@ -434,7 +448,7 @@ module.exports = {
     getAllUsers,
     updateUser,
     deleteUser,
-    createSuperAdmin,
+    createAdminOrSuperAdmin,
     getMeProfile,
     updateMyProfile,
     downloadUsersExcel

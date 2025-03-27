@@ -1,6 +1,6 @@
 
 const { Router } = require("express");
-const { sendOtp, verifyOtp, register, uploadImage, refreshToken, loginUser, createSuperAdmin, getAllUsers, updateUser, deleteUser, getMeProfile, updateMyProfile, downloadUsersExcel } = require("../controllers/user.controller");
+const { sendOtp, verifyOtp, register, uploadImage, refreshToken, loginUser, getAllUsers, updateUser, deleteUser, getMeProfile, updateMyProfile, downloadUsersExcel, createAdminOrSuperAdmin } = require("../controllers/user.controller");
 const upload = require("../multer/user.multer");
 const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 
@@ -261,7 +261,7 @@ router.post("/refresh", refreshToken);
  *                     example: "https://example.com/uploads/johndoe.jpg"
  *                   role:
  *                     type: string
- *                     enum: [USER, ADMIN, SUPERADMIN, SELLER]
+ *                     enum: [USER, ADMIN, SUPERADMIN, CEO]
  *                     example: "USER"
  *                   Region:
  *                     type: object
@@ -321,14 +321,14 @@ router.patch("/:id", updateUser);
  *         description: User deleted successfully.
  */
 router.delete("/:id", deleteUser);
-
 /**
+ * 
  * @swagger
- * /users/create-superadmin:
+ * /users/createAdminOrSuperAdmin:
  *   post:
- *     summary: Yangi SuperAdmin yaratish
+ *     summary: Yangi Admin yoki SuperAdmin yaratish
  *     tags: [Users]
- *     description: "Faqat ADMIN roli bor foydalanuvchilar SuperAdmin yaratishi mumkin."
+ *     description: "Faqat ADMIN roli bor foydalanuvchilar Admin yoki SuperAdmin yaratishi mumkin. RegionId bu rolda kiritilmaydi."
  *     security:
  *       - BearerAuth: []
  *     requestBody:
@@ -343,7 +343,6 @@ router.delete("/:id", deleteUser);
  *               - phone
  *               - email
  *               - password
- *               - regionId
  *               - photo
  *               - role
  *             properties:
@@ -352,6 +351,9 @@ router.delete("/:id", deleteUser);
  *                 example: "John Doe"
  *               year:
  *                 type: integer
+ *                 minimum: 1900
+ *                 maximum: 2025
+ *                 description: "Foydalanuvchi tug'ilgan yili. Yosh 15 dan katta bo'lishi kerak."
  *                 example: 1990
  *               phone:
  *                 type: string
@@ -365,19 +367,17 @@ router.delete("/:id", deleteUser);
  *                 type: string
  *                 format: password
  *                 example: "StrongP@ssw0rd"
- *               regionId:
- *                 type: integer
- *                 example: 1
  *               photo:
  *                 type: string
  *                 example: "https://example.com/photo.jpg"
  *               role:
  *                 type: string
- *                 enum: ["USER", "ADMIN", "SUPERADMIN", "SELLER"]
+ *                 enum: ["ADMIN", "SUPERADMIN"]
+ *                 description: "Faqat ADMIN yoki SUPERADMIN qiymatlari qabul qilinadi."
  *                 example: "SUPERADMIN"
  *     responses:
  *       201:
- *         description: "SuperAdmin muvaffaqiyatli yaratildi"
+ *         description: "Admin yoki SuperAdmin muvaffaqiyatli yaratildi"
  *         content:
  *           application/json:
  *             schema:
@@ -402,7 +402,7 @@ router.delete("/:id", deleteUser);
  *                       type: string
  *                       example: "SUPERADMIN"
  *       400:
- *         description: "Foydalanuvchi allaqachon mavjud"
+ *         description: "Xato kiritilgan ma'lumotlar yoki foydalanuvchi allaqachon mavjud"
  *         content:
  *           application/json:
  *             schema:
@@ -420,7 +420,7 @@ router.delete("/:id", deleteUser);
  *               properties:
  *                 message:
  *                   type: string
- *                   example: "SuperAdmin yaratishga ruxsatingiz yo'q!"
+ *                   example: "Admin yoki SuperAdmin yaratishga ruxsatingiz yo'q!"
  *       500:
  *         description: "Ichki server xatosi"
  *         content:
@@ -431,9 +431,8 @@ router.delete("/:id", deleteUser);
  *                 message:
  *                   type: string
  *                   example: "Internal Server Error"
- */
-
-router.post("/create-superadmin", verifyTokenAndRole(['ADMIN']), createSuperAdmin);
+*/
+router.post("/createAdminOrSuperAdmin", verifyTokenAndRole(['ADMIN']), createAdminOrSuperAdmin);
 
 /**
  * @swagger
@@ -472,7 +471,7 @@ router.post("/create-superadmin", verifyTokenAndRole(['ADMIN']), createSuperAdmi
  *       500:
  *         description: Internal Server Error
  */
-router.get("/me", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "SELLER"]), getMeProfile);
+router.get("/me", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), getMeProfile)
 
 /**
  * @swagger
@@ -536,7 +535,7 @@ router.get("/me", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "SELLER"]),
  *       500:
  *         description: "Ichki server xatosi"
  */
-router.patch("/me/update", verifyTokenAndRole(['USER', 'ADMIN', 'SUPERADMIN', 'SELLER']), updateMyProfile);
+router.patch("/me/update", verifyTokenAndRole(['USER', 'ADMIN', 'SUPERADMIN', 'CEO']), updateMyProfile)
 
 /**
  * @swagger
@@ -562,4 +561,3 @@ router.patch("/me/update", verifyTokenAndRole(['USER', 'ADMIN', 'SUPERADMIN', 'S
 router.get("/download-excel", verifyTokenAndRole(["ADMIN"]), downloadUsersExcel);
 
 module.exports = router;
-  

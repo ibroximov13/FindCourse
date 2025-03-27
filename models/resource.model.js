@@ -34,6 +34,6 @@ const Resource = db.define("Resource", {
         allowNull: false
 
     },
-});
+}, {timestamps: false});
 
 module.exports = Resource;

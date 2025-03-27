@@ -15,6 +15,6 @@ const BranchCourseItem = db.define("branchCourseItems", {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-});
+}, {timestamps: false});
 
 module.exports = BranchCourseItem;

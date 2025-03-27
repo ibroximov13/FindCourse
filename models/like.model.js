@@ -16,6 +16,6 @@ const Like = db.define("Like", {
         allowNull:
             false
     },
-});
+}, {timestamps: false});
 
 module.exports = Like;

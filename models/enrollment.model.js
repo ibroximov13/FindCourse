@@ -27,6 +27,6 @@ const Enrollment = db.define("Enrollment", {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-});
+}, {timestamps: false});
 
 module.exports = Enrollment;

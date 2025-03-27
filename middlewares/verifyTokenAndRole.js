@@ -14,7 +14,7 @@ function verifyTokenAndRole(roles) {
             token = authHeader.split(" ")[2];
         };
         if (!token) {
-            return res.status(400).send({message: "Token not found"});
+            return res.status(400).send({message: "Token not found"})
         }
         try {
             let JWT_SECRET = process.env.JWT_SECRET || "nimadir2";

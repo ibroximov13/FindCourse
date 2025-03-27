@@ -1,5 +1,26 @@
+{"level":"info","message":"User logged in successfully: 51","model":"user","timestamp":"2025-03-27T03:41:57.902Z"}
 {"level":"error","message":"Cannot read properties of undefined (reading 'findAll')","model":"Branch","timestamp":"2025-03-26T22:47:13.612Z"}
 {"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-26T22:49:56.601Z"}
+{"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-27T05:10:34.410Z"}
+{"level":"error","message":"branchSubItem is not defined","model":"Branch","timestamp":"2025-03-27T05:23:46.951Z"}
+{"level":"error","message":"branchSubItem is not defined","model":"Branch","timestamp":"2025-03-27T05:23:57.942Z"}
+{"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-27T05:25:52.314Z"}
+{"level":"warn","message":"Registration validation failed: \"year\" failed custom validation because ","model":"user","timestamp":"2025-03-27T05:28:44.768Z"}
+{"level":"warn","message":"Registration validation failed: \"year\" must be less than or equal to 2025","model":"user","timestamp":"2025-03-27T05:28:55.903Z"}
+{"level":"warn","message":"Registration validation failed: \"year\" must be greater than or equal to 1900","model":"user","timestamp":"2025-03-27T05:29:04.754Z"}
+{"level":"warn","message":"Registration validation failed: \"year\" failed custom validation because ","model":"user","timestamp":"2025-03-27T05:29:23.768Z"}
+{"level":"warn","message":"Registration validation failed: \"year\" must be less than or equal to 2010","model":"user","timestamp":"2025-03-27T05:32:44.566Z"}
+{"level":"warn","message":"Registration validation failed: User must be over 15 years old.","model":"user","timestamp":"2025-03-27T05:36:14.123Z"}
+{"level":"info","message":"User registered successfully with ID: 22","model":"user","timestamp":"2025-03-27T05:36:39.646Z"}
+{"level":"warn","message":"Registration attempt with existing phone: +998910128133","model":"user","timestamp":"2025-03-27T05:36:46.500Z"}
+{"level":"warn","message":"Registration validation failed: \"phone\" with value \"+99891012813\" fails to match the required pattern: /^\\+998[0-9]{9}$/","model":"user","timestamp":"2025-03-27T05:36:51.511Z"}
+{"level":"warn","message":"Registration validation failed: \"role\" must be one of [USER, CEO]","model":"user","timestamp":"2025-03-27T05:37:05.232Z"}
+{"level":"warn","message":"Registration validation failed: \"role\" must be one of [USER, CEO]","model":"user","timestamp":"2025-03-27T05:38:26.359Z"}
+{"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-27T08:42:00.386Z"}
+{"level":"info","message":"User logged in successfully: 25","model":"user","timestamp":"2025-03-27T08:42:41.237Z"}
+{"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-27T09:11:27.709Z"}
+{"level":"info","message":"OTP sent successfully to xamel10n.xs@gmail.com","model":"user","timestamp":"2025-03-27T09:28:18.513Z"}
+{"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-27T09:44:24.599Z"}
 {"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-27T05:20:40.531Z"}
 {"level":"error","message":"branchSubItem is not associated to Branch!","model":"Branch","timestamp":"2025-03-27T05:33:27.159Z"}
 {"level":"error","message":"Unknown column 'Center.adress' in 'field list'","model":"Branch","timestamp":"2025-03-27T05:38:49.026Z"}
@@ -45,5 +66,68 @@
 {"level":"info","message":"User logged in successfully: 3","model":"user","timestamp":"2025-03-27T09:30:19.636Z"}
 {"level":"info","message":"User logged in successfully: 4","model":"user","timestamp":"2025-03-27T09:39:43.109Z"}
 {"level":"info","message":"User logged in successfully: 6","model":"user","timestamp":"2025-03-27T09:42:34.713Z"}
+<<<<<<< HEAD
 {"level":"info","message":"OTP sent successfully to ilyosbekibroximov23@gmail.com","model":"user","timestamp":"2025-03-27T10:02:40.084Z"}
 {"level":"info","message":"User logged in successfully: 235","model":"user","timestamp":"2025-03-27T11:42:26.421Z"}
+=======
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-27T09:47:14.588Z"}
+{"level":"info","message":"User logged in successfully: 35","model":"user","timestamp":"2025-03-27T09:47:43.437Z"}
+{"level":"info","message":"User logged in successfully: 41","model":"user","timestamp":"2025-03-27T10:06:41.083Z"}
+{"level":"info","message":"User logged in successfully: 42","model":"user","timestamp":"2025-03-27T10:18:27.956Z"}
+{"level":"info","message":"region create: 14","model":"region","timestamp":"2025-03-27T10:19:18.372Z"}
+{"level":"info","message":"User logged in successfully: 43","model":"user","timestamp":"2025-03-27T10:21:11.147Z"}
+{"level":"info","message":"region create: 14","model":"region","timestamp":"2025-03-27T10:21:26.224Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T10:25:37.938Z"}
+{"level":"info","message":"User logged in successfully: 5","model":"user","timestamp":"2025-03-27T10:32:05.225Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T10:38:26.212Z"}
+{"level":"info","message":"User logged in successfully: 6","model":"user","timestamp":"2025-03-27T10:39:02.044Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T10:39:39.298Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T11:13:33.187Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T11:27:56.603Z"}
+{"level":"info","message":"GetOneSubject","model":"Subject","timestamp":"2025-03-27T11:29:05.972Z"}
+>>>>>>> 59268fa262aa080b7b9b915adf29794cec632ee5
+{"level":"info","message":"User logged in successfully: 241","model":"user","timestamp":"2025-03-27T12:20:50.530Z"}
+{"level":"info","message":"User logged in successfully: 250","model":"user","timestamp":"2025-03-27T12:41:12.497Z"}
+{"level":"info","message":"User logged in successfully: 250","model":"user","timestamp":"2025-03-27T12:41:16.435Z"}
+{"level":"info","message":"region create: 14","model":"region","timestamp":"2025-03-27T12:42:01.168Z"}
+{"level":"info","message":"User logged in successfully: 9","model":"user","timestamp":"2025-03-27T12:57:05.198Z"}
+{"level":"info","message":"User logged in successfully: 9","model":"user","timestamp":"2025-03-27T13:00:10.722Z"}
+{"level":"info","message":"region create: 14","model":"region","timestamp":"2025-03-27T13:00:38.070Z"}
+{"level":"info","message":"region create: 15","model":"region","timestamp":"2025-03-27T13:00:55.563Z"}
+{"level":"info","message":"region create: 16","model":"region","timestamp":"2025-03-27T13:00:58.863Z"}
+{"level":"info","message":"region create: 17","model":"region","timestamp":"2025-03-27T13:01:48.261Z"}
+{"level":"warn","message":"Profile not found for user ID: 9","model":"user","timestamp":"2025-03-27T13:15:00.758Z"}
+{"level":"warn","message":"Profile not found for user ID: 9","model":"user","timestamp":"2025-03-27T13:16:10.820Z"}
+{"level":"warn","message":"Profile not found for user ID: 9","model":"user","timestamp":"2025-03-27T13:17:55.829Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T13:18:30.923Z"}
+{"level":"info","message":"Profile fetched for user ID: 1","model":"user","timestamp":"2025-03-27T13:18:49.588Z"}
+{"level":"error","message":"Table 'exam.branches' doesn't exist","model":"Branch","timestamp":"2025-03-27T15:03:49.344Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T15:13:04.556Z"}
+{"level":"error","message":"Table 'exam.branches' doesn't exist","model":"Branch","timestamp":"2025-03-27T15:13:45.314Z"}
+{"level":"error","message":"Table 'exam.branches' doesn't exist","model":"Branch","timestamp":"2025-03-27T15:17:37.645Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-27T15:21:35.628Z"}
+{"level":"info","message":"getAllCategory","model":"Category","timestamp":"2025-03-27T15:21:51.061Z"}
+{"level":"error","message":"getAllCenters error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ILIKE '%Olmazor%' AND `Center`.`regionId` = '2'' at line 1","model":"center","timestamp":"2025-03-27T15:22:01.154Z"}
+{"level":"error","message":"getAllCenters error: SubjectItem is not associated to Center!","model":"center","timestamp":"2025-03-27T15:44:06.972Z"}
+{"level":"error","message":"getAllCenters error: SubjectItem is not associated to Center!","model":"center","timestamp":"2025-03-27T15:44:09.348Z"}
+{"level":"error","message":"getAllCenters error: Cannot read properties of undefined (reading 'getTableName')","model":"center","timestamp":"2025-03-27T15:45:12.827Z"}
+{"level":"error","message":"getAllCenters error: Cannot read properties of undefined (reading 'getTableName')","model":"center","timestamp":"2025-03-27T15:49:54.080Z"}
+{"level":"error","message":"getAllCenters error: Cannot read properties of undefined (reading 'getTableName')","model":"center","timestamp":"2025-03-27T15:52:13.912Z"}
+{"level":"error","message":"getAllCenters error: Cannot read properties of undefined (reading 'getTableName')","model":"center","timestamp":"2025-03-27T15:58:46.298Z"}
+{"level":"error","message":"getAllCenters error: Cannot read properties of undefined (reading 'getTableName')","model":"center","timestamp":"2025-03-27T15:59:40.169Z"}
+{"level":"error","message":"getAllCenters error: Cannot read properties of undefined (reading 'getTableName')","model":"center","timestamp":"2025-03-27T16:02:02.125Z"}
+{"level":"error","message":"getAllCenters error: Cannot read properties of undefined (reading 'getTableName')","model":"center","timestamp":"2025-03-27T16:02:11.403Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T16:02:42.761Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T16:03:41.781Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T16:04:26.882Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T16:27:53.811Z"}
+{"level":"error","message":"Unknown column 'Centers.star' in 'field list'","model":"Subject","timestamp":"2025-03-27T16:32:51.530Z"}
+{"level":"info","message":"Fetched 0 enrollments on page 1","model":"enrollment","timestamp":"2025-03-27T16:39:02.521Z"}
+{"level":"info","message":"Fetched 0 likes (Page: 1)","model":"like","timestamp":"2025-03-27T16:39:18.651Z"}
+{"level":"error","message":"Unknown column 'Centers.star' in 'field list'","model":"Subject","timestamp":"2025-03-27T16:43:05.027Z"}
+{"level":"error","message":"Unknown column 'Centers.star' in 'field list'","model":"Subject","timestamp":"2025-03-27T16:52:16.031Z"}
+{"level":"error","message":"Unknown column 'Centers.star' in 'field list'","model":"Subject","timestamp":"2025-03-27T16:52:39.627Z"}
+{"level":"error","message":"Unknown column 'Centers.star' in 'field list'","model":"Subject","timestamp":"2025-03-27T16:52:42.769Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-27T16:54:45.938Z"}
+{"level":"info","message":"Fetched 0 enrollments on page 1","model":"enrollment","timestamp":"2025-03-27T17:04:07.970Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T18:14:00.159Z"}

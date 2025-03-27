@@ -15,6 +15,6 @@ const BranchSubItem = db.define("branchSubItems", {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-});
+}, {timestamps: false});
 
 module.exports = BranchSubItem;

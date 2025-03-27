@@ -14,7 +14,7 @@ const Course = db.define("Course", {
     image: {
         type: DataTypes.STRING
     },
-});
+}, {timestamps: false});
 
 module.exports = Course;
 

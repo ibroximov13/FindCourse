@@ -1,7 +1,6 @@
 const { Op } = require("sequelize");
-const { Subject, SubjectItem, FilSubItem, BranchSubItem } = require("../models");
+const { Subject, SubjectItem, BranchSubItem, Branch, Center } = require("../models");
 const { createSubjectValidate, subjectByIdValidate, updateSubjectValidate } = require("../validation/subject.validate");
-const { Branch, Center } = require("../models/association");
 
 const logger = require("../config/log").child({ model: "Subject" });
 
@@ -119,7 +118,7 @@ const getAllSubjects = async (req, res) => {
                 },
                 {
                     model: Center,
-                    attributes: ["id", "name", "adress", "location", "star"]
+                    attributes: ["id", "name", "adress", "location"]
                 }
             ],
             limit: take,

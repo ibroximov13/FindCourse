@@ -1,6 +1,7 @@
 const express = require("express");
 const { connectDb } = require("./config/db");
-const { initData } = require("./utils/initData");
+// const { initData } = require("./utils/initData");
+const { fullData } = require("./utils/fullData");
 const setupSwagger = require("./config/swagger");
 const indexRoute = require("./routes/index");
 
@@ -16,7 +17,8 @@ app.use("/image", [
 app.use("/api", indexRoute);
 
 connectDb();
-initData();
+// initData();
+fullData();
 
 const PORT = process.env.DB_PORT || 3001
 app.listen(PORT, () => {
