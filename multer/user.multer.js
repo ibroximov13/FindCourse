@@ -2,12 +2,13 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 
-const uploadDir = path.join(__dirname, "../uploadsUser");
+const uploadDir = path.join(__dirname, "../uploads/uploadUser");
 
-if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
-    console.log("✅ uploadsUserImage papkasi yaratildi.");
-}
+fs.promises.mkdir(uploadDir, { recursive: true }).then(() => {
+    console.log("✅ uploadCategory papkasi tayyor.");
+}).catch(err => {
+    console.error("❌ Papka yaratishda xatolik:", err);
+});
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -15,10 +16,21 @@ const storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-        cb(null, uniqueSuffix + path.extname(file.originalname));
+        const safeFilename = path.basename(file.originalname);
+        cb(null, uniqueSuffix + path.extname(safeFilename));
     },
 });
 
-const upload = multer({ storage });
+const fileFilter = (req, file, cb) => {
+    const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+    
+    if (allowedTypes.includes(file.mimetype)) {
+        cb(null, true);
+    } else {
+        cb(new Error("Faqat rasm fayllari yuklanishi mumkin!"), false);
+    }
+};
+
+const upload = multer({ storage, fileFilter });
 
 module.exports = upload;

@@ -26,6 +26,10 @@ const Branch = db.define("Branch", {
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    centerId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
 });
 
 module.exports = Branch;
