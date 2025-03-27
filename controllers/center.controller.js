@@ -1,6 +1,6 @@
 const { SubjectItem, CourseItem, Branch, Subject, Course, User, Like, Center, Region } = require("../models");
 const { Op } = require("sequelize");
-const { createCenterValidation } = require("../validation/center.validate");
+const { createCenterValidation, updateCenterValidation } = require("../validation/center.validate");
 const logger = require("../config/log").child({model: "center"})
 
 const createCenter = async (req, res) => {
@@ -73,12 +73,12 @@ const getAllCenters = async (req, res) => {
           model: User,
           attributes: ["id", "fullName"]
         },
-        {
-          model: Comment,
-          attributes: [
-            [Sequelize.fn('AVG', Sequelize.col('Comment.star')), 'averageStar'], 
-          ],
-        }
+        // {
+        //   model: Comment,
+        //   attributes: [
+        //     [Sequelize.fn('AVG', Sequelize.col('Comment.star')), 'averageStar'], 
+        //   ],
+        // }
       ],
       subQuery: false,
       where: {
@@ -106,7 +106,23 @@ const getAllCenters = async (req, res) => {
 
 const getCenterById = async (req, res) => {
   try {
-    const center = await Center.findByPk(req.params.id);
+    const center = await Center.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [
+        {
+          model: Branch,
+        },
+        {
+          model: Region
+        },
+        {
+          model: User,
+          attributes: ["id", "fullName"]
+        },
+      ]
+    });
     if (!center) {
       logger.warn(`Center not found with ID: ${req.params.id}`);
       return res.status(404).json({ message: "Center not found" });
@@ -122,15 +138,20 @@ const getCenterById = async (req, res) => {
 
 const patchCenter = async (req, res) => {
   try {
-    const center = await Center.findByPk(req.params.id);
+    let {error, value} = updateCenterValidation.validate(req.body);
+    if (error) {
+      return res.status(422).send(error.details[0].message);
+    }
+    const center = await Center.findOne({where: {id: req.params.id}});
+    console.log(center);
     if (!center) {
       logger.warn(`Center not found for patch with ID: ${req.params.id}`);
       return res.status(404).json({ message: "Center not found" });
     }
 
-    await center.update(req.body);
+    await center.update(value);
     logger.info(`Center partially updated with ID: ${req.params.id}`);
-    res.json({ message: "Center partially updated", data: center });
+    res.json({ center });
   } catch (error) {
     logger.error(`patchCenter error: ${error.message}`);
     res.status(400).json({ error: error.message });
