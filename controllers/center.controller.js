@@ -133,7 +133,7 @@ const getCenterById = async (req, res) => {
     logger.error(`getCenterById error: ${error.message}`);
     res.status(500).json({ error: error.message });
   }
-};
+}
 
 
 const patchCenter = async (req, res) => {

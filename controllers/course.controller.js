@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const { Course, BranchCourseItem, Branch, CourseItem, Center } = require("../models");
 const { createCourseValidate, courseByIdValidate, updateCourseValidate } = require("../validation/course.validate");
 

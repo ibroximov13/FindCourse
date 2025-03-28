@@ -1,22 +1,51 @@
-const Joi = require("joi");
+const Joi = require('joi');
 
 const createEnrollmentSchema = Joi.object({
-  userId: Joi.number().integer().required(),
-  courseId: Joi.number().integer().required(),
-  centerId: Joi.number().integer().required(),
-  date: Joi.date().required(),
-  subjectId: Joi.number().integer().required(),
-});
-
-const updateEnrollmentSchema = Joi.object({
-  userId: Joi.number().integer(),
-  courseId: Joi.number().integer(),
-  centerId: Joi.number().integer(),
-  date: Joi.date(),
-  subjectId: Joi.number().integer(),
+  centerId: Joi.number()
+    .integer()
+    .positive()
+    .required()
+    .messages({
+      'number.base': 'centerId must be a number',
+      'number.integer': 'centerId must be an integer',
+      'number.positive': 'centerId must be a positive number',
+      'any.required': 'centerId is required'
+    }),
+  
+  courseId: Joi.number()
+    .integer()
+    .positive()
+    .required()
+    .messages({
+      'number.base': 'courseId must be a number',
+      'number.integer': 'courseId must be an integer',
+      'number.positive': 'courseId must be a positive number',
+      'any.required': 'courseId is required'
+    }),
+  
+  subjectId: Joi.number()
+    .integer()
+    .positive()
+    .required()
+    .messages({
+      'number.base': 'subjectId must be a number',
+      'number.integer': 'subjectId must be an integer',
+      'number.positive': 'subjectId must be a positive number',
+      'any.required': 'subjectId is required'
+    }),
+  
+  monthId: Joi.number()
+    .integer()
+    .positive()
+    .required()
+    .messages({
+      'number.base': 'monthId must be a number',
+      'number.integer': 'monthId must be an integer',
+      'number.positive': 'monthId must be a positive number',
+      'any.required': 'monthId is required'
+    })
 });
 
 module.exports = {
-  createEnrollmentSchema,
-  updateEnrollmentSchema,
+  createEnrollmentSchema
 };

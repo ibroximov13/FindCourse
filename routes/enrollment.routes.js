@@ -4,11 +4,89 @@ const enrollmentController = require("../controllers/enrollment.controller");
 const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 
 /**
+/**
+ * @swagger
+ * /enrollments/months:
+ *   get:
+ *     summary: Get all months with pagination and sorting
+ *     tags: [Enrollments]
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           default: 1
+ *         description: 📄 Page number for pagination
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *         description: 🔢 Number of months per page
+ *       - in: query
+ *         name: order
+ *         schema:
+ *           type: string
+ *           enum: [ASC, DESC]
+ *           default: DESC
+ *         description: 📌 Sort order by ID (ASC or DESC)
+ *     responses:
+ *       200:
+ *         description: List of months with pagination
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 total:
+ *                   type: integer
+ *                 totalPages:
+ *                   type: integer
+ *                 currentPage:
+ *                   type: integer
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                       name:
+ *                         type: string
+ *             example:
+ *               total: 12
+ *               totalPages: 2
+ *               currentPage: 1
+ *               data:
+ *                 - id: 1
+ *                   name: "January"
+ *                 - id: 2
+ *                   name: "February"
+ *                 - id: 3
+ *                   name: "March"
+ *                 - id: 4
+ *                   name: "April"
+ *                 - id: 5
+ *                   name: "May"
+ *                 - id: 6
+ *                   name: "June"
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: "Internal server error"
+ */
+router.get("/months", enrollmentController.getAllMonths)
+
+/**
  * @swagger
  * /enrollments:
  *   post:
  *     summary: Create a new enrollment
  *     tags: [Enrollments]
+ *     security:
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -16,19 +94,23 @@ const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
  *           schema:
  *             type: object
  *             required:
- *               - userId
+ *               - centerId
  *               - courseId
- *               - status
+ *               - subjectId
+ *               - monthId
  *             properties:
- *               userId:
+ *               centerId:
  *                 type: integer
  *                 example: 1
  *               courseId:
  *                 type: integer
  *                 example: 5
- *               status:
- *                 type: string
- *                 example: "active"
+ *               subjectId:
+ *                 type: integer
+ *                 example: 3
+ *               monthId:
+ *                 type: integer
+ *                 example: 12
  *     responses:
  *       201:
  *         description: Enrollment created successfully
@@ -37,8 +119,10 @@ const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
  *             example:
  *               id: 10
  *               userId: 1
+ *               centerId: 1
  *               courseId: 5
- *               status: "active"
+ *               subjectId: 3
+ *               monthId: 12
  *       400:
  *         description: Validation error
  */
@@ -58,12 +142,16 @@ router.post("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), enr
  *             example:
  *               - id: 1
  *                 userId: 1
+ *                 centerId: 1
  *                 courseId: 5
- *                 status: "active"
+ *                 subjectId: 3
+ *                 monthId: 12
  *               - id: 2
  *                 userId: 2
+ *                 centerId: 2
  *                 courseId: 6
- *                 status: "completed"
+ *                 subjectId: 4
+ *                 monthId: 11
  */
 router.get("/", enrollmentController.getAllEnrollments);
 
@@ -88,50 +176,14 @@ router.get("/", enrollmentController.getAllEnrollments);
  *             example:
  *               id: 1
  *               userId: 1
+ *               centerId: 1
  *               courseId: 5
- *               status: "active"
+ *               subjectId: 3
+ *               monthId: 12
  *       404:
  *         description: Enrollment not found
  */
 router.get("/:id", enrollmentController.getEnrollmentById);
-
-/**
- * @swagger
- * /enrollments/{id}:
- *   patch:
- *     summary: Partially update enrollment by ID
- *     tags: [Enrollments]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: Enrollment ID
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               status:
- *                 type: string
- *                 example: "cancelled"
- *     responses:
- *       200:
- *         description: Enrollment partially updated
- *         content:
- *           application/json:
- *             example:
- *               id: 1
- *               userId: 2
- *               courseId: 7
- *               status: "cancelled"
- *       404:
- *         description: Enrollment not found
- */
-router.patch("/:id", verifyTokenAndRole(["ADMIN", "SUPERADMIN", "CEO"]), enrollmentController.patchEnrollment);
 
 /**
  * @swagger
@@ -156,6 +208,6 @@ router.patch("/:id", verifyTokenAndRole(["ADMIN", "SUPERADMIN", "CEO"]), enrollm
  *       404:
  *         description: Enrollment not found
  */
-router.delete("/:id",verifyTokenAndRole(["ADMIN", "SUPERADMIN", "CEO"]), enrollmentController.deleteEnrollment);
+router.delete("/:id", verifyTokenAndRole(["ADMIN", "SUPERADMIN", "CEO"]), enrollmentController.deleteEnrollment);
 
 module.exports = router;
