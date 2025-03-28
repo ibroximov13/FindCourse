@@ -1,6 +1,7 @@
 const { Router } = require("express");
-const { createSubject, updateSubject, deleteSubject, getAllSubjects, getOneSubject } = require("../controllers/subject.controller");
+const { createSubject, updateSubject, deleteSubject, getAllSubjects, getOneSubject, uploadImage } = require("../controllers/subject.controller");
 const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
+const upload = require("../multer/subject.multer");
 
 const route = Router();
 
@@ -199,5 +200,27 @@ route.get("/", getAllSubjects);
  *         description: Subject not found
  */
 route.get("/:id", getOneSubject);
+
+/**
+ * @swagger
+ * /subjects/upload-image:
+ *   post:
+ *     summary: Upload user image
+ *     tags: [Subjects]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userImage:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: Image uploaded successfully.
+ */
+route.post("/upload-image", upload.single("userImage"), uploadImage);
 
 module.exports = route;

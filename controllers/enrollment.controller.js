@@ -1,9 +1,8 @@
-const Enrollment = require("../models/enrollment.model");
-const Month = require("../models/month.model");
 const { createEnrollmentSchema } = require("../validation/enrollment.validate");
 const logger = require("../config/log").child({ model: "enrollment" });
 
 const fullData = require("../utils/fullData");
+const { Center, Course, User, Subject, Enrollment, Month } = require("../models");
 
 const createEnrollment = async (req, res) => {
   try {
@@ -60,7 +59,7 @@ const getAllEnrollments = async (req, res) => {
             through: { attributes: [] } 
         },
         {
-            model: Subject, 
+            model: Subject , 
             through: { attributes: [] } 
         },
     ],

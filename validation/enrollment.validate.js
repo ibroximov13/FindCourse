@@ -1,19 +1,6 @@
 const Joi = require('joi');
 
 const createEnrollmentSchema = Joi.object({
-<<<<<<< HEAD
-  courseId: Joi.number().integer().required(),
-  centerId: Joi.number().integer().required(),
-  subjectId: Joi.number().integer().required(),
-  date: Joi.date().required(),
-});
-
-const updateEnrollmentSchema = Joi.object({
-  courseId: Joi.number().integer().optional(),
-  centerId: Joi.number().integer().optional(),
-  subjectId: Joi.number().integer().optional(),
-  date: Joi.date().optional(),
-=======
   centerId: Joi.number()
     .integer()
     .positive()
@@ -57,7 +44,6 @@ const updateEnrollmentSchema = Joi.object({
       'number.positive': 'monthId must be a positive number',
       'any.required': 'monthId is required'
     })
->>>>>>> 0854c253cf783d19f1981b6e05df60d5ac51d6a5
 });
 
 module.exports = {

@@ -33,33 +33,36 @@ const updateCourse = async (req, res) => {
         let { error: errorId, value: valueId } = courseByIdValidate(req.params);
         if (errorId) {
             return res.status(422).send(errorId.details[0].message);
-        };
+        }
 
-        let id = valueId.id
+        let id = valueId.id;
         let { error, value } = updateCourseValidate(req.body);
         if (error) {
             return res.status(422).send(error.details[0].message);
-        };
+        }
         let { name, image } = value;
-        let course = await Course.findOne({ where: { id: id, name: name } });
-        if (!course) {
-            return res.status(400).send("Course already exists");
-        };
+        let course = await Course.findByPk(id);
+        if (!course) {  
+            return res.status(400).send("Course not found");
+        }
 
-        let updatedCourse = await Course.update({
-            name: name || course.name,
-            image: image || course.image
-        });
+        await Course.update(
+            {
+                name: name || course.name,
+                image: image || course.image
+            },
+            {
+                where: { id: id }  
+            }
+        );
 
         logger.info("Course updated");
-        res.status(200).send(updatedCourse);
+        res.status(200).send({ message: "Subject updated successfully" });
     } catch (error) {
-        logger.error(error.message)
-        console.log(error.message);
-    };
+        logger.error(error.message);
+        res.status(500).send("Internal Server Error");
+    }
 };
-
-
 
 const deleteCourse = async (req, res) => {
     try {
@@ -135,28 +138,31 @@ const getOneCourse = async (req, res) => {
         let id = value.id;
 
         let course = await Course.findOne({
-            where: {
-                id: id,
-            },
+            where: { id: id },
             include: [
                 {
                     model: Branch,
-                    attributes: ["id", "phone", "location"] 
+                    attributes: ["id", "phone", "location"]
                 },
                 {
                     model: Center,
-                    attributes: ["id", "name", "adress", "location", "star"]
+                    attributes: ["id", "name", "adress", "location"]
                 }
             ],
-        })
+        });
+
+        if (!course) {
+            return res.status(404).send({ message: "Course not found" });
+        }
 
         logger.info("GetOneCourse");
         res.status(200).send(course);
     } catch (error) {
         logger.error(error.message);
-        console.log(error.message);
+        res.status(500).send({ message: "Internal Server Error" });
     }
 };
+
 
 const uploadImage = async (req, res) => {
     try {

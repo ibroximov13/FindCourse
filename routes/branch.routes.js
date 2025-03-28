@@ -248,4 +248,26 @@ route.get("/", getAllBranchs);
  */
 route.get("/:id", getOneBranch);
 
+/**
+ * @swagger
+ * /branches/upload-image:
+ *   post:
+ *     summary: Upload user image
+ *     tags: [Branches]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userImage:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: Image uploaded successfully.
+ */
+route.post("/upload-image", upload.single("userImage"), uploadImage);
+
 module.exports = route;

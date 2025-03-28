@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const centerController = require("../controllers/center.controller");
 const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
+const upload = require("../multer/center.multer");
 /**
  * @swagger
  * /centers:
@@ -352,5 +353,27 @@ router.patch("/:id", verifyTokenAndRole(["ADMIN", "SUPERADMIN"]), centerControll
  *                   example: "Center not found"
  */
 router.delete("/:id", verifyTokenAndRole(["ADMIN"]), centerController.deleteCenter);
+
+/**
+ * @swagger
+ * /centers/upload-image:
+ *   post:
+ *     summary: Upload user image
+ *     tags: [Centers]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userImage:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: Image uploaded successfully.
+ */
+router.post("/upload-image", upload.single("userImage"), centerController.uploadImage);
 
 module.exports = router;

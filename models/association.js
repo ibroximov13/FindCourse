@@ -69,15 +69,11 @@ Course.belongsToMany(Center, { through: CourseItem, foreignKey: 'courseId', othe
 Subject.hasMany(Enrollment, { foreignKey: "subjectId" });
 Enrollment.belongsTo(Subject, { foreignKey: "subjectId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-<<<<<<< HEAD
 Course.hasMany(Enrollment, { foreignKey: "courseId" });
 Enrollment.belongsTo(Course, { foreignKey: "courseId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
-
-=======
 Month.hasMany(Enrollment, {foreignKey: "monthId" });
 Enrollment.belongsTo(Month, { foreignKey: "monthId", onDelete: "CASCADE", onUpdate: "CASCADE"})
->>>>>>> 0854c253cf783d19f1981b6e05df60d5ac51d6a5
 
 
 

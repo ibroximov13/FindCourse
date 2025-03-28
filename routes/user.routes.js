@@ -131,6 +131,9 @@ router.post('/register', register);
  *               password:
  *                 type: string
  *                 example: "admin123"
+ *               userIp: 
+ *                 type: string
+ *                 example: "123.12"
  *     responses:
  *       200:
  *         description: User logged in successfully.
