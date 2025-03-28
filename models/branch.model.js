@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const {db} = require("../config/db");
+const { db } = require("../config/db");
 
 const Branch = db.define("Branch", {
     id: {
@@ -30,6 +30,9 @@ const Branch = db.define("Branch", {
         type: DataTypes.INTEGER,
         allowNull: false
     }
-}, {timestamps: false});
+}, {
+    timestamps: false,
+    tableName: "Branches"
+});
 
 module.exports = Branch;

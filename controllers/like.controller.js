@@ -1,21 +1,36 @@
 const Like = require("../models/like.model");
 const { Op } = require("sequelize");
-const { createLikeSchema, updateLikeSchema } = require("../validation/like.validate");
-const logger = require("../config/log").child({model: "like"})
+const { createLikeSchema } = require("../validation/like.validate");
+const logger = require("../config/log").child({ model: "like" });
 
 const createLike = async (req, res) => {
   try {
-    const { error } = createLikeSchema.validate(req.body);
+    const { error, value } = createLikeSchema.validate(req.body);
     if (error) {
       logger.warn(`like validation error: ${error.details[0].message}`);
       return res.status(400).json({ error: error.details[0].message });
     }
 
-    const like = await Like.create(req.body);
-    logger.info(`like create with ID: ${like.id}`);
-    res.status(201).json({ message: "like create successfully", data: like });
+    let userId = req.user.id;
+    let { centerId } = value;
+
+    const existingLike = await Like.findOne({
+      where: {
+        userId,
+        centerId
+      }
+    });
+
+    if (existingLike) {
+      logger.warn(`User ${userId} already liked center ${centerId}`);
+      return res.status(400).json({ error: "You have already liked this center" });
+    }
+
+    const like = await Like.create({ centerId, userId: userId });
+    logger.info(`like created with ID: ${like.id}`);
+    res.status(201).json({ message: "like created successfully", data: like });
   } catch (error) {
-    logger.error(`createlike error: ${error.message}`);
+    logger.error(`createLike error: ${error.message}`);
     res.status(500).json({ error: error.message });
   }
 };
@@ -33,7 +48,7 @@ const getAllLikes = async (req, res) => {
       where,
       limit: parseInt(limit),
       offset: parseInt(offset),
-      order: [["id", order.toUpperCase() === "ASC" ? "ASC" : "DESC"]],
+      order: [["centerId", order.toUpperCase() === "ASC" ? "ASC" : "DESC"]],
     });
 
     logger.info(`Fetched ${likes.rows.length} likes (Page: ${page})`);
@@ -49,61 +64,6 @@ const getAllLikes = async (req, res) => {
   }
 };
 
-const getLikeById = async (req, res) => {
-  try {
-    const like = await Like.findByPk(req.params.id);
-    if (!like) {
-      logger.warn(`like not found with ID: ${req.params.id}`);
-      return res.status(404).json({ message: "Like not found" });
-    }
-    logger.info(`fetch like with ID: ${req.params.id}`);
-    res.json(like);
-  } catch (error) {
-    logger.error(`getLikeById error: ${error.message}`);
-    res.status(500).json({ error: error.message });
-  }
-};
-
-const updateLike = async (req, res) => {
-  try {
-    const like = await Like.findByPk(req.params.id);
-    if (!like) {
-      logger.warn(`like not found for update with ID: ${req.params.id}`);
-      return res.status(404).json({ message: "like not found" });
-    }
-
-    const { error } = updateLikeSchema.validate(req.body);
-    if (error) {
-      logger.warn(`like update validation error: ${error.details[0].message}`);
-      return res.status(400).json({ error: error.details[0].message });
-    }
-
-    await like.update(req.body);
-    logger.info(`like updated with ID: ${req.params.id}`);
-    res.json({ message: "like update successfully", data: like });
-  } catch (error) {
-    logger.error(`updateLike error: ${error.message}`);
-    res.status(400).json({ error: error.message });
-  }
-};
-
-const patchLike = async (req, res) => {
-  try {
-    const like = await Like.findByPk(req.params.id);
-    if (!like) {
-      logger.warn(`like not found for patch with ID: ${req.params.id}`);
-      return res.status(404).json({ message: "like not found" });
-    }
-
-    await like.update(req.body);
-    logger.info(`like partially update with ID: ${req.params.id}`);
-    res.json({ message: "like partially updated", data: like });
-  } catch (error) {
-    logger.error(`patchLike error: ${error.message}`);
-    res.status(400).json({ error: error.message });
-  }
-};
-
 const deleteLike = async (req, res) => {
   try {
     const like = await Like.findByPk(req.params.id);
@@ -113,8 +73,8 @@ const deleteLike = async (req, res) => {
     }
 
     await like.destroy();
-    logger.info(`like delete with ID: ${req.params.id}`);
-    res.json({ message: "like delete successfully" });
+    logger.info(`like deleted with ID: ${req.params.id}`);
+    res.json({ message: "like deleted successfully" });
   } catch (error) {
     logger.error(`deleteLike error: ${error.message}`);
     res.status(500).json({ error: error.message });
@@ -124,8 +84,5 @@ const deleteLike = async (req, res) => {
 module.exports = {
   createLike,
   getAllLikes,
-  getLikeById,
-  updateLike,
-  patchLike,
   deleteLike,
 };

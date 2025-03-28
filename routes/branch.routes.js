@@ -1,4 +1,4 @@
-const {Router} = require("express");
+const { Router } = require("express");
 const { createNewBranch, updateBranch, deleteBranch, getAllBranchs, getOneBranch, uploadImage } = require("../controllers/branch.controller");
 const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 const upload = require("../multer/user.multer");
@@ -17,15 +17,43 @@ const route = Router();
  *       required: true
  *       content:
  *         application/json:
- *           example:
- *             name: "Main Branch"
- *             phone: "+998901234567"
- *             location: "123 Business Street"
- *             regionId: 1
- *             centerId: 1
- *             image: "http://example.com/images/branch.jpg"
- *             subjects: [1, 2, 3]
- *             courses: [4, 5]
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: "Main Branch"
+ *               phone:
+ *                 type: string
+ *                 example: "+998901234567"
+ *               location:
+ *                 type: string
+ *                 example: "123 Business Street"
+ *               regionId:
+ *                 type: integer
+ *                 example: 1
+ *               centerId:
+ *                 type: integer
+ *                 example: 1
+ *               image:
+ *                 type: string
+ *                 example: "http://example.com/images/branch.jpg"
+ *               subjectIds:
+ *                 type: array
+ *                 items:
+ *                   type: integer
+ *                 example: [1, 2, 3]
+ *               courseIds:
+ *                 type: array
+ *                 items:
+ *                   type: integer
+ *                 example: [4, 5]
+ *             required:
+ *               - name
+ *               - phone
+ *               - location
+ *               - regionId
+ *               - centerId
  *     responses:
  *       201:
  *         description: Branch created successfully
@@ -41,32 +69,21 @@ const route = Router();
  *               image: "http://example.com/images/branch.jpg"
  *       400:
  *         description: Bad request - Validation error or duplicate branch
- *         content:
- *           application/json:
- *             example:
- *               message: "Branch with the same name and location already exists"
  *       401:
  *         description: Unauthorized - Invalid or missing token
- *         content:
- *           application/json:
- *             example:
- *               message: "Authentication required"
  *       403:
  *         description: Forbidden - Insufficient permissions
- *         content:
- *           application/json:
- *             example:
- *               message: "Admin access required"
  */
-
 route.post("/", verifyTokenAndRole(["ADMIN"]), createNewBranch);
 
 /**
  * @swagger
  * /branches/upload-image:
  *   post:
- *     summary: Upload user image
+ *     summary: Upload branch image
  *     tags: [Branches]
+ *     security:
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -79,9 +96,13 @@ route.post("/", verifyTokenAndRole(["ADMIN"]), createNewBranch);
  *                 format: binary
  *     responses:
  *       200:
- *         description: Image uploaded successfully.
+ *         description: Image uploaded successfully
+ *       401:
+ *         description: Unauthorized
+ *       403:
+ *         description: Forbidden - Insufficient permissions
  */
-route.post("/upload-image", upload.single("branchImage"), verifyTokenAndRole(["ADMIN"]) , uploadImage);
+route.post("/upload-image", upload.single("branchImage"), verifyTokenAndRole(["ADMIN"]), uploadImage);
 
 /**
  * @swagger
@@ -101,9 +122,31 @@ route.post("/upload-image", upload.single("branchImage"), verifyTokenAndRole(["A
  *     requestBody:
  *       content:
  *         application/json:
- *           example:
- *             name: "Updated Branch"
- *             phone: "+998901234568"
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: "Updated Branch"
+ *               phone:
+ *                 type: string
+ *                 example: "+998901234568"
+ *               location:
+ *                 type: string
+ *               regionId:
+ *                 type: integer
+ *               centerId:
+ *                 type: integer
+ *               image:
+ *                 type: string
+ *               subjectIds:
+ *                 type: array
+ *                 items:
+ *                   type: integer
+ *               courseIds:
+ *                 type: array
+ *                 items:
+ *                   type: integer
  *     responses:
  *       200:
  *         description: Branch updated successfully
@@ -175,6 +218,8 @@ route.delete("/:id", verifyTokenAndRole(["ADMIN"]), deleteBranch);
  *           application/json:
  *             schema:
  *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Branch'
  */
 route.get("/", getAllBranchs);
 
@@ -196,10 +241,33 @@ route.get("/", getAllBranchs);
  *         description: Branch details
  *         content:
  *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Branch'
  *       404:
  *         description: Branch not found
  */
-
 route.get("/:id", getOneBranch);
+
+/**
+ * @swagger
+ * /branches/upload-image:
+ *   post:
+ *     summary: Upload user image
+ *     tags: [Branches]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userImage:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: Image uploaded successfully.
+ */
+route.post("/upload-image", upload.single("userImage"), uploadImage);
 
 module.exports = route;

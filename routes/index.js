@@ -10,7 +10,9 @@ route.use("/centers", require("./center.routes"));
 route.use("/enrollments", require("./enrollment.routes"));
 route.use("/regions", require("./1.region.routes"));
 route.use("/likes", require("./like.routes"));
-route.use("/myself", require("./mySelf.routes"));
+route.use("/password", require("./resetPassword.routes"));
 route.use("/comments", require("./comment.routes"));
+route.use("/myself", require("./mySelf.route"));
+route.use("/sessions", require("./session.route"))
 
-module.exports = route
+module.exports = route;

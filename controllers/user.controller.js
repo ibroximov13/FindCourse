@@ -3,12 +3,14 @@ const bcrypt = require("bcrypt");
 const nodemailer = require('nodemailer');
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
-const { User, Region } = require("../models");
+const { User, Region, Session } = require("../models");
 const { createUserValidate, sendOtpValidate, verifyOtpValidate, userLoginValidate, refreshTokenValidate, patchUserValidate, updateMyProfileValidate } = require("../validation/user.validate");
 const { Op } = require("sequelize");
 const { generateUsersExcel } = require("../utils/exel");
 const sendEmail = require("../utils/sendEmail");
 const logger = require("../config/log").child({ model: "user" });
+const DeviceDetector = require("device-detector-js");
+const deviceDetector = new DeviceDetector();
 
 dotenv.config();
 
@@ -141,6 +143,7 @@ async function loginUser(req, res) {
         }
 
         let { phone, email, password } = value;
+        let userIp = req.headers["x-forwarded-for"] || req.ip;
 
         if (!JWT_SECRET) {
             logger.error("JWT_SECRET is not defined in environment variables");
@@ -149,10 +152,7 @@ async function loginUser(req, res) {
 
         let newUser = await User.findOne({
             where: {
-                [Op.and]: [
-                    { phone: phone },
-                    { email: email }
-                ]
+                [Op.and]: [{ phone: phone }, { email: email }]
             }
         });
 
@@ -167,18 +167,39 @@ async function loginUser(req, res) {
             return res.status(400).send({ message: "Password wrong error" });
         }
 
-        const accesstoken = jwt.sign({ id: newUser.id, role: newUser.role }, JWT_SECRET, { expiresIn: "1h" });
-        const refreshtoken = jwt.sign({ id: newUser.id }, REFRESH_SECRET, { expiresIn: "7d" });
+        let data = deviceDetector.parse(req.headers["user-agent"]);
+
+        const accesstoken = jwt.sign(
+            { id: newUser.id, role: newUser.role, userIp: userIp, data: data },
+            JWT_SECRET,
+            { expiresIn: "1h" }
+        );
+        const refreshtoken = jwt.sign(
+            { id: newUser.id, userIp: userIp, data: data },
+            REFRESH_SECRET,
+            { expiresIn: "7d" }
+        );
         refreshTokens.add(refreshtoken);
 
+        // verifyToken o'rniga newUser.id va userIp ishlatilmoqda ✅
+        let session = await Session.findOne({ where: { userId: newUser.id, userIp: userIp } });
+        if (!session) {
+            await Session.create({
+                userIp: userIp,
+                userId: newUser.id,
+                data: JSON.stringify(data)
+            });
+        }
+
         logger.info(`User logged in successfully: ${newUser.id}`);
-        console.log("asdadadasd");
+        console.log("User successfully logged in!");
         res.send({ accesstoken, refreshtoken });
     } catch (error) {
         logger.error(`loginUser error: ${error.message}`);
         res.status(500).json({ error: error.message });
     }
 }
+
 
 const refreshTokens = new Set();
 async function refreshToken(req, res) {
@@ -341,7 +362,7 @@ async function getMeProfile(req, res) {
         const userId = req.user.id;
         const user = await User.findOne({
             where: { id: userId },
-            attributes: ["id", "fullName", "email", "phone", "photo"]
+            attributes: ["id", "fullName", "email", "phone", "image"]
         });
 
         if (!user) {
@@ -368,7 +389,7 @@ async function updateMyProfile(req, res) {
         const userId = req.user.id;
         const user = await User.findOne({
             where: { id: userId },
-            attributes: ["id", "fullName", "email", "password", "photo"]
+            attributes: ["id", "fullName", "email", "password", "image"]
         });
 
         if (!user) {

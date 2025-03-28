@@ -69,7 +69,8 @@ const userLoginValidate = (data) => {
   const schema = Joi.object({
     phone: Joi.string().pattern(/^\+998[0-9]{9}$/).required(),
     email: Joi.string().email().required(),
-    password: Joi.string().min(6).required()
+    password: Joi.string().min(6).required(),
+    userIp: Joi.string().required()
   });
   return schema.validate(data);
 };

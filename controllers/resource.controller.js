@@ -11,18 +11,9 @@ const createResource = async (req, res) => {
             return res.status(422).send(error.details[0].message)
         };
 
-        let {name} = value;
-        let resource = await Resource.findOne({
-            where: {
-                name
-            }
-        });
+        let userId = req.user.id;
 
-        if (resource) {
-            return res.status(400).send("Resource already exists");
-        };
-
-        let newResource = await Resource.create(value);
+        let newResource = await Resource.create({ value, userId});
         logger.info("Created new resource");
         res.status(201).send(newResource);
     } catch (error) {

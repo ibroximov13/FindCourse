@@ -223,4 +223,26 @@ route.get("/", getAllCategory);
  */
 route.get("/:id", getOneCategory);
 
+/**
+ * @swagger
+ * /categories/upload-image:
+ *   post:
+ *     summary: Upload user image
+ *     tags: [Categories]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userImage:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: Image uploaded successfully.
+ */
+route.post("/upload-image", upload.single("userImage"), uploadImage);
+
 module.exports = route;         
