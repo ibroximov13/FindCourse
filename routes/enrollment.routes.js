@@ -125,6 +125,8 @@ router.get("/months", enrollmentController.getAllMonths)
  *               monthId: 12
  *       400:
  *         description: Validation error
+ *       500:
+ *         description: Server error
  */
 router.post("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), enrollmentController.createEnrollment);
 
@@ -132,11 +134,34 @@ router.post("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), enr
  * @swagger
  * /enrollments:
  *   get:
- *     summary: Get all enrollments
+ *     summary: Get all enrollments with pagination and sorting
  *     tags: [Enrollments]
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           default: 1
+ *       - in: query
+ *         name: take
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *       - in: query
+ *         name: column
+ *         schema:
+ *           type: string
+ *           enum: [id, userId, courseId, subjectId, centerId, date]
+ *           default: id
+ *       - in: query
+ *         name: order
+ *         schema:
+ *           type: string
+ *           enum: [ASC, DESC]
+ *           default: ASC
  *     responses:
- *       200:
- *         description: List of enrollments
+ *       201:
+ *         description: List of enrollments with related data
  *         content:
  *           application/json:
  *             example:
@@ -182,6 +207,8 @@ router.get("/", enrollmentController.getAllEnrollments);
  *               monthId: 12
  *       404:
  *         description: Enrollment not found
+ *       500:
+ *         description: Server error
  */
 router.get("/:id", enrollmentController.getEnrollmentById);
 
@@ -191,6 +218,8 @@ router.get("/:id", enrollmentController.getEnrollmentById);
  *   delete:
  *     summary: Delete enrollment by ID
  *     tags: [Enrollments]
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -203,10 +232,17 @@ router.get("/:id", enrollmentController.getEnrollmentById);
  *         description: Enrollment deleted
  *         content:
  *           application/json:
- *             example:
- *               message: Enrollment deleted successfully
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *               example:
+ *                 message: "enrollment delete successfully"
  *       404:
  *         description: Enrollment not found
+ *       500:
+ *         description: Server error
  */
 router.delete("/:id", verifyTokenAndRole(["ADMIN", "SUPERADMIN", "CEO"]), enrollmentController.deleteEnrollment);
 

@@ -48,9 +48,11 @@ const updateSubject = async (req, res) => {
             return res.status(404).send("Subject not found");
         }
 
-        let exists = await Subject.findOne({ where: { name: name } });
-        if (exists) {
-            return res.status(400).send("Subject already exists");
+        if (name && name !== subject.name) {
+            let exists = await Subject.findOne({ where: { name: name } });
+            if (exists) {
+                return res.status(400).send("Subject already exists");
+            }
         }
 
         let updatedSubject = await subject.update({
@@ -59,7 +61,7 @@ const updateSubject = async (req, res) => {
         });
 
         logger.info("Subject updated");
-        res.status(200).send(updatedSubject);
+        res.status(200).send({ message: "Subject updated successfully", subject: updatedSubject });
     } catch (error) {
         b
         console.log(error.message);
@@ -154,7 +156,7 @@ const getOneSubject = async (req, res) => {
                 },
                 {
                     model: Center,
-                    attributes: ["id", "name", "adress", "location", "star"]
+                    attributes: ["id", "name", "adress", "location"]
                 }
             ],
         });

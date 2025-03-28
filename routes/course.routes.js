@@ -1,6 +1,7 @@
 const { Router } = require("express");
-const { createCourse, updateCourse, deleteCourse, getAllCourse, getOneCourse } = require("../controllers/course.controller");
+const { createCourse, updateCourse, deleteCourse, getAllCourse, getOneCourse, uploadImage } = require("../controllers/course.controller");
 const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
+const upload = require("../multer/course.multer");
 
 const route = Router();
 
@@ -199,5 +200,27 @@ route.get("/", getAllCourse);
  *         description: Course not found
  */
 route.get("/:id", getOneCourse);
+
+/**
+ * @swagger
+ * /courses/upload-image:
+ *   post:
+ *     summary: Upload user image
+ *     tags: [Courses]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userImage:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: Image uploaded successfully.
+ */
+route.post("/upload-image", upload.single("userImage"), uploadImage);
 
 module.exports = route;

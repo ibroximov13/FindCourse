@@ -17,6 +17,7 @@ const BranchCourseItem = require("./branchCourseItem.model");
 const SubjectItem = require("./subjectItem.model");
 const CourseItem = require("./courseItem.model");
 const Month = require("./month.model");
+const Session = require("./session.model.js");
 
 module.exports = {
     User,
@@ -34,6 +35,7 @@ module.exports = {
     BranchSubItem,
     BranchCourseItem,
     SubjectItem,
-    CourseItem
+    CourseItem,
+    Session
   };
   

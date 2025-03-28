@@ -1,6 +1,7 @@
 const { Router } = require("express");
-const { createResource, updateResourse, deleteResource, getAllResource, getOneResource } = require("../controllers/resource.controller");
+const { createResource, updateResourse, deleteResource, getAllResource, getOneResource, uploadImage } = require("../controllers/resource.controller");
 const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
+const upload = require("../multer/resource.multer");
 
 const route = Router();
 
@@ -20,7 +21,6 @@ const route = Router();
  *         - image
  *         - description
  *         - media
- *         - userId
  *         - categoryId
  *       properties:
  *         name:
@@ -38,9 +38,6 @@ const route = Router();
  *         media:
  *           type: string
  *           example: http://example.com/media/resource-video.mp4
- *         userId:
- *           type: integer
- *           example: 1
  *         categoryId:
  *           type: integer
  *           example: 2
@@ -62,9 +59,6 @@ const route = Router();
  *         media:
  *           type: string
  *           example: http://example.com/media/updated-resource-video.mp4
- *         userId:
- *           type: integer
- *           example: 2
  *         categoryId:
  *           type: integer
  *           example: 3
@@ -86,12 +80,9 @@ const route = Router();
  *         media:
  *           type: string
  *           example: http://example.com/media/resource-video.mp4
- *         userId:
- *           type: integer
- *           example: 1
  *         categoryId:
  *           type: integer
- *           example: 2
+ *           example: 3
  */
 
 /**
@@ -253,5 +244,27 @@ route.get("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), getAl
  *         description: Resource not found
  */
 route.get("/:id", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), getOneResource);
+
+/**
+ * @swagger
+ * /resources/upload-image:
+ *   post:
+ *     summary: Upload user image
+ *     tags: [Resources]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userImage:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: Image uploaded successfully.
+ */
+route.post("/upload-image", upload.single("userImage"), uploadImage);
 
 module.exports = route;

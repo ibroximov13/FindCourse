@@ -6,7 +6,6 @@ const createResourceValidate = (data) => {
         image: Joi.string().required(),
         description: Joi.string().min(3).required(),
         media: Joi.string().required(),
-        userId: Joi.number().integer().required(),
         categoryId: Joi.number().integer().required()
     });
     return schema.validate(data);
@@ -18,7 +17,6 @@ const updateResourceValidate = (data) => {
         image: Joi.string().optional(),
         description: Joi.string().min(3).optional(),
         media: Joi.string().optional(),
-        userId: Joi.number().integer().optional(),
         categoryId: Joi.number().integer().optional()
     });
     return schema.validate(data);
