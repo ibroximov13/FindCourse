@@ -9,6 +9,8 @@ const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
  *   post:
  *     summary: Create a new like
  *     tags: [Likes]
+ *     security:
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -16,26 +18,28 @@ const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
  *           schema:
  *             type: object
  *             required:
- *               - userId
- *               - postId
+ *               - centerId
  *             properties:
- *               userId:
+ *               centerId:
  *                 type: integer
  *                 example: 1
- *               postId:
- *                 type: integer
- *                 example: 10
  *     responses:
  *       201:
  *         description: Like created successfully
  *         content:
  *           application/json:
  *             example:
- *               id: 5
- *               userId: 1
- *               postId: 10
+ *               message: "like created successfully"
+ *               data:
+ *                 id: 1
+ *                 userId: 1
+ *                 centerId: 1
  *       400:
- *         description: Validation error
+ *         description: Validation error or already liked
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: "You have already liked this center"
  */
 router.post("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), likeController.createLike);
 
@@ -43,90 +47,56 @@ router.post("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), lik
  * @swagger
  * /likes:
  *   get:
- *     summary: Get all likes
+ *     summary: Get all likes sorted by centerId
  *     tags: [Likes]
+ *     parameters:
+ *       - in: query
+ *         name: userId
+ *         schema:
+ *           type: integer
+ *         description: Filter by user ID
+ *       - in: query
+ *         name: centerId
+ *         schema:
+ *           type: integer
+ *         description: Filter by center ID
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           default: 1
+ *         description: Page number
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *         description: Items per page
+ *       - in: query
+ *         name: order
+ *         schema:
+ *           type: string
+ *           enum: [ASC, DESC]
+ *           default: DESC
+ *         description: Sort order by centerId
  *     responses:
  *       200:
  *         description: List of likes
  *         content:
  *           application/json:
  *             example:
- *               - id: 1
- *                 userId: 1
- *                 postId: 10
- *               - id: 2
- *                 userId: 2
- *                 postId: 11
+ *               total: 2
+ *               totalPages: 1
+ *               currentPage: 1
+ *               data:
+ *                 - id: 1
+ *                   userId: 1
+ *                   centerId: 1
+ *                 - id: 2
+ *                   userId: 2
+ *                   centerId: 2
  */
 router.get("/", likeController.getAllLikes);
-
-/**
- * @swagger
- * /likes/{id}:
- *   get:
- *     summary: Get like by ID
- *     tags: [Likes]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: Like ID
- *     responses:
- *       200:
- *         description: Like data
- *         content:
- *           application/json:
- *             example:
- *               id: 1
- *               userId: 1
- *               postId: 10
- *       404:
- *         description: Like not found
- */
-router.get("/:id", likeController.getLikeById);
-
-
-/**
- * @swagger
- * /likes/{id}:
- *   patch:
- *     summary: Partially update like by ID
- *     tags: [Likes]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: Like ID
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               userId:
- *                 type: integer
- *                 example: 3
- *               postId:
- *                 type: integer
- *                 example: 13
- *     responses:
- *       200:
- *         description: Like partially updated
- *         content:
- *           application/json:
- *             example:
- *               id: 1
- *               userId: 3
- *               postId: 13
- *       404:
- *         description: Like not found
- */
-router.patch("/:id", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), likeController.patchLike);
 
 /**
  * @swagger
@@ -134,6 +104,8 @@ router.patch("/:id", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]),
  *   delete:
  *     summary: Delete like by ID
  *     tags: [Likes]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -147,7 +119,7 @@ router.patch("/:id", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]),
  *         content:
  *           application/json:
  *             example:
- *               message: Like deleted successfully
+ *               message: "like deleted successfully"
  *       404:
  *         description: Like not found
  */

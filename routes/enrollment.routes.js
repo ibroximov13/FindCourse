@@ -4,6 +4,82 @@ const enrollmentController = require("../controllers/enrollment.controller");
 const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 
 /**
+/**
+ * @swagger
+ * /enrollments/months:
+ *   get:
+ *     summary: Get all months with pagination and sorting
+ *     tags: [Enrollments]
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           default: 1
+ *         description: 📄 Page number for pagination
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *         description: 🔢 Number of months per page
+ *       - in: query
+ *         name: order
+ *         schema:
+ *           type: string
+ *           enum: [ASC, DESC]
+ *           default: DESC
+ *         description: 📌 Sort order by ID (ASC or DESC)
+ *     responses:
+ *       200:
+ *         description: List of months with pagination
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 total:
+ *                   type: integer
+ *                 totalPages:
+ *                   type: integer
+ *                 currentPage:
+ *                   type: integer
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                       name:
+ *                         type: string
+ *             example:
+ *               total: 12
+ *               totalPages: 2
+ *               currentPage: 1
+ *               data:
+ *                 - id: 1
+ *                   name: "January"
+ *                 - id: 2
+ *                   name: "February"
+ *                 - id: 3
+ *                   name: "March"
+ *                 - id: 4
+ *                   name: "April"
+ *                 - id: 5
+ *                   name: "May"
+ *                 - id: 6
+ *                   name: "June"
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: "Internal server error"
+ */
+router.get("/months", enrollmentController.getAllMonths)
+
+/**
  * @swagger
  * /enrollments:
  *   post:
@@ -18,45 +94,35 @@ const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
  *           schema:
  *             type: object
  *             required:
+ *               - centerId
  *               - courseId
+ *               - subjectId
+ *               - monthId
  *             properties:
- *               courseId:
- *                 type: integer
- *                 example: 5
  *               centerId:
  *                 type: integer
  *                 example: 1
+ *               courseId:
+ *                 type: integer
+ *                 example: 5
  *               subjectId:
  *                 type: integer
- *                 example: 2
- *               date:
- *                 type: string
- *                 format: date
- *                 example: "2025-03-27"
+ *                 example: 3
+ *               monthId:
+ *                 type: integer
+ *                 example: 12
  *     responses:
  *       201:
  *         description: Enrollment created successfully
  *         content:
  *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 enrollment:
- *                   type: object
- *                   properties:
- *                     id:
- *                       type: integer
- *                     userId:
- *                       type: integer
- *                     courseId:
- *                       type: integer
- *                     centerId:
- *                       type: integer
- *                     subjectId:
- *                       type: integer
- *                     date:
- *                       type: string
- *                       format: date
+ *             example:
+ *               id: 10
+ *               userId: 1
+ *               centerId: 1
+ *               courseId: 5
+ *               subjectId: 3
+ *               monthId: 12
  *       400:
  *         description: Validation error
  *       500:
@@ -98,42 +164,19 @@ router.post("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), enr
  *         description: List of enrollments with related data
  *         content:
  *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   id:
- *                     type: integer
- *                   userId:
- *                     type: integer
- *                   courseId:
- *                     type: integer
- *                   centerId:
- *                     type: integer
- *                   subjectId:
- *                     type: integer
- *                   date:
- *                     type: string
- *                     format: date
- *                   Center:
- *                     type: object
- *                     properties:
- *                       name:
- *                         type: string
- *                   Course:
- *                     type: object
- *                     properties:
- *                       id:
- *                         type: integer
- *                       name:
- *                         type: string
- *                       phone:
- *                         type: string
- *                       location:
- *                         type: string
- *       500:
- *         description: Server error
+ *             example:
+ *               - id: 1
+ *                 userId: 1
+ *                 centerId: 1
+ *                 courseId: 5
+ *                 subjectId: 3
+ *                 monthId: 12
+ *               - id: 2
+ *                 userId: 2
+ *                 centerId: 2
+ *                 courseId: 6
+ *                 subjectId: 4
+ *                 monthId: 11
  */
 router.get("/", enrollmentController.getAllEnrollments);
 
@@ -155,94 +198,19 @@ router.get("/", enrollmentController.getAllEnrollments);
  *         description: Enrollment data
  *         content:
  *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 id:
- *                   type: integer
- *                 userId:
- *                   type: integer
- *                 courseId:
- *                   type: integer
- *                 centerId:
- *                   type: integer
- *                 subjectId:
- *                   type: integer
- *                 date:
- *                   type: string
- *                   format: date
+ *             example:
+ *               id: 1
+ *               userId: 1
+ *               centerId: 1
+ *               courseId: 5
+ *               subjectId: 3
+ *               monthId: 12
  *       404:
  *         description: Enrollment not found
  *       500:
  *         description: Server error
  */
 router.get("/:id", enrollmentController.getEnrollmentById);
-
-/**
- * @swagger
- * /enrollments/{id}:
- *   patch:
- *     summary: Partially update enrollment by ID
- *     tags: [Enrollments]
- *     security:
- *       - BearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: Enrollment ID
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               courseId:
- *                 type: integer
- *               centerId:
- *                 type: integer
- *               subjectId:
- *                 type: integer
- *               date:
- *                 type: string
- *                 format: date
- *     responses:
- *       200:
- *         description: Enrollment partially updated
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                 data:
- *                   type: object
- *                   properties:
- *                     id:
- *                       type: integer
- *                     userId:
- *                       type: integer
- *                     courseId:
- *                       type: integer
- *                     centerId:
- *                       type: integer
- *                     subjectId:
- *                       type: integer
- *                     date:
- *                       type: string
- *                       format: date
- *       400:
- *         description: Validation error
- *       404:
- *         description: Enrollment not found
- *       500:
- *         description: Server error
- */
-router.patch("/:id", verifyTokenAndRole(["ADMIN", "SUPERADMIN", "CEO"]), enrollmentController.patchEnrollment);
 
 /**
  * @swagger

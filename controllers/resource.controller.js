@@ -16,7 +16,7 @@ const createResource = async (req, res) => {
             where: {
                 name
             }
-        });
+        })
 
         if (resource) {
             return res.status(400).send("Resource already exists");

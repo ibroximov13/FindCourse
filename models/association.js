@@ -13,6 +13,7 @@ const Branch = require("./branch.model");
 const BranchCourseItem = require("./branchCourseItem.model");
 const SubjectItem = require("./subjectItem.model");
 const CourseItem = require("./courseItem.model");
+const Month = require("./month.model");
 
 User.hasMany(Resource, { foreignKey: "userId" });
 Resource.belongsTo(User, { foreignKey: "userId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
@@ -68,10 +69,15 @@ Course.belongsToMany(Center, { through: CourseItem, foreignKey: 'courseId', othe
 Subject.hasMany(Enrollment, { foreignKey: "subjectId" });
 Enrollment.belongsTo(Subject, { foreignKey: "subjectId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
+<<<<<<< HEAD
 Course.hasMany(Enrollment, { foreignKey: "courseId" });
 Enrollment.belongsTo(Course, { foreignKey: "courseId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
 
+=======
+Month.hasMany(Enrollment, {foreignKey: "monthId" });
+Enrollment.belongsTo(Month, { foreignKey: "monthId", onDelete: "CASCADE", onUpdate: "CASCADE"})
+>>>>>>> 0854c253cf783d19f1981b6e05df60d5ac51d6a5
 
 
 
@@ -147,5 +153,6 @@ module.exports = {
     SubjectItem,
     BranchSubItem,
     BranchCourseItem,
-    CourseItem
+    CourseItem,
+    Month
 };

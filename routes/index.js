@@ -13,4 +13,4 @@ route.use("/likes", require("./like.routes"));
 route.use("/myself", require("./mySelf.routes"));
 route.use("/comments", require("./comment.routes"));
 
-module.exports = route
+module.exports = route;

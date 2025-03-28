@@ -14,7 +14,7 @@ const updateCategoryValidate = (data) => {
         image: Joi.string().optional()
     });
     return schema.validate(data);
-};
+}
 
 const categoryByIdValidate = (data) => {
     const schema = Joi.object({

@@ -1,10 +1,14 @@
-const User = require("../models/user.model");
-const Region = require("../models/region.model");
-const Category = require("../models/category.model");
-const Subject = require("../models/subject.model");
-const Course = require("../models/course.model");
+// const User = require("../models/user.model");
+// const Region = require("../models/region.model");
+// const Category = require("../models/category.model");
+// const Subject = require("../models/subject.model");
+// const Course = require("../models/course.model");
+// const Month = require("../models/month.model"); 
 const bcrypt = require("bcrypt");
 const { db } = require("../config/db");
+const { User, Region, Category, Subject, Course, Month } = require("../models");
+
+User
 
 async function fullData() {
   try {
@@ -13,11 +17,13 @@ async function fullData() {
     await Category.destroy({ where: {} });
     await Subject.destroy({ where: {} });
     await Course.destroy({ where: {} });
+    await Month.destroy({ where: {} }); 
 
     await db.query("ALTER TABLE regions AUTO_INCREMENT = 1");
     await db.query("ALTER TABLE categories AUTO_INCREMENT = 1");
     await db.query("ALTER TABLE subjects AUTO_INCREMENT = 1");
     await db.query("ALTER TABLE courses AUTO_INCREMENT = 1");
+    await db.query("ALTER TABLE months AUTO_INCREMENT = 1"); 
     await db.query("ALTER TABLE users AUTO_INCREMENT = 1");
 
     const regionNames = [
@@ -41,17 +47,37 @@ async function fullData() {
     }
     console.log("All regions created");
 
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    for (let i = 0; i < monthNames.length; i++) {
+      await Month.create({ name: monthNames[i] });
+    }
+    console.log("All months created");
+
     const categoryData = [
-        { name: "Science", image: "http://example.com/images/science.jpg" },
-        { name: "Mathematics", image: "http://example.com/images/mathematics.jpg" },
-        { name: "Languages", image: "http://example.com/images/languages.jpg" },
-        { name: "Technology", image: "http://example.com/images/technology.jpg" },
-        { name: "Arts", image: "http://example.com/images/arts.jpg" },
-      ];
-      
-      for (let i = 0; i < categoryData.length; i++) {
-        await Category.create(categoryData[i]);
-      }
+      { name: "Science", image: "http://example.com/images/science.jpg" },
+      { name: "Mathematics", image: "http://example.com/images/mathematics.jpg" },
+      { name: "Languages", image: "http://example.com/images/languages.jpg" },
+      { name: "Technology", image: "http://example.com/images/technology.jpg" },
+      { name: "Arts", image: "http://example.com/images/arts.jpg" },
+    ];
+
+    for (let i = 0; i < categoryData.length; i++) {
+      await Category.create(categoryData[i]);
+    }
     console.log("All categories created");
 
     const subjectData = [
@@ -101,4 +127,4 @@ async function fullData() {
   }
 }
 
-module.exports = { fullData }
+module.exports = { fullData };

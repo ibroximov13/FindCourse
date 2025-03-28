@@ -12,7 +12,7 @@ const route = Router();
  *     description: Retrieves information about the authenticated user, including their comments and associated centers with courses
  *     tags: [MyProfile]
  *     security:
- *       - bearerAuth: []
+ *       - BearerAuth: []
  *     responses:
  *       200:
  *         description: Successfully retrieved user details
