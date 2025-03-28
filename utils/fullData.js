@@ -1,14 +1,6 @@
-// const User = require("../models/user.model");
-// const Region = require("../models/region.model");
-// const Category = require("../models/category.model");
-// const Subject = require("../models/subject.model");
-// const Course = require("../models/course.model");
-// const Month = require("../models/month.model"); 
 const bcrypt = require("bcrypt");
 const { db } = require("../config/db");
 const { User, Region, Category, Subject, Course, Month } = require("../models");
-
-User
 
 async function fullData() {
   try {
@@ -45,7 +37,7 @@ async function fullData() {
     for (let i = 0; i < regionNames.length; i++) {
       await Region.create({ name: regionNames[i] });
     }
-    console.log("All regions created");
+    console.log("Regions created");
 
     const monthNames = [
       "January",
@@ -65,7 +57,7 @@ async function fullData() {
     for (let i = 0; i < monthNames.length; i++) {
       await Month.create({ name: monthNames[i] });
     }
-    console.log("All months created");
+    console.log("Months created");
 
     const categoryData = [
       { name: "Science", image: "http://example.com/images/science.jpg" },
@@ -78,7 +70,7 @@ async function fullData() {
     for (let i = 0; i < categoryData.length; i++) {
       await Category.create(categoryData[i]);
     }
-    console.log("All categories created");
+    console.log("Categories created");
 
     const subjectData = [
       { name: "Physics", image: "http://example.com/images/physics.jpg" },
@@ -91,7 +83,7 @@ async function fullData() {
     for (let i = 0; i < subjectData.length; i++) {
       await Subject.create(subjectData[i]);
     }
-    console.log("All subjects created");
+    console.log("Subjects created");
 
     const courseData = [
       { name: "Introduction to Physics", categoryId: 1 },
@@ -104,7 +96,7 @@ async function fullData() {
     for (let i = 0; i < courseData.length; i++) {
       await Course.create(courseData[i]);
     }
-    console.log("All courses created");
+    console.log("Courses created");
 
     const adminExists = await User.findOne({ where: { role: "ADMIN" } });
     if (!adminExists) {

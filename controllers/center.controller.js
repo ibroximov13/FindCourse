@@ -1,47 +1,48 @@
-const { SubjectItem, CourseItem, Branch, Subject, Course, User, Like, Center, Region } = require("../models");
-const { Op } = require("sequelize");
+const { SubjectItem, CourseItem, Branch, Subject, Course, User, Like, Center, Region, Comment } = require("../models");
+const { Op, Sequelize } = require("sequelize");
 const { createCenterValidation, updateCenterValidation } = require("../validation/center.validate");
-const logger = require("../config/log").child({model: "center"})
+const logger = require("../config/log").child({ model: "center" });
 
 const createCenter = async (req, res) => {
   try {
-    const {error, value} = createCenterValidation.validate(req.body);
+    const { error, value } = createCenterValidation.validate(req.body);
     if (error) {
       return res.status(422).send(error.details[0].message);
     }
 
     let userId = req.user.id;
-    let {subjects, courses, name, regionId, ...rest} = value;
+    let { subjects, courses, name, regionId, ...rest } = value;
     let findOne = await Center.findOne({
       where: {
-        name, regionId
-      }
+        name,
+        regionId,
+      },
     });
 
     if (findOne) {
-      return res.status(400).send({message: "Center already exists"});
+      return res.status(400).send({ message: "Center already exists" });
     }
-    const center = await Center.create({...rest, name, regionId, userId});
+    const center = await Center.create({ ...rest, name, regionId, userId });
 
     let centerId = center.id;
     let a = subjects.map((r) => {
       return {
         centerId: centerId,
-        subjectId: r
-      }
+        subjectId: r,
+      };
     });
-    
+
     await SubjectItem.bulkCreate(a);
 
     let b = courses.map((r) => {
       return {
         centerId: centerId,
-        courseId: r
-      }
+        courseId: r,
+      };
     });
 
     await CourseItem.bulkCreate(b);
-    
+
     logger.info(`Center created with ID: ${center.id}`);
     res.status(201).send(center);
   } catch (error) {
@@ -63,22 +64,13 @@ const getAllCenters = async (req, res) => {
 
     let centers = await Center.findAll({
       include: [
-        {
-          model: Branch,
-        },
-        {
-          model: Region
-        },
-        {
-          model: User,
-          attributes: ["id", "fullName"]
-        },
-        // {
-        //   model: Comment,
-        //   attributes: [
-        //     [Sequelize.fn('AVG', Sequelize.col('Comment.star')), 'averageStar'], 
-        //   ],
-        // }
+        { model: Branch, attributes: [] },
+        { model: Region, attributes: [] },
+        { model: User, attributes: ["fullName"] },
+        { model: Comment, attributes: ["star"], required: false },
+        { model: SubjectItem, attributes: [], include: [{ model: Subject, attributes: ["name"] }] },
+        { model: CourseItem, include: [{ model: Course, attributes: ["name"] }] },
+        { model: Like, attributes: [] }
       ],
       subQuery: false,
       where: {
@@ -89,8 +81,15 @@ const getAllCenters = async (req, res) => {
         ],
       },
       attributes: {
-        exclude: ["regionId", "userId"]
+        exclude: ["regionId", "userId"],
+        include: [
+          [Sequelize.fn("AVG", Sequelize.col("Comments.star")), "averageStar"], 
+          [Sequelize.literal(`(
+            SELECT COUNT(*) FROM Likes WHERE Likes.centerId = Center.id
+          )`), "likeCount"]
+        ],
       },
+      group: ["Center.id"],
       limit: take,
       offset: offset,
       order: [[column, order]],
@@ -108,42 +107,81 @@ const getCenterById = async (req, res) => {
   try {
     const center = await Center.findOne({
       where: {
-        id: req.params.id
+        id: req.params.id,
       },
       include: [
         {
           model: Branch,
+          required: false, // Agar branch bo‘lmasa ham xatolik chiqmasin
         },
         {
-          model: Region
+          model: Region,
         },
         {
           model: User,
-          attributes: ["id", "fullName"]
+          attributes: ["id", "fullName"],
         },
-      ]
+        {
+          model: Comment,
+          attributes: [],
+          required: false,
+        },
+        {
+          model: SubjectItem,
+          include: [{ model: Subject }],
+        },
+        {
+          model: CourseItem,
+          include: [{ model: Course }],
+        },
+        {
+          model: Like,
+          attributes: [],
+        },
+      ],
+      attributes: {
+        exclude: ["regionId", "userId"],
+        include: [
+          [Sequelize.fn("AVG", Sequelize.col("comments.star")), "averageStar"],
+          [Sequelize.fn("COUNT", Sequelize.col("Likes.id")), "likeCount"],
+        ],
+      },
+      group: ["Center.id", "Region.id", "User.id"], // Branch.id olib tashlandi
+      subQuery: false, // Like va Comment bo‘yicha noto‘g‘ri natija chiqmasligi uchun
     });
+
     if (!center) {
       logger.warn(`Center not found with ID: ${req.params.id}`);
       return res.status(404).json({ message: "Center not found" });
     }
+
+    const subjects = center.SubjectItems?.map((item) => item.Subject) || [];
+    const courses = center.CourseItems?.map((item) => item.Course) || [];
+
+    const response = {
+      ...center.toJSON(),
+      averageStar: center.dataValues.averageStar || 0,
+      likeCount: center.dataValues.likeCount || 0,
+      subjects,
+      courses,
+    };
+
     logger.info(`Fetched center with ID: ${req.params.id}`);
-    res.json(center);
+    res.json(response);
   } catch (error) {
     logger.error(`getCenterById error: ${error.message}`);
     res.status(500).json({ error: error.message });
   }
-}
+};
 
 
 const patchCenter = async (req, res) => {
   try {
-    let {error, value} = updateCenterValidation.validate(req.body);
+    let { error, value } = updateCenterValidation.validate(req.body);
     if (error) {
       return res.status(422).send(error.details[0].message);
     }
-    const center = await Center.findOne({where: {id: req.params.id}});
-    console.log(center);
+    const center = await Center.findOne({ where: { id: req.params.id } });
     if (!center) {
       logger.warn(`Center not found for patch with ID: ${req.params.id}`);
       return res.status(404).json({ message: "Center not found" });
@@ -177,13 +215,13 @@ const deleteCenter = async (req, res) => {
 
 const uploadImage = async (req, res) => {
   try {
-      if (!req.file) {
-          return res.status(400).json({ error: "Rasm yuklanishi kerak" });
-      }
-      const imageUrl = `${req.protocol}://${req.get("host")}/image/${req.file.filename}`;
-      res.status(200).json({ url: imageUrl });
+    if (!req.file) {
+      return res.status(400).json({ error: "Rasm yuklanishi kerak" });
+    }
+    const imageUrl = `${req.protocol}://${req.get("host")}/image/${req.file.filename}`;
+    res.status(200).json({ url: imageUrl });
   } catch (error) {
-      res.status(500).json({ error: "Serverda xatolik yuz berdi" });
+    res.status(500).json({ error: "Serverda xatolik yuz berdi" });
   }
 };
 
@@ -193,5 +231,5 @@ module.exports = {
   getCenterById,
   patchCenter,
   deleteCenter,
-  uploadImage
+  uploadImage,
 };

@@ -57,7 +57,7 @@ const upload = require("../multer/center.multer");
  *                 description: List of course IDs offered at the center
  *                 items:
  *                   type: integer
- *                 example: [4, 5, 6]
+ *                 example: [4, 5]
  *     responses:
  *       201:
  *         description: Center successfully created
