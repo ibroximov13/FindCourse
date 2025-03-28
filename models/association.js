@@ -68,6 +68,10 @@ Course.belongsToMany(Center, { through: CourseItem, foreignKey: 'courseId', othe
 Subject.hasMany(Enrollment, { foreignKey: "subjectId" });
 Enrollment.belongsTo(Subject, { foreignKey: "subjectId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
 
+Course.hasMany(Enrollment, { foreignKey: "courseId" });
+Enrollment.belongsTo(Course, { foreignKey: "courseId", onDelete: 'CASCADE', onUpdate: "CASCADE" });
+
+
 
 
 
