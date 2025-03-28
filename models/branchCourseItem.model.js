@@ -17,4 +17,4 @@ const BranchCourseItem = db.define("branchCourseItems", {
     },
 }, {timestamps: false});
 
-module.exports = BranchCourseItem;
+module.exports = BranchCourseItem

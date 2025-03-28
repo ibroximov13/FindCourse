@@ -1,10 +1,9 @@
-// controllers/mySelf.controller.js
 const logger = require("../config/log").child({ model: "MySelf" });
 const { totp } = require("otplib");
 const { User, Center, CourseItem, Course, Comment } = require("../models");
 const sendEmail = require("../utils/sendEmail");
 const { sendOtpByResetPasswordValidate, resetPasswordValidate, updateImage } = require("../validation/myself.validate");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt")
 
 const getAll = async (req, res) => {
     try {
@@ -20,12 +19,7 @@ const getAll = async (req, res) => {
                     model: Center,
                     include: [
                         {
-                            model: CourseItem,
-                            include: [
-                                {
-                                    model: Course
-                                }
-                            ]
+                            model: Course
                         }
                     ]
                 }

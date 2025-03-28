@@ -64,3 +64,86 @@
 {"level":"info","message":"enrollment created with ID: 1","model":"enrollment","timestamp":"2025-03-28T03:51:30.125Z"}
 {"level":"info","message":"fetched enrollment with ID: 1","model":"enrollment","timestamp":"2025-03-28T03:52:18.293Z"}
 {"level":"info","message":"Fetched 1 enrollments on page 1","model":"enrollment","timestamp":"2025-03-28T03:52:36.835Z"}
+{"level":"info","message":"getAllCategory","model":"Category","timestamp":"2025-03-28T04:27:05.953Z"}
+{"level":"warn","message":"Center not found with ID: 1","model":"center","timestamp":"2025-03-28T04:30:55.399Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T04:31:02.332Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T04:56:53.813Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T05:53:33.936Z"}
+{"level":"info","message":"Users Excel exported successfully, count: 1","model":"user","timestamp":"2025-03-28T05:53:52.044Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T06:48:52.963Z"}
+{"level":"info","message":"Center created with ID: 2","model":"center","timestamp":"2025-03-28T06:49:23.400Z"}
+{"level":"info","message":"Comment created with ID: 1","model":"comment","timestamp":"2025-03-28T06:49:45.400Z"}
+{"level":"error","message":"Validation error on createComment: \"star\" must be less than or equal to 5","model":"comment","timestamp":"2025-03-28T06:49:54.434Z"}
+{"level":"info","message":"Comment created with ID: 2","model":"comment","timestamp":"2025-03-28T06:49:59.103Z"}
+{"level":"error","message":"getCenterById error: Comment is not defined","model":"center","timestamp":"2025-03-28T06:50:15.410Z"}
+{"level":"error","message":"getAllCenters error: Comment is not defined","model":"center","timestamp":"2025-03-28T06:50:28.417Z"}
+{"level":"error","message":"getAllCenters error: SubjectItem is not associated to Center!","model":"center","timestamp":"2025-03-28T06:52:57.454Z"}
+{"level":"error","message":"getAllCenters error: SubjectItem is not associated to Center!","model":"center","timestamp":"2025-03-28T06:54:47.555Z"}
+{"level":"info","message":"Fetched 0 comments","model":"comment","timestamp":"2025-03-28T08:33:49.033Z"}
+{"level":"warn","message":"Login attempt for non-existent user: +998901234567","model":"user","timestamp":"2025-03-28T08:34:10.918Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T08:34:19.462Z"}
+{"level":"info","message":"Center created with ID: 3","model":"center","timestamp":"2025-03-28T08:34:43.489Z"}
+{"level":"info","message":"Comment created with ID: 3","model":"comment","timestamp":"2025-03-28T08:34:54.159Z"}
+{"level":"info","message":"Comment created with ID: 4","model":"comment","timestamp":"2025-03-28T08:35:03.378Z"}
+{"level":"info","message":"Comment created with ID: 5","model":"comment","timestamp":"2025-03-28T08:35:08.480Z"}
+{"level":"info","message":"Fetched 3 comments","model":"comment","timestamp":"2025-03-28T08:35:18.979Z"}
+{"level":"error","message":"getCenterById error: SubjectItem is not associated to Center!","model":"center","timestamp":"2025-03-28T08:35:48.328Z"}
+{"level":"error","message":"getCenterById error: Subject is not associated to SubjectItem!","model":"center","timestamp":"2025-03-28T08:42:47.084Z"}
+{"level":"error","message":"getCenterById error: Unknown column 'Branch.id' in 'group statement'","model":"center","timestamp":"2025-03-28T08:44:19.133Z"}
+{"level":"error","message":"getAllCenters error: Unknown column 'Branch.id' in 'group statement'","model":"center","timestamp":"2025-03-28T08:58:41.929Z"}
+{"level":"error","message":"getAllCenters error: Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.Branches.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-28T09:04:14.644Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.SubjectItems.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-28T09:09:02.095Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:09:17.320Z"}
+{"level":"info","message":"Center created with ID: 4","model":"center","timestamp":"2025-03-28T09:09:46.965Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.SubjectItems.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-28T09:09:56.795Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.SubjectItems->Subject.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-28T09:14:11.264Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:14:58.671Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-28T09:15:19.958Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.SubjectItems->Subject.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-28T09:15:37.077Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.SubjectItems->Subject.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-28T09:19:51.514Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:20:00.461Z"}
+{"level":"info","message":"Center created with ID: 2","model":"center","timestamp":"2025-03-28T09:20:22.024Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.SubjectItems->Subject.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-28T09:20:35.405Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:22:30.226Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:23:25.806Z"}
+{"level":"info","message":"Center created with ID: 3","model":"center","timestamp":"2025-03-28T09:23:47.458Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:23:55.038Z"}
+{"level":"info","message":"Comment created with ID: 1","model":"comment","timestamp":"2025-03-28T09:24:55.069Z"}
+{"level":"info","message":"Comment created with ID: 2","model":"comment","timestamp":"2025-03-28T09:25:00.770Z"}
+{"level":"info","message":"Comment created with ID: 3","model":"comment","timestamp":"2025-03-28T09:25:05.310Z"}
+{"level":"error","message":"getCenterById error: Unknown column 'Branch.id' in 'group statement'","model":"center","timestamp":"2025-03-28T09:25:17.850Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:25:31.388Z"}
+{"level":"info","message":"like created with ID: 1","model":"like","timestamp":"2025-03-28T09:26:15.137Z"}
+{"level":"warn","message":"User 1 already liked center 3","model":"like","timestamp":"2025-03-28T09:26:18.265Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:26:27.271Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:27:05.543Z"}
+{"level":"warn","message":"User 1 already liked center 3","model":"like","timestamp":"2025-03-28T09:27:12.853Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:36:35.255Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:36:54.601Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-28T09:37:12.767Z"}
+{"level":"error","message":"getAllCenters error: Unknown column 'comments.star' in 'field list'","model":"center","timestamp":"2025-03-28T09:37:19.991Z"}
+{"level":"info","message":"Comment created with ID: 1","model":"comment","timestamp":"2025-03-28T09:37:40.000Z"}
+{"level":"info","message":"Comment created with ID: 2","model":"comment","timestamp":"2025-03-28T09:37:46.836Z"}
+{"level":"info","message":"Comment created with ID: 3","model":"comment","timestamp":"2025-03-28T09:37:53.194Z"}
+{"level":"info","message":"like created with ID: 1","model":"like","timestamp":"2025-03-28T09:38:02.961Z"}
+{"level":"error","message":"getAllCenters error: Unknown column 'comments.star' in 'field list'","model":"center","timestamp":"2025-03-28T09:38:15.604Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:39:10.171Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:39:24.605Z"}
+{"level":"info","message":"Center created with ID: 2","model":"center","timestamp":"2025-03-28T09:39:43.896Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:39:51.990Z"}
+{"level":"info","message":"Comment created with ID: 4","model":"comment","timestamp":"2025-03-28T09:40:10.412Z"}
+{"level":"info","message":"Comment created with ID: 5","model":"comment","timestamp":"2025-03-28T09:40:15.804Z"}
+{"level":"info","message":"Comment created with ID: 6","model":"comment","timestamp":"2025-03-28T09:40:19.675Z"}
+{"level":"info","message":"like created with ID: 2","model":"like","timestamp":"2025-03-28T09:40:29.282Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:40:35.590Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:43:05.076Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:43:16.859Z"}
+{"level":"info","message":"Center created with ID: 3","model":"center","timestamp":"2025-03-28T09:43:36.851Z"}
+{"level":"info","message":"like created with ID: 3","model":"like","timestamp":"2025-03-28T09:43:47.311Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:44:02.396Z"}
+{"level":"error","message":"createComment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`comments`, CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"comment","timestamp":"2025-03-28T09:44:27.938Z"}
+{"level":"info","message":"Comment created with ID: 8","model":"comment","timestamp":"2025-03-28T09:44:36.269Z"}
+{"level":"error","message":"createComment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`comments`, CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"comment","timestamp":"2025-03-28T09:44:51.284Z"}
+{"level":"info","message":"Comment created with ID: 10","model":"comment","timestamp":"2025-03-28T09:45:02.629Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:45:06.551Z"}
+{"level":"error","message":"getCenterById error: Unknown column 'Branch.id' in 'group statement'","model":"center","timestamp":"2025-03-28T09:45:51.980Z"}

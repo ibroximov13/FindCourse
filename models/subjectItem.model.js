@@ -15,7 +15,9 @@ const SubjectItem = db.define("SubjectItem", {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-}, {timestamps: false});
+}, {timestamps: false,
+    tableName: "SubjectItems",
+});
 
 module.exports = SubjectItem;
 
