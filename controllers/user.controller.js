@@ -365,7 +365,7 @@ async function getMeProfile(req, res) {
         const userId = req.user.id;
         const user = await User.findOne({
             where: { id: userId },
-            attributes: ["id", "fullName", "email", "phone", "image"]
+            attributes: ["id", "fullName", "email", "phone", "photo"]
         });
 
         if (!user) {

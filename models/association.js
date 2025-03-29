@@ -90,6 +90,10 @@ Enrollment.belongsTo(Month, { foreignKey: "monthId", onDelete: "CASCADE", onUpda
 Category.hasMany(Resource, { foreignKey: "categoryId" });
 Resource.belongsTo(Category, { foreignKey: "categoryId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 
+Course.hasMany(Enrollment, { foreignKey: "courseId", onDelete: "CASCADE", onUpdate: "CASCADE" });
+Enrollment.belongsTo(Course, { foreignKey: "courseId", onDelete: "CASCADE", onUpdate: "CASCADE" });
+
+
 module.exports = {
   User,
   Region,

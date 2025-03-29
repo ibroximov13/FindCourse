@@ -1,4 +1,3 @@
-// controllers/mySelf.controller.js
 const logger = require("../config/log").child({ model: "MySelf" });
 const { totp } = require("otplib");
 const { User, Center, CourseItem, Course, Comment } = require("../models");
@@ -9,7 +8,7 @@ const bcrypt = require("bcrypt");
 const getAll = async (req, res) => {
     try {
         const userId = req.user.id;
-        const myself = await User.findOne({  // Changed from findAll to findOne since we're getting a single user
+        const myself = await User.findOne({
             where: { id: userId },
             include: [
                 {
@@ -36,6 +35,7 @@ const getAll = async (req, res) => {
         if (!myself) {
             return res.status(404).json({ message: "User not found" });
         }
+
         res.status(200).json(myself);
     } catch (error) {
         logger.error(error.message);

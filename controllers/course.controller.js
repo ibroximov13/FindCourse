@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { Course, BranchCourseItem, Branch, CourseItem, Center } = require("../models");
+const { Course, BranchCourseItem, Branch, CourseItem, Center, Enrollment } = require("../models");
 const { createCourseValidate, courseByIdValidate, updateCourseValidate } = require("../validation/course.validate");
 
 const logger = require("../config/log").child({ model: "Cource" });
@@ -42,7 +42,7 @@ const updateCourse = async (req, res) => {
         }
         let { name, image } = value;
         let course = await Course.findByPk(id);
-        if (!course) {  
+        if (!course) {
             return res.status(400).send("Course not found");
         }
 
@@ -52,7 +52,7 @@ const updateCourse = async (req, res) => {
                 image: image || course.image
             },
             {
-                where: { id: id }  
+                where: { id: id }
             }
         );
 
@@ -100,11 +100,9 @@ const getAllCourse = async (req, res) => {
         let allowedColumns = ["id", "name"];
         let column = allowedColumns.includes(req.query.column) ? req.query.column : "id";
 
-        const course = await Course.findAll({
+        const courses = await Course.findAll({
             where: {
-                name: {
-                    [Op.like]: `%${filter}%`
-                }
+                name: { [Op.like]: `%${filter}%` }
             },
             include: [
                 {
@@ -114,17 +112,22 @@ const getAllCourse = async (req, res) => {
                 {
                     model: Center,
                     attributes: ["id", "name", "adress", "location"]
-                }
+                },
             ],
             limit: limit,
             offset: offset,
             order: [[column, order]]
         });
-        logger.info("GetAllCourse");
-        res.status(200).send(course);
+
+        if (!courses.length) {
+            return res.status(404).json({ message: "No courses found" });
+        }
+
+        console.log("GetAllCourse:", courses);
+        res.status(200).json(courses);
     } catch (error) {
-        logger.error(error.message);
-        console.log(error.message);
+        console.error("Error in getAllCourse:", error);
+        res.status(500).json({ error: error.message });
     }
 };
 
