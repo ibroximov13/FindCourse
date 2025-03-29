@@ -37,12 +37,12 @@ const createEnrollment = async (req, res) => {
 const getAllEnrollments = async (req, res) => {
   try {
     let page = parseInt(req.query.page) || 1;
-        let take = parseInt(req.query.take) || 10;
-        let offset = (page - 1) * take;
+    let take = parseInt(req.query.take) || 10;
+    let offset = (page - 1) * take;
 
-        let order = req.query.order === "DESC" ? "DESC" : "ASC";
-        let allowedColumns = ["id", "userId", "courseId", "subjectId", "centerId", "date"];
-        let column = allowedColumns.includes(req.query.column) ? req.query.column : "id";
+    let order = req.query.order === "DESC" ? "DESC" : "ASC";
+    let allowedColumns = ["id", "userId", "courseId", "subjectId", "centerId", "date"];
+    let column = allowedColumns.includes(req.query.column) ? req.query.column : "id";
 
     const enrollments = await Enrollment.findAll({
       include: [
@@ -52,26 +52,24 @@ const getAllEnrollments = async (req, res) => {
         },
         {
             model: Course,
-            attributes: ["id", "name", "phone", "location"]
+            attributes: ["id", "name"]
         },
         {
-            model: User, 
-            through: { attributes: [] } 
+            model: User,
+            attributes: ["id", "fullName"] 
         },
         {
-            model: Subject , 
-            through: { attributes: [] } 
+            model: Subject,
+            attributes: ["id", "name"] 
         },
-    ],
-    // group: ["Branch.id", "region.id", "center.id"], 
-    subQuery: false,
-    limit: take,
-    offset: offset,
-    order: [[column, order]]
+      ],
+      limit: take,
+      offset: offset,
+      order: [[column, order]]
     });
 
-    logger.info(`Fetched ${enrollments.rows.length} enrollments on page ${page}`);
-    req.status(201).send(enrollments);
+    logger.info(`Fetched ${enrollments.length} enrollments on page ${page}`);
+    res.status(200).send(enrollments); 
   } catch (error) {
     logger.error(`getAllEnrollments error: ${error.message}`);
     res.status(500).json({ error: error.message });

@@ -7,6 +7,10 @@ const Enrollment = db.define("Enrollment", {
         autoIncrement: true,
         primaryKey: true
     },
+    userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
     courseId: {
         type: DataTypes.INTEGER,
         allowNull: false

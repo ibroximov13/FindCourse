@@ -112,3 +112,48 @@
 {"level":"info","message":"enrollment created with ID: 5","model":"enrollment","timestamp":"2025-03-29T07:38:28.532Z"}
 {"level":"info","message":"fetched enrollment with ID: 5","model":"enrollment","timestamp":"2025-03-29T07:38:42.031Z"}
 {"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T07:38:49.350Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T07:44:17.750Z"}
+{"level":"info","message":"Center created with ID: 5","model":"center","timestamp":"2025-03-29T07:44:38.448Z"}
+{"level":"info","message":"enrollment created with ID: 6","model":"enrollment","timestamp":"2025-03-29T07:44:49.910Z"}
+{"level":"info","message":"fetched enrollment with ID: 6","model":"enrollment","timestamp":"2025-03-29T07:45:01.961Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T07:45:16.729Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T07:59:11.768Z"}
+{"level":"warn","message":"enrollment not found with ID: 5","model":"enrollment","timestamp":"2025-03-29T07:59:24.054Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T07:59:36.618Z"}
+{"level":"info","message":"Center created with ID: 6","model":"center","timestamp":"2025-03-29T08:00:03.176Z"}
+{"level":"info","message":"enrollment created with ID: 7","model":"enrollment","timestamp":"2025-03-29T08:00:23.809Z"}
+{"level":"info","message":"enrollment created with ID: 8","model":"enrollment","timestamp":"2025-03-29T08:00:32.669Z"}
+{"level":"info","message":"fetched enrollment with ID: 7","model":"enrollment","timestamp":"2025-03-29T08:00:43.305Z"}
+{"level":"info","message":"fetched enrollment with ID: 8","model":"enrollment","timestamp":"2025-03-29T08:00:51.480Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T08:00:57.856Z"}
+{"level":"warn","message":"enrollment not found with ID: 8","model":"enrollment","timestamp":"2025-03-29T08:02:00.043Z"}
+{"level":"warn","message":"enrollment not found with ID: 7","model":"enrollment","timestamp":"2025-03-29T08:02:09.270Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T08:02:17.158Z"}
+{"level":"info","message":"Center created with ID: 7","model":"center","timestamp":"2025-03-29T08:02:38.241Z"}
+{"level":"info","message":"enrollment created with ID: 9","model":"enrollment","timestamp":"2025-03-29T08:02:53.292Z"}
+{"level":"info","message":"enrollment created with ID: 10","model":"enrollment","timestamp":"2025-03-29T08:03:00.265Z"}
+{"level":"info","message":"fetched enrollment with ID: 9","model":"enrollment","timestamp":"2025-03-29T08:03:08.144Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T08:03:14.150Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T08:40:01.860Z"}
+{"level":"info","message":"Center created with ID: 8","model":"center","timestamp":"2025-03-29T08:40:23.261Z"}
+{"level":"info","message":"enrollment created with ID: 11","model":"enrollment","timestamp":"2025-03-29T08:40:35.094Z"}
+{"level":"info","message":"fetched enrollment with ID: 11","model":"enrollment","timestamp":"2025-03-29T08:40:47.473Z"}
+{"level":"error","message":"getAllEnrollments error: Unknown column 'Course.phone' in 'field list'","model":"enrollment","timestamp":"2025-03-29T08:40:56.797Z"}
+{"level":"warn","message":"enrollment not found with ID: 11","model":"enrollment","timestamp":"2025-03-29T08:42:40.118Z"}
+{"level":"error","message":"getAllEnrollments error: Unknown column 'user.name' in 'field list'","model":"enrollment","timestamp":"2025-03-29T08:42:49.874Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T08:43:00.128Z"}
+{"level":"info","message":"Center created with ID: 9","model":"center","timestamp":"2025-03-29T08:43:08.590Z"}
+{"level":"info","message":"enrollment created with ID: 12","model":"enrollment","timestamp":"2025-03-29T08:43:31.569Z"}
+{"level":"error","message":"getAllEnrollments error: Unknown column 'user.name' in 'field list'","model":"enrollment","timestamp":"2025-03-29T08:43:39.148Z"}
+{"level":"warn","message":"enrollment not found with ID: 12","model":"enrollment","timestamp":"2025-03-29T08:46:01.977Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T08:46:47.827Z"}
+{"level":"error","message":"getMeProfile error: Unknown column 'image' in 'field list'","model":"user","timestamp":"2025-03-29T08:47:19.663Z"}
+{"level":"info","message":"Center created with ID: 10","model":"center","timestamp":"2025-03-29T08:47:35.787Z"}
+{"level":"info","message":"enrollment created with ID: 13","model":"enrollment","timestamp":"2025-03-29T08:47:47.430Z"}
+{"level":"info","message":"fetched enrollment with ID: 13","model":"enrollment","timestamp":"2025-03-29T08:47:59.107Z"}
+{"level":"info","message":"Fetched 1 enrollments on page 1","model":"enrollment","timestamp":"2025-03-29T08:48:08.275Z"}
+{"level":"info","message":"fetched enrollment with ID: 13","model":"enrollment","timestamp":"2025-03-29T08:53:54.179Z"}
+{"level":"error","message":"getMeProfile error: Unknown column 'image' in 'field list'","model":"user","timestamp":"2025-03-29T08:54:10.062Z"}
+{"level":"info","message":"Center created with ID: 11","model":"center","timestamp":"2025-03-29T08:54:56.233Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-29T08:55:09.814Z"}
+{"level":"info","message":"Fetched center with ID: 11","model":"center","timestamp":"2025-03-29T08:55:31.237Z"}

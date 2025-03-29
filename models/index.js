@@ -1,4 +1,5 @@
 const {db} = require("../config/db");
+const Enrollment = require("./enrollment.model");
 require("./association.js");
 
 const User = require("./user.model");
@@ -9,7 +10,6 @@ const Subject = require("./subject.model");
 const Course = require("./course.model");
 const Category = require("./category.model");
 const Resource = require("./resource.model");
-const Enrollment = require("./enrollment.model");
 const Comment = require("./comment.model");
 const Like = require("./like.model");
 const BranchSubItem = require("./branchSubItem.model");

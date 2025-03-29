@@ -16,7 +16,7 @@ const Month = db.define("months", {
 {
   tableName: "months",
     timestamps: false,
-});
+})
 
 
 
