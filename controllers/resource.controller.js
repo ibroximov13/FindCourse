@@ -75,8 +75,8 @@ const deleteResource = async (req, res) => {
 
 const getAllResource = async (req, res) => {
     try {
-        let page = req.query.page || 1;
-        let take = req.query.take || 10;
+        let page = parseInt(req.query.page) || 1;
+        let take = parseInt(req.query.take) || 10;
         let offset  = ( page - 1 ) * take;
 
         let filter = req.query.filter || "";

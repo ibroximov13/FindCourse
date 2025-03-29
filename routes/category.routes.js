@@ -88,23 +88,80 @@ route.post("/", verifyTokenAndRole(["ADMIN"]), createCategory);
  * @swagger
  * /categories/upload-image:
  *   post:
- *     summary: Upload user image
+ *     summary: Upload a category image
  *     tags: [Categories]
+ *     description: Uploads an image for a category, restricted to users with ADMIN role.
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
  *         multipart/form-data:
  *           schema:
  *             type: object
+ *             required:
+ *               - categoryImage
  *             properties:
- *               branchImage:
+ *               categoryImage:
  *                 type: string
  *                 format: binary
+ *                 description: The image file to upload
  *     responses:
  *       200:
- *         description: Image uploaded successfully.
+ *         description: Image uploaded successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Image uploaded successfully
+ *                 filePath:
+ *                   type: string
+ *                   example: /uploads/categoryImage-123456.jpg
+ *       400:
+ *         description: Bad request - Missing or invalid image file
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: No file uploaded or invalid file format
+ *       401:
+ *         description: Unauthorized - Invalid or missing token
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Unauthorized
+ *       403:
+ *         description: Forbidden - Insufficient permissions
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Access denied - ADMIN role required
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: An error occurred while uploading the image
  */
-route.post("/upload-image", upload.single("categoryImage"), verifyTokenAndRole(["ADMIN"]) , uploadImage);
+route.post("/upload-image", upload.single("categoryImage"), verifyTokenAndRole(["ADMIN"]), uploadImage);
 
 /**
  * @swagger
@@ -175,23 +232,65 @@ route.patch("/:id", verifyTokenAndRole(["ADMIN", "SUPERADMIN"]), updateCategory)
  *         description: Category not found
  */
 route.delete("/:id", verifyTokenAndRole(["ADMIN"]), deleteCategory);
-
 /**
  * @swagger
  * /categories:
  *   get:
- *     summary: Get all categories
+ *     summary: Retrieve a list of categories
  *     tags: [Categories]
- *     description: Retrieves a list of all categories
+ *     description: Fetches a paginated list of categories with optional filtering and sorting.
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           default: 1
+ *         description: The page number for pagination
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *         description: Number of categories to return per page
+ *       - in: query
+ *         name: filter
+ *         schema:
+ *           type: string
+ *           default: ""
+ *         description: Filter categories by name (partial match)
+ *       - in: query
+ *         name: column
+ *         schema:
+ *           type: string
+ *           enum: [id, name]
+ *           default: id
+ *         description: Column to sort by
+ *       - in: query
+ *         name: order
+ *         schema:
+ *           type: string
+ *           enum: [ASC, DESC]
+ *           default: ASC
+ *         description: Sort order (ascending or descending)
  *     responses:
  *       200:
- *         description: List of categories
+ *         description: A list of categories
  *         content:
  *           application/json:
  *             schema:
  *               type: array
  *               items:
  *                 $ref: '#/components/schemas/CategoryResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: An error occurred while fetching categories
  */
 route.get("/", getAllCategory);
 
@@ -222,27 +321,5 @@ route.get("/", getAllCategory);
  *         description: Category not found
  */
 route.get("/:id", getOneCategory);
-
-/**
- * @swagger
- * /categories/upload-image:
- *   post:
- *     summary: Upload user image
- *     tags: [Categories]
- *     requestBody:
- *       required: true
- *       content:
- *         multipart/form-data:
- *           schema:
- *             type: object
- *             properties:
- *               userImage:
- *                 type: string
- *                 format: binary
- *     responses:
- *       200:
- *         description: Image uploaded successfully.
- */
-route.post("/upload-image", upload.single("userImage"), uploadImage);
 
 module.exports = route;         

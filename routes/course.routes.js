@@ -158,18 +158,61 @@ route.delete("/:id", verifyTokenAndRole(["ADMIN"]), deleteCourse);
  * @swagger
  * /courses:
  *   get:
- *     summary: Get all courses
+ *     summary: Retrieve a list of courses
  *     tags: [Courses]
- *     description: Retrieves a list of all courses
+ *     description: Fetches a paginated list of courses with optional filtering and sorting.
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           default: 1
+ *         description: The page number for pagination
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *         description: Number of courses to return per page
+ *       - in: query
+ *         name: filter
+ *         schema:
+ *           type: string
+ *           default: ""
+ *         description: Filter courses by name (partial match)
+ *       - in: query
+ *         name: column
+ *         schema:
+ *           type: string
+ *           enum: [id, name]
+ *           default: id
+ *         description: Column to sort by
+ *       - in: query
+ *         name: order
+ *         schema:
+ *           type: string
+ *           enum: [ASC, DESC]
+ *           default: ASC
+ *         description: Sort order (ascending or descending)
  *     responses:
  *       200:
- *         description: List of courses
+ *         description: A list of courses
  *         content:
  *           application/json:
  *             schema:
  *               type: array
  *               items:
  *                 $ref: '#/components/schemas/CourseResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: An error occurred while fetching courses
  */
 route.get("/", getAllCourse);
 

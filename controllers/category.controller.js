@@ -90,9 +90,9 @@ const deleteCategory = async (req, res) => {
 
 const getAllCategory = async (req, res) => {
     try {
-        let page = req.query.page || 1;
-        let take = req.query.take || 10;
-        let offset = ( page - 1 ) * take;
+        let page = parseInt(req.query.page) || 1;
+        let limit = parseInt(req.query.limit) || 10;
+        let offset = ( page - 1 ) * limit;
 
         let filter = req.query.filter || "";
         const order = req.query.order === "DESC" ? "DESC" : "ASC";
@@ -105,7 +105,7 @@ const getAllCategory = async (req, res) => {
                     [Op.like]: `%${filter}%`
                 }
             },
-            limit: take,
+            limit: limit,
             offset: offset,
             order: [[column, order]]
         });
