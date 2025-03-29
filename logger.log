@@ -64,3 +64,5 @@
 {"level":"info","message":"enrollment created with ID: 1","model":"enrollment","timestamp":"2025-03-28T03:51:30.125Z"}
 {"level":"info","message":"fetched enrollment with ID: 1","model":"enrollment","timestamp":"2025-03-28T03:52:18.293Z"}
 {"level":"info","message":"Fetched 1 enrollments on page 1","model":"enrollment","timestamp":"2025-03-28T03:52:36.835Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-28T10:26:59.781Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-28T10:27:40.182Z"}
