@@ -364,3 +364,12 @@
 {"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-29T07:51:02.616Z"}
 {"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_12` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-29T07:51:20.635Z"}
 {"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_12` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-29T07:52:11.453Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T08:52:46.241Z"}
+{"level":"error","message":"getMeProfile error: Unknown column 'image' in 'field list'","model":"user","timestamp":"2025-03-29T08:53:21.536Z"}
+{"level":"info","message":"Fetched 1 users (Page: 1)","model":"user","timestamp":"2025-03-29T08:54:25.292Z"}
+{"level":"error","message":"getMeProfile error: Unknown column 'image' in 'field list'","model":"user","timestamp":"2025-03-29T08:54:34.107Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T09:21:37.160Z"}
+{"level":"error","message":"getMeProfile error: Unknown column 'image' in 'field list'","model":"user","timestamp":"2025-03-29T09:22:06.063Z"}
+{"level":"info","message":"Center created with ID: 5","model":"center","timestamp":"2025-03-29T09:22:45.248Z"}
+{"level":"info","message":"enrollment created with ID: 9","model":"enrollment","timestamp":"2025-03-29T09:24:00.300Z"}
+{"level":"error","message":"getAllEnrollments error: Course is not associated to Enrollment!","model":"enrollment","timestamp":"2025-03-29T09:24:10.376Z"}
