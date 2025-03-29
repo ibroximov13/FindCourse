@@ -1,0 +1,366 @@
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T21:11:35.671Z"}
+{"level":"error","message":"createCenter error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`courseitems`, CONSTRAINT `courseitems_ibfk_2` FOREIGN KEY (`courseId`) REFERENCES `courses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"center","timestamp":"2025-03-27T21:12:02.498Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T21:12:47.553Z"}
+{"level":"info","message":"Comment created with ID: 3","model":"comment","timestamp":"2025-03-27T21:13:06.273Z"}
+{"level":"info","message":"Fetched center with ID: 2","model":"center","timestamp":"2025-03-27T21:13:41.236Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T21:42:16.321Z"}
+{"level":"error","message":"Error!","model":"Branch","timestamp":"2025-03-27T21:42:37.275Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T21:44:23.910Z"}
+{"level":"error","message":"Error!","model":"Branch","timestamp":"2025-03-27T21:44:52.472Z"}
+{"level":"error","message":"Error!","model":"Branch","timestamp":"2025-03-27T21:45:21.936Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T21:49:07.997Z"}
+{"level":"warn","message":"Branch creation failed: Center with ID 1 not found","model":"Branch","timestamp":"2025-03-27T21:49:29.256Z"}
+{"level":"warn","message":"Branch creation failed: Center with ID 2 not found","model":"Branch","timestamp":"2025-03-27T21:49:38.142Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T21:49:58.551Z"}
+{"level":"info","message":"Center created with ID: 3","model":"center","timestamp":"2025-03-27T21:50:15.963Z"}
+{"level":"info","message":"A new branch was created by 1","model":"Branch","timestamp":"2025-03-27T21:50:27.305Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-27T21:51:26.906Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T21:52:17.530Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T21:52:52.161Z"}
+{"level":"error","message":"Op is not defined","model":"Cource","timestamp":"2025-03-27T21:53:28.004Z"}
+{"level":"error","message":"Unknown column 'Centers.star' in 'field list'","model":"Cource","timestamp":"2025-03-27T21:56:41.297Z"}
+{"level":"error","message":"Unknown column 'Centers.star' in 'field list'","model":"Cource","timestamp":"2025-03-27T21:57:48.782Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T00:20:50.124Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T00:21:02.921Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T00:21:14.833Z"}
+{"level":"info","message":"Center created with ID: 4","model":"center","timestamp":"2025-03-28T00:21:49.939Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T00:23:07.448Z"}
+{"level":"info","message":"Center created with ID: 5","model":"center","timestamp":"2025-03-28T00:23:39.863Z"}
+{"level":"info","message":"like created with ID: 1","model":"like","timestamp":"2025-03-28T00:23:52.157Z"}
+{"level":"info","message":"Fetched 0 likes (Page: 1)","model":"like","timestamp":"2025-03-28T00:25:35.936Z"}
+{"level":"info","message":"Fetched 1 likes (Page: 1)","model":"like","timestamp":"2025-03-28T00:25:43.551Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T01:34:27.751Z"}
+{"level":"error","message":"CourseItem is not associated to Center!","model":"MySelf","timestamp":"2025-03-28T01:34:46.927Z"}
+{"level":"info","message":"Fetched 12 months","model":"enrollment","timestamp":"2025-03-28T02:47:33.234Z"}
+{"level":"info","message":"Fetched 12 months","model":"enrollment","timestamp":"2025-03-28T02:49:35.442Z"}
+{"level":"info","message":"Fetched 10 months on page 1","model":"enrollment","timestamp":"2025-03-28T02:54:38.224Z"}
+{"level":"info","message":"Fetched 10 months on page 1","model":"enrollment","timestamp":"2025-03-28T02:57:43.227Z"}
+{"level":"info","message":"Fetched 10 months on page 1","model":"enrollment","timestamp":"2025-03-28T02:57:51.106Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T02:58:08.042Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T02:58:16.826Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-28T02:58:43.636Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T02:59:36.648Z"}
+{"level":"info","message":"Center created with ID: 2","model":"center","timestamp":"2025-03-28T03:00:00.133Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T03:00:11.252Z"}
+{"level":"warn","message":"validation error: \"userId\" is not allowed","model":"enrollment","timestamp":"2025-03-28T03:00:30.318Z"}
+{"level":"warn","message":"validation error: centerId must be a positive number","model":"enrollment","timestamp":"2025-03-28T03:01:36.570Z"}
+{"level":"warn","message":"validation error: \"userId\" is not allowed","model":"enrollment","timestamp":"2025-03-28T03:02:32.548Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T03:03:43.651Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T03:04:06.786Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-28T03:04:13.800Z"}
+{"level":"warn","message":"validation error: \"userId\" is not allowed","model":"enrollment","timestamp":"2025-03-28T03:04:32.064Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T03:11:59.234Z"}
+{"level":"info","message":"Center created with ID: 2","model":"center","timestamp":"2025-03-28T03:12:25.740Z"}
+{"level":"error","message":"createEnrollment error: notNull Violation: Enrollment.userId cannot be null,\nnotNull Violation: Enrollment.date cannot be null","model":"enrollment","timestamp":"2025-03-28T03:12:38.547Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T03:26:11.183Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-28T03:26:28.693Z"}
+{"level":"error","message":"createEnrollment error: notNull Violation: Enrollment.userId cannot be null,\nnotNull Violation: Enrollment.date cannot be null","model":"enrollment","timestamp":"2025-03-28T03:26:39.964Z"}
+{"level":"warn","message":"validation error: \"userId\" is not allowed","model":"enrollment","timestamp":"2025-03-28T03:27:12.584Z"}
+{"level":"warn","message":"validation error: \"userId\" is not allowed","model":"enrollment","timestamp":"2025-03-28T03:27:42.013Z"}
+{"level":"error","message":"createEnrollment error: Cannot access 'enrollmentData' before initialization","model":"enrollment","timestamp":"2025-03-28T03:29:49.070Z"}
+{"level":"error","message":"createEnrollment error: notNull Violation: Enrollment.date cannot be null","model":"enrollment","timestamp":"2025-03-28T03:30:44.972Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T03:50:55.223Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-28T03:51:18.420Z"}
+{"level":"info","message":"enrollment created with ID: 1","model":"enrollment","timestamp":"2025-03-28T03:51:30.125Z"}
+{"level":"info","message":"fetched enrollment with ID: 1","model":"enrollment","timestamp":"2025-03-28T03:52:18.293Z"}
+{"level":"info","message":"Fetched 1 enrollments on page 1","model":"enrollment","timestamp":"2025-03-28T03:52:36.835Z"}
+<<<<<<<<< Temporary merge branch 1
+{"level":"info","message":"getAllCategory","model":"Category","timestamp":"2025-03-28T04:27:05.953Z"}
+{"level":"warn","message":"Center not found with ID: 1","model":"center","timestamp":"2025-03-28T04:30:55.399Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T04:31:02.332Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T04:56:53.813Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T05:53:33.936Z"}
+{"level":"info","message":"Users Excel exported successfully, count: 1","model":"user","timestamp":"2025-03-28T05:53:52.044Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T06:48:52.963Z"}
+{"level":"info","message":"Center created with ID: 2","model":"center","timestamp":"2025-03-28T06:49:23.400Z"}
+{"level":"info","message":"Comment created with ID: 1","model":"comment","timestamp":"2025-03-28T06:49:45.400Z"}
+{"level":"error","message":"Validation error on createComment: \"star\" must be less than or equal to 5","model":"comment","timestamp":"2025-03-28T06:49:54.434Z"}
+{"level":"info","message":"Comment created with ID: 2","model":"comment","timestamp":"2025-03-28T06:49:59.103Z"}
+{"level":"error","message":"getCenterById error: Comment is not defined","model":"center","timestamp":"2025-03-28T06:50:15.410Z"}
+{"level":"error","message":"getAllCenters error: Comment is not defined","model":"center","timestamp":"2025-03-28T06:50:28.417Z"}
+{"level":"error","message":"getAllCenters error: SubjectItem is not associated to Center!","model":"center","timestamp":"2025-03-28T06:52:57.454Z"}
+{"level":"error","message":"getAllCenters error: SubjectItem is not associated to Center!","model":"center","timestamp":"2025-03-28T06:54:47.555Z"}
+{"level":"info","message":"Fetched 0 comments","model":"comment","timestamp":"2025-03-28T08:33:49.033Z"}
+{"level":"warn","message":"Login attempt for non-existent user: +998901234567","model":"user","timestamp":"2025-03-28T08:34:10.918Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T08:34:19.462Z"}
+{"level":"info","message":"Center created with ID: 3","model":"center","timestamp":"2025-03-28T08:34:43.489Z"}
+{"level":"info","message":"Comment created with ID: 3","model":"comment","timestamp":"2025-03-28T08:34:54.159Z"}
+{"level":"info","message":"Comment created with ID: 4","model":"comment","timestamp":"2025-03-28T08:35:03.378Z"}
+{"level":"info","message":"Comment created with ID: 5","model":"comment","timestamp":"2025-03-28T08:35:08.480Z"}
+{"level":"info","message":"Fetched 3 comments","model":"comment","timestamp":"2025-03-28T08:35:18.979Z"}
+{"level":"error","message":"getCenterById error: SubjectItem is not associated to Center!","model":"center","timestamp":"2025-03-28T08:35:48.328Z"}
+{"level":"error","message":"getCenterById error: Subject is not associated to SubjectItem!","model":"center","timestamp":"2025-03-28T08:42:47.084Z"}
+{"level":"error","message":"getCenterById error: Unknown column 'Branch.id' in 'group statement'","model":"center","timestamp":"2025-03-28T08:44:19.133Z"}
+{"level":"error","message":"getAllCenters error: Unknown column 'Branch.id' in 'group statement'","model":"center","timestamp":"2025-03-28T08:58:41.929Z"}
+{"level":"error","message":"getAllCenters error: Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.Branches.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-28T09:04:14.644Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.SubjectItems.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-28T09:09:02.095Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:09:17.320Z"}
+{"level":"info","message":"Center created with ID: 4","model":"center","timestamp":"2025-03-28T09:09:46.965Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.SubjectItems.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-28T09:09:56.795Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.SubjectItems->Subject.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-28T09:14:11.264Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:14:58.671Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-28T09:15:19.958Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.SubjectItems->Subject.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-28T09:15:37.077Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.SubjectItems->Subject.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-28T09:19:51.514Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:20:00.461Z"}
+{"level":"info","message":"Center created with ID: 2","model":"center","timestamp":"2025-03-28T09:20:22.024Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.SubjectItems->Subject.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-28T09:20:35.405Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:22:30.226Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:23:25.806Z"}
+{"level":"info","message":"Center created with ID: 3","model":"center","timestamp":"2025-03-28T09:23:47.458Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:23:55.038Z"}
+{"level":"info","message":"Comment created with ID: 1","model":"comment","timestamp":"2025-03-28T09:24:55.069Z"}
+{"level":"info","message":"Comment created with ID: 2","model":"comment","timestamp":"2025-03-28T09:25:00.770Z"}
+{"level":"info","message":"Comment created with ID: 3","model":"comment","timestamp":"2025-03-28T09:25:05.310Z"}
+{"level":"error","message":"getCenterById error: Unknown column 'Branch.id' in 'group statement'","model":"center","timestamp":"2025-03-28T09:25:17.850Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:25:31.388Z"}
+{"level":"info","message":"like created with ID: 1","model":"like","timestamp":"2025-03-28T09:26:15.137Z"}
+{"level":"warn","message":"User 1 already liked center 3","model":"like","timestamp":"2025-03-28T09:26:18.265Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:26:27.271Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:27:05.543Z"}
+{"level":"warn","message":"User 1 already liked center 3","model":"like","timestamp":"2025-03-28T09:27:12.853Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:36:35.255Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:36:54.601Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-28T09:37:12.767Z"}
+{"level":"error","message":"getAllCenters error: Unknown column 'comments.star' in 'field list'","model":"center","timestamp":"2025-03-28T09:37:19.991Z"}
+{"level":"info","message":"Comment created with ID: 1","model":"comment","timestamp":"2025-03-28T09:37:40.000Z"}
+{"level":"info","message":"Comment created with ID: 2","model":"comment","timestamp":"2025-03-28T09:37:46.836Z"}
+{"level":"info","message":"Comment created with ID: 3","model":"comment","timestamp":"2025-03-28T09:37:53.194Z"}
+{"level":"info","message":"like created with ID: 1","model":"like","timestamp":"2025-03-28T09:38:02.961Z"}
+{"level":"error","message":"getAllCenters error: Unknown column 'comments.star' in 'field list'","model":"center","timestamp":"2025-03-28T09:38:15.604Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:39:10.171Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:39:24.605Z"}
+{"level":"info","message":"Center created with ID: 2","model":"center","timestamp":"2025-03-28T09:39:43.896Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:39:51.990Z"}
+{"level":"info","message":"Comment created with ID: 4","model":"comment","timestamp":"2025-03-28T09:40:10.412Z"}
+{"level":"info","message":"Comment created with ID: 5","model":"comment","timestamp":"2025-03-28T09:40:15.804Z"}
+{"level":"info","message":"Comment created with ID: 6","model":"comment","timestamp":"2025-03-28T09:40:19.675Z"}
+{"level":"info","message":"like created with ID: 2","model":"like","timestamp":"2025-03-28T09:40:29.282Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:40:35.590Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:43:05.076Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:43:16.859Z"}
+{"level":"info","message":"Center created with ID: 3","model":"center","timestamp":"2025-03-28T09:43:36.851Z"}
+{"level":"info","message":"like created with ID: 3","model":"like","timestamp":"2025-03-28T09:43:47.311Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:44:02.396Z"}
+{"level":"error","message":"createComment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`comments`, CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"comment","timestamp":"2025-03-28T09:44:27.938Z"}
+{"level":"info","message":"Comment created with ID: 8","model":"comment","timestamp":"2025-03-28T09:44:36.269Z"}
+{"level":"error","message":"createComment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`comments`, CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"comment","timestamp":"2025-03-28T09:44:51.284Z"}
+{"level":"info","message":"Comment created with ID: 10","model":"comment","timestamp":"2025-03-28T09:45:02.629Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T09:45:06.551Z"}
+{"level":"error","message":"getCenterById error: Unknown column 'Branch.id' in 'group statement'","model":"center","timestamp":"2025-03-28T09:45:51.980Z"}
+=========
+>>>>>>> 0854c253cf783d19f1981b6e05df60d5ac51d6a5
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T04:05:19.134Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-28T04:06:02.444Z"}
+{"level":"info","message":"enrollment created with ID: 1","model":"enrollment","timestamp":"2025-03-28T04:06:16.200Z"}
+{"level":"info","message":"A new branch was created by 1","model":"Branch","timestamp":"2025-03-28T04:06:36.241Z"}
+{"level":"info","message":"Fetched 10 months on page 1","model":"enrollment","timestamp":"2025-03-28T05:33:00.586Z"}
+{"level":"error","message":"getAllEnrollments error: Center is not defined","model":"enrollment","timestamp":"2025-03-28T05:33:11.516Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-28T05:33:57.390Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-28T05:35:15.751Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T05:37:40.127Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T05:38:11.639Z"}
+{"level":"info","message":"Center created with ID: 2","model":"center","timestamp":"2025-03-28T05:38:29.322Z"}
+{"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_101` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-28T05:38:45.185Z"}
+{"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_101` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-28T05:41:23.145Z"}
+{"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_101` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-28T05:47:12.908Z"}
+{"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_101` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-28T05:48:08.834Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-28T05:49:17.095Z"}
+{"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_101` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-28T05:51:37.474Z"}
+{"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_2` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-28T05:52:03.894Z"}
+{"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_2` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-28T05:52:16.448Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T05:52:25.502Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-28T05:52:41.730Z"}
+{"level":"info","message":"enrollment created with ID: 3","model":"enrollment","timestamp":"2025-03-28T05:52:56.201Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-28T05:53:10.075Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-28T05:54:13.513Z"}
+{"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_12` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-28T05:54:19.930Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T05:54:49.571Z"}
+{"level":"info","message":"Center created with ID: 2","model":"center","timestamp":"2025-03-28T05:54:55.195Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T05:54:59.076Z"}
+{"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_12` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-28T05:55:06.221Z"}
+{"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_12` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-28T05:55:11.212Z"}
+{"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_12` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-28T06:17:57.299Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T06:18:35.846Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-28T06:19:07.316Z"}
+{"level":"info","message":"enrollment created with ID: 1","model":"enrollment","timestamp":"2025-03-28T06:19:19.421Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T06:49:08.896Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T06:50:27.667Z"}
+{"level":"info","message":"session create with ID: 1","model":"sessions","timestamp":"2025-03-28T07:07:21.574Z"}
+{"level":"info","message":"Fetched 1 sessions","model":"sessions","timestamp":"2025-03-28T07:25:24.320Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T07:26:59.232Z"}
+{"level":"info","message":"region create: 14","model":"region","timestamp":"2025-03-28T07:27:43.630Z"}
+{"level":"info","message":"region partially updated: 1","model":"region","timestamp":"2025-03-28T07:29:25.614Z"}
+{"level":"info","message":"region delete: 1","model":"region","timestamp":"2025-03-28T07:29:38.561Z"}
+{"level":"warn","message":"Branch creation failed: Region with ID 1 not found","model":"Branch","timestamp":"2025-03-28T07:29:57.575Z"}
+{"level":"warn","message":"Branch creation failed: Center with ID 1 not found","model":"Branch","timestamp":"2025-03-28T07:30:12.713Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-28T07:30:26.022Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-28T07:31:51.331Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T07:59:53.663Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-28T08:01:59.846Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T08:03:45.766Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-28T08:04:32.908Z"}
+{"level":"error","message":"Missing where attribute in the options parameter","model":"Cource","timestamp":"2025-03-28T08:05:29.166Z"}
+{"level":"error","message":"Missing where attribute in the options parameter","model":"Cource","timestamp":"2025-03-28T08:05:39.529Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T08:07:38.611Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T08:11:01.028Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-28T08:18:29.759Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-28T08:18:50.241Z"}
+{"level":"error","message":"Missing where attribute in the options parameter","model":"Cource","timestamp":"2025-03-28T08:19:05.442Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-28T08:19:13.082Z"}
+{"level":"error","message":"Missing where attribute in the options parameter","model":"Cource","timestamp":"2025-03-28T08:24:04.138Z"}
+{"level":"error","message":"Missing where attribute in the options parameter","model":"Cource","timestamp":"2025-03-28T08:24:44.959Z"}
+{"level":"error","message":"Missing where attribute in the options parameter","model":"Cource","timestamp":"2025-03-28T08:25:15.523Z"}
+{"level":"error","message":"Cannot read properties of null (reading 'dataValues')","model":"Cource","timestamp":"2025-03-28T08:25:37.410Z"}
+{"level":"error","message":"Missing where attribute in the options parameter","model":"Cource","timestamp":"2025-03-28T08:25:45.888Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-28T08:26:26.165Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T08:26:44.835Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-28T08:27:13.101Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-28T08:27:28.023Z"}
+{"level":"error","message":"Unknown column 'Centers.star' in 'field list'","model":"Cource","timestamp":"2025-03-28T08:27:45.188Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T08:30:26.730Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-28T08:31:07.145Z"}
+{"level":"error","message":"Unknown column 'Centers.star' in 'field list'","model":"Cource","timestamp":"2025-03-28T08:31:14.624Z"}
+{"level":"info","message":"GetOneCourse","model":"Cource","timestamp":"2025-03-28T08:31:57.195Z"}
+{"level":"info","message":"Course updated","model":"Cource","timestamp":"2025-03-28T08:32:13.359Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-28T08:32:35.503Z"}
+{"level":"error","message":"Unknown column 'Centers.star' in 'field list'","model":"Subject","timestamp":"2025-03-28T08:32:50.600Z"}
+{"level":"info","message":"GetOneSubject","model":"Subject","timestamp":"2025-03-28T08:38:01.255Z"}
+{"level":"info","message":"getAllResource","model":"Resource","timestamp":"2025-03-28T08:38:17.226Z"}
+{"level":"error","message":"loginUser error: notNull Violation: sessions.userIp cannot be null","model":"user","timestamp":"2025-03-28T09:17:55.719Z"}
+{"level":"error","message":"loginUser error: Column 'userIp' cannot be null","model":"user","timestamp":"2025-03-28T09:19:21.613Z"}
+{"level":"error","message":"loginUser error: Column 'userIp' cannot be null","model":"user","timestamp":"2025-03-28T09:23:20.686Z"}
+{"level":"error","message":"loginUser error: WHERE parameter \"userIp\" has invalid \"undefined\" value","model":"user","timestamp":"2025-03-28T09:30:35.107Z"}
+{"level":"error","message":"loginUser error: verifyToken is not defined","model":"user","timestamp":"2025-03-28T09:45:13.839Z"}
+{"level":"error","message":"loginUser error: verifyToken is not defined","model":"user","timestamp":"2025-03-28T09:45:16.055Z"}
+{"level":"warn","message":"Login validation failed: \"userIp\" is not allowed","model":"user","timestamp":"2025-03-28T09:45:56.947Z"}
+{"level":"error","message":"loginUser error: verifyToken is not defined","model":"user","timestamp":"2025-03-28T09:47:41.109Z"}
+{"level":"warn","message":"Login validation failed: \"userIp\" is required","model":"user","timestamp":"2025-03-28T09:50:49.225Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:51:08.952Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T09:55:26.021Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T10:08:23.253Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T10:10:47.690Z"}
+>>>>>>>>> Temporary merge branch 2
+{"level":"info","message":"OTP sent successfully to ilyosbekibrohimov22@gmail.com","model":"user","timestamp":"2025-03-29T03:40:15.566Z"}
+{"level":"warn","message":"Invalid OTP attempt for +998910128133","model":"user","timestamp":"2025-03-29T03:40:58.709Z"}
+{"level":"warn","message":"OTP verification validation failed: \"email\" must be a valid email","model":"user","timestamp":"2025-03-29T03:41:15.587Z"}
+{"level":"warn","message":"OTP verification validation failed: \"phone\" with value \"-998910128133\" fails to match the required pattern: /^\\+998[0-9]{9}$/","model":"user","timestamp":"2025-03-29T03:41:25.460Z"}
+{"level":"warn","message":"Invalid OTP attempt for +998910128133","model":"user","timestamp":"2025-03-29T03:41:33.847Z"}
+{"level":"info","message":"OTP verified successfully for +998910128133","model":"user","timestamp":"2025-03-29T03:41:51.035Z"}
+{"level":"info","message":"User registered successfully with ID: 2","model":"user","timestamp":"2025-03-29T03:42:07.384Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T03:51:08.134Z"}
+{"level":"info","message":"Image uploaded successfully: http://localhost:3000/image/1743222004270-667205981.webp","model":"user","timestamp":"2025-03-29T04:20:04.275Z"}
+{"level":"warn","message":"Image upload attempted without file","model":"user","timestamp":"2025-03-29T04:26:23.125Z"}
+{"level":"info","message":"Image uploaded successfully: http://localhost:3000/image/1743222393169-818211462.jpg","model":"user","timestamp":"2025-03-29T04:26:33.193Z"}
+{"level":"warn","message":"Image upload attempted without file","model":"user","timestamp":"2025-03-29T04:33:06.528Z"}
+{"level":"info","message":"Fetched 1 users (Page: 1)","model":"user","timestamp":"2025-03-29T04:48:14.869Z"}
+{"level":"info","message":"Fetched 0 users (Page: 1)","model":"user","timestamp":"2025-03-29T04:48:42.923Z"}
+{"level":"info","message":"Fetched 1 users (Page: 1)","model":"user","timestamp":"2025-03-29T04:48:46.183Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T04:51:57.554Z"}
+{"level":"info","message":"region create: 14","model":"region","timestamp":"2025-03-29T04:52:21.624Z"}
+{"level":"warn","message":"Branch creation failed: Center with ID 1 not found","model":"Branch","timestamp":"2025-03-29T05:10:47.674Z"}
+{"level":"info","message":"Center created with ID: 3","model":"center","timestamp":"2025-03-29T05:11:22.430Z"}
+{"level":"error","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''10'' at line 1","model":"Category","timestamp":"2025-03-29T05:15:33.442Z"}
+{"level":"info","message":"getAllCategory","model":"Category","timestamp":"2025-03-29T05:19:17.261Z"}
+{"level":"info","message":"getAllCategory","model":"Category","timestamp":"2025-03-29T05:19:17.816Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-29T05:35:24.453Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T05:36:21.453Z"}
+{"level":"info","message":"Deleted Course - id: 1","model":"Cource","timestamp":"2025-03-29T05:36:46.664Z"}
+{"level":"info","message":"Course updated","model":"Cource","timestamp":"2025-03-29T05:37:10.664Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-29T05:37:17.234Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-29T05:38:25.650Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-29T05:40:35.135Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-29T05:40:41.206Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-29T05:40:48.645Z"}
+{"level":"info","message":"Fetched 10 months on page 1","model":"enrollment","timestamp":"2025-03-29T05:41:17.050Z"}
+{"level":"error","message":"getAllEnrollments error: Course is not associated to Enrollment!","model":"enrollment","timestamp":"2025-03-29T05:41:33.219Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T05:45:25.585Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T05:47:39.816Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T05:48:22.066Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T05:49:37.192Z"}
+{"level":"error","message":"loginUser error: Table 'exam.sessions' doesn't exist","model":"user","timestamp":"2025-03-29T05:53:16.735Z"}
+{"level":"error","message":"loginUser error: Table 'exam.sessions' doesn't exist","model":"user","timestamp":"2025-03-29T05:53:54.042Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T05:55:17.484Z"}
+{"level":"info","message":"Fetched 10 months on page 1","model":"enrollment","timestamp":"2025-03-29T05:55:29.094Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T05:55:38.287Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T05:57:21.022Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T05:58:59.446Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T06:00:38.945Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T06:05:46.651Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T06:07:25.493Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T06:08:11.812Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T06:08:13.972Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T06:09:05.443Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.comments.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:09:36.373Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.comments.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:12:28.184Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T06:12:35.654Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-29T06:13:17.715Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.comments.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:13:32.315Z"}
+{"level":"error","message":"getAllCenters error: Expression #13 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.SubjectItems->Subject.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:15:56.493Z"}
+{"level":"error","message":"getAllCenters error: In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'exam.Center.id'; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:16:16.773Z"}
+{"level":"error","message":"getAllCenters error: Expression #13 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.SubjectItems->Subject.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:17:08.492Z"}
+{"level":"error","message":"getAllCenters error: Expression #13 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.SubjectItems->Subject.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:17:57.334Z"}
+{"level":"error","message":"getAllCenters error: Expression #15 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.CourseItems.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:19:42.500Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.comments.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:20:55.895Z"}
+{"level":"error","message":"getAllCenters error: Expression #12 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.comments.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:21:33.048Z"}
+{"level":"error","message":"getAllCenters error: Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.SubjectItems->Subject.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:22:13.569Z"}
+{"level":"error","message":"getAllCenters error: Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.SubjectItems->Subject.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:23:39.525Z"}
+{"level":"error","message":"getAllCenters error: Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.Branches.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:27:53.655Z"}
+{"level":"error","message":"getAllCenters error: Expression #15 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.comments.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:32:35.190Z"}
+{"level":"error","message":"getAllCenters error: Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.Branches.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:33:30.031Z"}
+{"level":"error","message":"getAllCenters error: Expression #15 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.comments.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:34:20.681Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.comments.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:35:33.770Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T06:38:12.918Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-29T06:38:43.195Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.comments.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:38:50.796Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-29T06:39:04.754Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T06:39:17.995Z"}
+{"level":"info","message":"enrollment created with ID: 1","model":"enrollment","timestamp":"2025-03-29T06:39:28.151Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T06:39:35.527Z"}
+{"level":"error","message":"createCenter error: Table 'exam.subjectitems' doesn't exist","model":"center","timestamp":"2025-03-29T06:45:45.302Z"}
+{"level":"error","message":"loginUser error: Table 'exam.sessions' doesn't exist","model":"user","timestamp":"2025-03-29T06:46:23.817Z"}
+{"level":"error","message":"loginUser error: Table 'exam.sessions' doesn't exist","model":"user","timestamp":"2025-03-29T06:46:38.900Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T06:47:18.373Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.comments.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:47:48.887Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-29T06:48:10.267Z"}
+{"level":"info","message":"enrollment created with ID: 1","model":"enrollment","timestamp":"2025-03-29T06:48:28.366Z"}
+{"level":"error","message":"getAllEnrollments error: Course is not associated to Enrollment!","model":"enrollment","timestamp":"2025-03-29T06:48:40.375Z"}
+{"level":"warn","message":"Login attempt for non-existent user: +998901234567","model":"user","timestamp":"2025-03-29T06:57:12.274Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T06:57:48.331Z"}
+{"level":"error","message":"getAllCenters error: Expression #11 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.comments.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T06:58:24.372Z"}
+{"level":"info","message":"getAllCategory","model":"Category","timestamp":"2025-03-29T06:58:38.810Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-29T06:58:55.430Z"}
+{"level":"info","message":"enrollment created with ID: 1","model":"enrollment","timestamp":"2025-03-29T06:59:07.937Z"}
+{"level":"info","message":"enrollment created with ID: 2","model":"enrollment","timestamp":"2025-03-29T06:59:44.516Z"}
+{"level":"info","message":"Fetched 10 months on page 1","model":"enrollment","timestamp":"2025-03-29T07:00:01.357Z"}
+{"level":"error","message":"getAllEnrollments error: Course is associated to Enrollment using an alias. You must use the 'as' keyword to specify the alias within your include statement.","model":"enrollment","timestamp":"2025-03-29T07:00:12.172Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T07:06:41.453Z"}
+{"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_12` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-29T07:07:12.021Z"}
+{"level":"info","message":"Center created with ID: 2","model":"center","timestamp":"2025-03-29T07:07:26.070Z"}
+{"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_12` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-29T07:07:47.125Z"}
+{"level":"info","message":"enrollment created with ID: 5","model":"enrollment","timestamp":"2025-03-29T07:09:04.544Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T07:09:18.548Z"}
+{"level":"warn","message":"enrollment not found with ID: 1","model":"enrollment","timestamp":"2025-03-29T07:11:38.531Z"}
+{"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_12` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-29T07:11:48.834Z"}
+{"level":"error","message":"createLike error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`likes`, CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"like","timestamp":"2025-03-29T07:13:38.022Z"}
+{"level":"error","message":"createLike error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`likes`, CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"like","timestamp":"2025-03-29T07:13:55.042Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'length')","model":"enrollment","timestamp":"2025-03-29T07:20:10.563Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'length')","model":"enrollment","timestamp":"2025-03-29T07:20:49.413Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'length')","model":"enrollment","timestamp":"2025-03-29T07:20:58.891Z"}
+{"level":"error","message":"getAllEnrollments error: req.status is not a function","model":"enrollment","timestamp":"2025-03-29T07:21:34.752Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T07:22:12.998Z"}
+{"level":"error","message":"getAllEnrollments error: Unknown column 'Enrollment.date' in 'field list'","model":"enrollment","timestamp":"2025-03-29T07:28:14.021Z"}
+{"level":"error","message":"getAllEnrollments error: Course is not associated to Enrollment!","model":"enrollment","timestamp":"2025-03-29T07:40:39.575Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T07:40:56.881Z"}
+{"level":"warn","message":"Branch creation failed: Center with ID 1 not found","model":"Branch","timestamp":"2025-03-29T07:41:25.095Z"}
+{"level":"info","message":"Center created with ID: 3","model":"center","timestamp":"2025-03-29T07:41:40.535Z"}
+{"level":"info","message":"Center created with ID: 4","model":"center","timestamp":"2025-03-29T07:42:35.469Z"}
+{"level":"info","message":"A new branch was created by 1","model":"Branch","timestamp":"2025-03-29T07:43:22.718Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-29T07:43:34.682Z"}
+{"level":"error","message":"getCenterById error: Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'exam.Branches.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by","model":"center","timestamp":"2025-03-29T07:43:59.327Z"}
+{"level":"info","message":"Comment created with ID: 1","model":"comment","timestamp":"2025-03-29T07:46:13.392Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-29T07:46:44.427Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-29T07:48:33.160Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-29T07:51:02.616Z"}
+{"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_12` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-29T07:51:20.635Z"}
+{"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_12` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-29T07:52:11.453Z"}

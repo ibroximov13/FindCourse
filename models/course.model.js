@@ -1,9 +1,9 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
+const {db} = require("../config/db");
 
-const Course = sequelize.define("Course", {
+const Course = db.define("Course", {
     id: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
@@ -14,7 +14,7 @@ const Course = sequelize.define("Course", {
     image: {
         type: DataTypes.STRING
     },
-});
+}, {timestamps: false});
 
 module.exports = Course;
 

@@ -1,9 +1,9 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
+const { db } = require("../config/db");
 
-const Branch = sequelize.define("Branch", {
+const Branch = db.define("Branch", {
     id: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
@@ -23,9 +23,16 @@ const Branch = sequelize.define("Branch", {
         allowNull: false
     },
     regionId: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
+    centerId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
+}, {
+    timestamps: false,
+    tableName: "Branches"
 });
 
 module.exports = Branch;

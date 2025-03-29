@@ -1,37 +1,41 @@
 const {db} = require("../config/db");
-require("./associations");
+require("./association.js");
 
-const User = require("./user");
-const Region = require("./region");
-const Filial = require("./filial");
-const Center = require("./center");
-const Subject = require("./subject");
-const Course = require("./course");
-const Category = require("./category");
-const Resource = require("./resource");
-const Enrollment = require("./enrollment");
-const Comment = require("./comment");
-const Like = require("./like");
-const FilSubItem = require("./filSubItem");
-const FilCourseItem = require("./filCourseItem");
-const SubjectItem = require("./subjectItem");
-const CourseItem = require("./courseItem");
+const User = require("./user.model");
+const Region = require("./region.model");
+const Branch = require("./branch.model");
+const Center = require("./center.model");
+const Subject = require("./subject.model");
+const Course = require("./course.model");
+const Category = require("./category.model");
+const Resource = require("./resource.model");
+const Enrollment = require("./enrollment.model");
+const Comment = require("./comment.model");
+const Like = require("./like.model");
+const BranchSubItem = require("./branchSubItem.model");
+const BranchCourseItem = require("./branchCourseItem.model");
+const SubjectItem = require("./subjectItem.model");
+const CourseItem = require("./courseItem.model");
+const Month = require("./month.model");
+const Session = require("./session.model.js");
 
 module.exports = {
     User,
     Region,
-    Filial,
+    Branch,
     Center,
     Subject,
     Course,
     Category,
+    Month,
     Resource,
     Enrollment,
     Comment,
     Like,
-    FilSubItem,
-    FilCourseItem,
+    BranchSubItem,
+    BranchCourseItem,
     SubjectItem,
-    CourseItem
+    CourseItem,
+    Session
   };
   

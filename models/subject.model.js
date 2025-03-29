@@ -1,9 +1,9 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
+const {db} = require("../config/db");
 
-const Subject = sequelize.define("Subject", {
+const Subject = db.define("Subject", {
     id: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
@@ -14,7 +14,7 @@ const Subject = sequelize.define("Subject", {
     image: {
         type: DataTypes.STRING
     },
-});
+}, {timestamps: false});
 
 module.exports = Subject;
 

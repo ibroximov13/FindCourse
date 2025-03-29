@@ -1,9 +1,9 @@
 const { DataTypes } = require("sequelize");
-const { db } = require("../config/database");
+const { db } = require("../config/db");
 
 const Resource = db.define("Resource", {
     id: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
@@ -25,15 +25,15 @@ const Resource = db.define("Resource", {
 
     },
     userId: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         allowNull: false
 
     },
     categoryId: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         allowNull: false
 
     },
-});
+}, {timestamps: false});
 
 module.exports = Resource;

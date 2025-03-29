@@ -1,17 +1,17 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+const {db} = require("../config/db");
 
-const Comment = sequelize.define("comments", {
+const Comment = db.define("comments", {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    user_id: {
+    userId: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    center_id: {
+    centerId: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
@@ -23,6 +23,6 @@ const Comment = sequelize.define("comments", {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-});
+}, {timestamps: false});
 
 module.exports = Comment;
