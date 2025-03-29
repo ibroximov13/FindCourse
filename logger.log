@@ -216,3 +216,6 @@
 {"level":"info","message":"Fetched 0 enrollments on page 1","model":"enrollment","timestamp":"2025-03-29T09:27:14.017Z"}
 {"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T09:27:24.761Z"}
 {"level":"info","message":"Profile fetched for user ID: 1","model":"user","timestamp":"2025-03-29T09:28:01.293Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T09:59:41.452Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-29T10:00:25.227Z"}
+{"level":"info","message":"getAllCategory","model":"Category","timestamp":"2025-03-29T10:00:50.561Z"}
