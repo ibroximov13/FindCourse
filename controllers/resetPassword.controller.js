@@ -3,7 +3,7 @@ const logger = require("../config/log").child({ model: "MySelf" });
 const { totp } = require("otplib");
 const { User, Center, CourseItem, Course, Comment } = require("../models");
 const sendEmail = require("../utils/sendEmail");
-const { sendOtpByResetPasswordValidate, resetPasswordValidate, updateImage } = require("../validation/myself.validate");
+const { sendOtpByResetPasswordValidate, resetPasswordValidate } = require("../validation/myself.validate");
 const bcrypt = require("bcrypt");
 
 const getAll = async (req, res) => {

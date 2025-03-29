@@ -323,3 +323,14 @@
 {"level":"info","message":"enrollment created with ID: 1","model":"enrollment","timestamp":"2025-03-28T03:51:30.125Z"}
 {"level":"info","message":"fetched enrollment with ID: 1","model":"enrollment","timestamp":"2025-03-28T03:52:18.293Z"}
 {"level":"info","message":"Fetched 1 enrollments on page 1","model":"enrollment","timestamp":"2025-03-28T03:52:36.835Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-28T12:14:14.556Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T12:14:47.274Z"}
+{"level":"info","message":"Center created with ID: 2","model":"center","timestamp":"2025-03-28T12:15:21.676Z"}
+{"level":"info","message":"A new branch was created by 1","model":"Branch","timestamp":"2025-03-28T12:15:51.762Z"}
+{"level":"info","message":"A new branch was created by 1","model":"Branch","timestamp":"2025-03-28T12:16:04.616Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-28T12:16:17.532Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-28T12:16:20.330Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-28T12:18:28.295Z"}
+{"level":"warn","message":"Branch creation failed: Center with ID 2 not found","model":"Branch","timestamp":"2025-03-28T12:18:53.211Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-28T12:19:54.875Z"}
+{"level":"error","message":"Course is not associated to Enrollment!","model":"MySelf","timestamp":"2025-03-28T12:33:25.326Z"}

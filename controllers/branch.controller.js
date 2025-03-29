@@ -207,7 +207,10 @@ const getAllBranchs = async (req, res) => {
             },
             limit: take,
             offset: offset,
-            order: [[column, order]]
+            order: [[column, order]],
+            attributes: {
+                exclude: ["regoinId", "centerId"]
+            }
         });
 
         logger.info(`Get all branches`);
