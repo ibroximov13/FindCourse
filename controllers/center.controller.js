@@ -112,7 +112,7 @@ const getCenterById = async (req, res) => {
       include: [
         {
           model: Branch,
-          required: false, // Agar branch bo‘lmasa ham xatolik chiqmasin
+          required: false, 
         },
         {
           model: Region,
@@ -146,8 +146,8 @@ const getCenterById = async (req, res) => {
           [Sequelize.fn("COUNT", Sequelize.col("Likes.id")), "likeCount"],
         ],
       },
-      group: ["Center.id", "Region.id", "User.id"], // Branch.id olib tashlandi
-      subQuery: false, // Like va Comment bo‘yicha noto‘g‘ri natija chiqmasligi uchun
+      group: ["Center.id", "Region.id", "User.id"], 
+      subQuery: false, 
     });
 
     if (!center) {
