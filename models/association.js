@@ -13,35 +13,28 @@ const Branch = require("./branch.model");
 const BranchCourseItem = require("./branchCourseItem.model");
 const SubjectItem = require("./subjectItem.model");
 const CourseItem = require("./courseItem.model");
-const Month = require("./month.model");
 
-// Mavjud assotsiatsiyalar
 User.hasMany(Resource, { foreignKey: "userId" });
 Resource.belongsTo(User, { foreignKey: "userId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 
-// Center va SubjectItem uchun assotsiatsiyalar
 Center.hasMany(SubjectItem, { foreignKey: "centerId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 SubjectItem.belongsTo(Center, { foreignKey: "centerId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 
-// Subject va SubjectItem uchun assotsiatsiyalar (muammoni hal qilish uchun qo'shildi)
 Subject.hasMany(SubjectItem, { foreignKey: "subjectId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 SubjectItem.belongsTo(Subject, { foreignKey: "subjectId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 
-// Center va CourseItem uchun assotsiatsiyalar
 Center.hasMany(CourseItem, { foreignKey: "centerId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 CourseItem.belongsTo(Center, { foreignKey: "centerId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 
 Course.hasMany(CourseItem, { foreignKey: "courseId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 CourseItem.belongsTo(Course, { foreignKey: "courseId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 
-// Ko'p-ko'p munosabatlar
 Center.belongsToMany(Subject, { through: SubjectItem, foreignKey: "centerId", otherKey: "subjectId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 Subject.belongsToMany(Center, { through: SubjectItem, foreignKey: "subjectId", otherKey: "centerId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 
 Center.belongsToMany(Course, { through: CourseItem, foreignKey: "centerId", otherKey: "courseId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 Course.belongsToMany(Center, { through: CourseItem, foreignKey: "courseId", otherKey: "centerId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 
-// Qolgan assotsiatsiyalar...
 User.hasMany(Like, { foreignKey: "userId" });
 Like.belongsTo(User, { foreignKey: "userId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 
@@ -84,15 +77,11 @@ Course.belongsToMany(Branch, { through: BranchCourseItem, foreignKey: "courseId"
 Subject.hasMany(Enrollment, { foreignKey: "subjectId" });
 Enrollment.belongsTo(Subject, { foreignKey: "subjectId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 
-Month.hasMany(Enrollment, { foreignKey: "monthId" });
-Enrollment.belongsTo(Month, { foreignKey: "monthId", onDelete: "CASCADE", onUpdate: "CASCADE" });
-
-Category.hasMany(Resource, { foreignKey: "categoryId" });
-Resource.belongsTo(Category, { foreignKey: "categoryId", onDelete: "CASCADE", onUpdate: "CASCADE" });
-
 Course.hasMany(Enrollment, { foreignKey: "courseId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 Enrollment.belongsTo(Course, { foreignKey: "courseId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 
+Category.hasMany(Resource, { foreignKey: "categoryId" });
+Resource.belongsTo(Category, { foreignKey: "categoryId", onDelete: "CASCADE", onUpdate: "CASCADE" });
 
 module.exports = {
   User,
@@ -110,5 +99,4 @@ module.exports = {
   BranchSubItem,
   BranchCourseItem,
   CourseItem,
-  Month,
 };

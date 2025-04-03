@@ -157,3 +157,21 @@
 {"level":"info","message":"Center created with ID: 11","model":"center","timestamp":"2025-03-29T08:54:56.233Z"}
 {"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-29T08:55:09.814Z"}
 {"level":"info","message":"Fetched center with ID: 11","model":"center","timestamp":"2025-03-29T08:55:31.237Z"}
+{"level":"warn","message":"Login attempt for non-existent user: +998901234567","model":"user","timestamp":"2025-04-03T08:58:55.524Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-04-03T08:59:03.610Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-04-03T08:59:33.679Z"}
+{"level":"info","message":"Center created with ID: 12","model":"center","timestamp":"2025-04-03T08:59:42.033Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-04-03T08:59:50.902Z"}
+{"level":"info","message":"Comment created with ID: 1","model":"comment","timestamp":"2025-04-03T09:00:07.183Z"}
+{"level":"info","message":"Comment created with ID: 2","model":"comment","timestamp":"2025-04-03T09:00:11.485Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-04-03T09:00:20.026Z"}
+{"level":"warn","message":"Login attempt for non-existent user: +998901234567","model":"user","timestamp":"2025-04-03T10:20:12.256Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-04-03T10:20:17.046Z"}
+{"level":"info","message":"Center created with ID: 13","model":"center","timestamp":"2025-04-03T10:20:39.723Z"}
+{"level":"error","message":"createEnrollment error: Unknown column 'createdAt' in 'field list'","model":"enrollment","timestamp":"2025-04-03T10:21:01.315Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-04-03T10:28:15.131Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-04-03T10:28:38.289Z"}
+{"level":"info","message":"enrollment created with ID: 1","model":"enrollment","timestamp":"2025-04-03T10:28:49.420Z"}
+{"level":"info","message":"enrollment created with ID: 2","model":"enrollment","timestamp":"2025-04-03T10:29:13.320Z"}
+{"level":"warn","message":"validation error: \"value\" must contain at least one of [courseId, subjectId]","model":"enrollment","timestamp":"2025-04-03T10:29:24.433Z"}
+{"level":"info","message":"enrollment created with ID: 3","model":"enrollment","timestamp":"2025-04-03T10:29:41.407Z"}

@@ -9,7 +9,7 @@ const createLike = async (req, res) => {
     if (error) {
       logger.warn(`like validation error: ${error.details[0].message}`);
       return res.status(400).json({ error: error.details[0].message });
-    }
+    };
 
     let userId = req.user.id;
     let { centerId } = value;

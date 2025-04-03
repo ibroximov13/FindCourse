@@ -11,7 +11,7 @@ async function connectDb() {
     try {
         await db.authenticate();
         console.log("Connected to db");
-        // await db.sync({force: false, alter: true});
+        // await db.sync({force: true });
         // console.log("Db synced");
     } catch (error) {
         console.log(error)

@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const { db } = require("../config/db");
-const { User, Region, Category, Subject, Course, Month } = require("../models");
+const { User, Region, Category, Subject, Course } = require("../models");
 
 async function fullData() {
   try {
@@ -9,13 +9,11 @@ async function fullData() {
     await Category.destroy({ where: {} });
     await Subject.destroy({ where: {} });
     await Course.destroy({ where: {} });
-    await Month.destroy({ where: {} }); 
 
     await db.query("ALTER TABLE regions AUTO_INCREMENT = 1");
     await db.query("ALTER TABLE Categories AUTO_INCREMENT = 1");
     await db.query("ALTER TABLE Subjects AUTO_INCREMENT = 1");
     await db.query("ALTER TABLE Courses AUTO_INCREMENT = 1");
-    await db.query("ALTER TABLE months AUTO_INCREMENT = 1"); 
     await db.query("ALTER TABLE users AUTO_INCREMENT = 1");
 
     const regionNames = [
@@ -38,26 +36,6 @@ async function fullData() {
       await Region.create({ name: regionNames[i] });
     }
     console.log("Regions created");
-
-    const monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-
-    for (let i = 0; i < monthNames.length; i++) {
-      await Month.create({ name: monthNames[i] });
-    }
-    console.log("Months created");
 
     const categoryData = [
       { name: "Science", image: "http://example.com/images/science.jpg" },
