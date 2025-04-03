@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const {db} = require("../config/db");
+const { db } = require("../config/db");
 
 const Enrollment = db.define("Enrollment", {
     id: {
@@ -13,7 +13,7 @@ const Enrollment = db.define("Enrollment", {
     },
     courseId: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
     },
     centerId: {
         type: DataTypes.INTEGER,
@@ -21,8 +21,12 @@ const Enrollment = db.define("Enrollment", {
     },
     subjectId: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true 
     },
-}, {timestamps: false});
+    createdAt: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW
+    }
+}, { timestamps: false });
 
 module.exports = Enrollment;

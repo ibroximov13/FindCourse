@@ -15,36 +15,23 @@ const createEnrollmentSchema = Joi.object({
   courseId: Joi.number()
     .integer()
     .positive()
-    .required()
+    .optional()
     .messages({
       'number.base': 'courseId must be a number',
       'number.integer': 'courseId must be an integer',
-      'number.positive': 'courseId must be a positive number',
-      'any.required': 'courseId is required'
+      'number.positive': 'courseId must be a positive number'
     }),
   
   subjectId: Joi.number()
     .integer()
     .positive()
-    .required()
+    .optional()
     .messages({
       'number.base': 'subjectId must be a number',
       'number.integer': 'subjectId must be an integer',
-      'number.positive': 'subjectId must be a positive number',
-      'any.required': 'subjectId is required'
+      'number.positive': 'subjectId must be a positive number'
     }),
-  
-  monthId: Joi.number()
-    .integer()
-    .positive()
-    .required()
-    .messages({
-      'number.base': 'monthId must be a number',
-      'number.integer': 'monthId must be an integer',
-      'number.positive': 'monthId must be a positive number',
-      'any.required': 'monthId is required'
-    })
-});
+}).or('courseId', 'subjectId'); 
 
 module.exports = {
   createEnrollmentSchema

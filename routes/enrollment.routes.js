@@ -3,81 +3,7 @@ const router = express.Router();
 const enrollmentController = require("../controllers/enrollment.controller");
 const verifyTokenAndRole = require("../middlewares/verifyTokenAndRole");
 
-/**
-/**
- * @swagger
- * /enrollments/months:
- *   get:
- *     summary: Get all months with pagination and sorting
- *     tags: [Enrollments]
- *     parameters:
- *       - in: query
- *         name: page
- *         schema:
- *           type: integer
- *           default: 1
- *         description: 📄 Page number for pagination
- *       - in: query
- *         name: limit
- *         schema:
- *           type: integer
- *           default: 10
- *         description: 🔢 Number of months per page
- *       - in: query
- *         name: order
- *         schema:
- *           type: string
- *           enum: [ASC, DESC]
- *           default: DESC
- *         description: 📌 Sort order by ID (ASC or DESC)
- *     responses:
- *       200:
- *         description: List of months with pagination
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 total:
- *                   type: integer
- *                 totalPages:
- *                   type: integer
- *                 currentPage:
- *                   type: integer
- *                 data:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       id:
- *                         type: integer
- *                       name:
- *                         type: string
- *             example:
- *               total: 12
- *               totalPages: 2
- *               currentPage: 1
- *               data:
- *                 - id: 1
- *                   name: "January"
- *                 - id: 2
- *                   name: "February"
- *                 - id: 3
- *                   name: "March"
- *                 - id: 4
- *                   name: "April"
- *                 - id: 5
- *                   name: "May"
- *                 - id: 6
- *                   name: "June"
- *       500:
- *         description: Server error
- *         content:
- *           application/json:
- *             example:
- *               error: "Internal server error"
- */
-router.get("/months", enrollmentController.getAllMonths)
+router.post("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), enrollmentController.createEnrollment);
 
 /**
  * @swagger
@@ -95,9 +21,6 @@ router.get("/months", enrollmentController.getAllMonths)
  *             type: object
  *             required:
  *               - centerId
- *               - courseId
- *               - subjectId
- *               - monthId
  *             properties:
  *               centerId:
  *                 type: integer
@@ -108,9 +31,6 @@ router.get("/months", enrollmentController.getAllMonths)
  *               subjectId:
  *                 type: integer
  *                 example: 3
- *               monthId:
- *                 type: integer
- *                 example: 12
  *     responses:
  *       201:
  *         description: Enrollment created successfully
@@ -122,13 +42,13 @@ router.get("/months", enrollmentController.getAllMonths)
  *               centerId: 1
  *               courseId: 5
  *               subjectId: 3
- *               monthId: 12
+ *               createdAt: "2025-04-03T12:00:00Z"
  *       400:
- *         description: Validation error
+ *         description: Validation error or missing courseId/subjectId
  *       500:
  *         description: Server error
  */
-router.post("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), enrollmentController.createEnrollment);
+router.get("/", enrollmentController.getAllEnrollments);
 
 /**
  * @swagger
@@ -151,7 +71,7 @@ router.post("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), enr
  *         name: column
  *         schema:
  *           type: string
- *           enum: [id, userId, courseId, subjectId, centerId, date]
+ *           enum: [id, userId, courseId, subjectId, centerId, createdAt]
  *           default: id
  *       - in: query
  *         name: order
@@ -160,7 +80,7 @@ router.post("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), enr
  *           enum: [ASC, DESC]
  *           default: ASC
  *     responses:
- *       201:
+ *       200:
  *         description: List of enrollments with related data
  *         content:
  *           application/json:
@@ -169,16 +89,16 @@ router.post("/", verifyTokenAndRole(["USER", "ADMIN", "SUPERADMIN", "CEO"]), enr
  *                 userId: 1
  *                 centerId: 1
  *                 courseId: 5
- *                 subjectId: 3
- *                 monthId: 12
+ *                 subjectId: null
+ *                 createdAt: "2025-04-03T12:00:00Z"
  *               - id: 2
  *                 userId: 2
  *                 centerId: 2
- *                 courseId: 6
+ *                 courseId: null
  *                 subjectId: 4
- *                 monthId: 11
+ *                 createdAt: "2025-04-03T12:01:00Z"
  */
-router.get("/", enrollmentController.getAllEnrollments);
+router.get("/:id", enrollmentController.getEnrollmentById);
 
 /**
  * @swagger
@@ -203,14 +123,14 @@ router.get("/", enrollmentController.getAllEnrollments);
  *               userId: 1
  *               centerId: 1
  *               courseId: 5
- *               subjectId: 3
- *               monthId: 12
+ *               subjectId: null
+ *               createdAt: "2025-04-03T12:00:00Z"
  *       404:
  *         description: Enrollment not found
  *       500:
  *         description: Server error
  */
-router.get("/:id", enrollmentController.getEnrollmentById);
+router.delete("/:id", verifyTokenAndRole(["ADMIN", "SUPERADMIN", "CEO"]), enrollmentController.deleteEnrollment);
 
 /**
  * @swagger
@@ -232,18 +152,12 @@ router.get("/:id", enrollmentController.getEnrollmentById);
  *         description: Enrollment deleted
  *         content:
  *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *               example:
- *                 message: "enrollment delete successfully"
+ *             example:
+ *               message: "enrollment deleted successfully"
  *       404:
  *         description: Enrollment not found
  *       500:
  *         description: Server error
  */
-router.delete("/:id", verifyTokenAndRole(["ADMIN", "SUPERADMIN", "CEO"]), enrollmentController.deleteEnrollment);
 
 module.exports = router;

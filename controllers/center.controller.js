@@ -56,7 +56,6 @@ const getAllCenters = async (req, res) => {
     let page = parseInt(req.query.page) || 1;
     let take = parseInt(req.query.take) || 10;
     let offset = (page - 1) * take;
-
     let filter = req.query.filter || "";
     let order = req.query.order === "DESC" ? "DESC" : "ASC";
     let allowedColumns = ["id", "name", "phone", "location", "regionId", "centerId"];
@@ -67,7 +66,7 @@ const getAllCenters = async (req, res) => {
         { model: Branch, attributes: [] },
         { model: Region, attributes: [] },
         { model: User, attributes: ["fullName"] },
-        { model: Comment, attributes: ["star"], required: false },
+        { model: Comment, attributes: [] },
         { model: SubjectItem, attributes: [], include: [{ model: Subject, attributes: ["name"] }] },
         { model: CourseItem, include: [{ model: Course, attributes: ["name"] }] },
         { model: Like, attributes: [] }
@@ -83,7 +82,7 @@ const getAllCenters = async (req, res) => {
       attributes: {
         exclude: ["regionId", "userId"],
         include: [
-          [Sequelize.fn("AVG", Sequelize.col("Comments.star")), "averageStar"], 
+          [Sequelize.fn("COALESCE", Sequelize.fn("AVG", Sequelize.col("Comments.star")), 0), "averageStar"],
           [Sequelize.literal(`(
             SELECT COUNT(*) FROM Likes WHERE Likes.centerId = Center.id
           )`), "likeCount"]
@@ -94,6 +93,11 @@ const getAllCenters = async (req, res) => {
       offset: offset,
       order: [[column, order]],
     });
+
+    centers = centers.map(center => ({
+      ...center.toJSON(),
+      averageStar: parseFloat(center.dataValues.averageStar) || 0
+    }));
 
     logger.info(`Get all centers`);
     res.status(200).send(centers);
@@ -106,48 +110,25 @@ const getAllCenters = async (req, res) => {
 const getCenterById = async (req, res) => {
   try {
     const center = await Center.findOne({
-      where: {
-        id: req.params.id,
-      },
+      where: { id: req.params.id },
       include: [
-        {
-          model: Branch,
-          required: false, 
-        },
-        {
-          model: Region,
-        },
-        {
-          model: User,
-          attributes: ["id", "fullName"],
-        },
-        {
-          model: Comment,
-          attributes: [],
-          required: false,
-        },
-        {
-          model: SubjectItem,
-          include: [{ model: Subject }],
-        },
-        {
-          model: CourseItem,
-          include: [{ model: Course }],
-        },
-        {
-          model: Like,
-          attributes: [],
-        },
+        { model: Branch, required: false },
+        { model: Region },
+        { model: User, attributes: ["id", "fullName"] },
+        { model: Comment, attributes: [] },
+        { model: SubjectItem, include: [{ model: Subject }] },
+        { model: CourseItem, include: [{ model: Course }] },
+        { model: Like, attributes: [] },
       ],
       attributes: {
         exclude: ["regionId", "userId"],
         include: [
-          [Sequelize.fn("AVG", Sequelize.col("comments.star")), "averageStar"],
+          [Sequelize.fn("COALESCE", Sequelize.fn("AVG", Sequelize.col("comments.star")), 0), "averageStar"],
           [Sequelize.fn("COUNT", Sequelize.col("Likes.id")), "likeCount"],
         ],
       },
-      group: ["Center.id", "Region.id", "User.id"], 
-      subQuery: false, 
+      group: ["Center.id", "Region.id", "User.id"],
+      subQuery: false,
     });
 
     if (!center) {
@@ -155,19 +136,10 @@ const getCenterById = async (req, res) => {
       return res.status(404).json({ message: "Center not found" });
     }
 
-    const subjects = center.SubjectItems?.map((item) => item.Subject) || [];
-    const courses = center.CourseItems?.map((item) => item.Course) || [];
-
-    const response = {
+    res.json({
       ...center.toJSON(),
-      averageStar: center.dataValues.averageStar || 0,
-      likeCount: center.dataValues.likeCount || 0,
-      subjects,
-      courses,
-    };
-
-    logger.info(`Fetched center with ID: ${req.params.id}`);
-    res.json(response);
+      averageStar: parseFloat(center.dataValues.averageStar) || 0
+    });
   } catch (error) {
     logger.error(`getCenterById error: ${error.message}`);
     res.status(500).json({ error: error.message });
