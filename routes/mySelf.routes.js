@@ -75,28 +75,28 @@ route.get("/my-resources", verifyTokenAndRole(["ADMIN", "USER", "SUPERADMIN", "C
  */
 route.get("/my-centers", verifyTokenAndRole(["ADMIN", "CEO"]), getMyCenter);
 
-/**
- * @swagger
- * /myself/my-enrollments:
- *   get:
- *     summary: Get user's enrollments
- *     tags: [MySelf]
- *     security:
- *       - BearerAuth: []
- *     responses:
- *       200:
- *         description: Successfully retrieved enrollments
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Enrollment'
- *       404:
- *         description: No enrollments found
- *       500:
- *         description: Internal server error
- */
-route.get("/my-enrollments", verifyTokenAndRole(["ADMIN", "CEO"]), getMyEnrollment);
+// /**
+//  * @swagger
+//  * /myself/my-enrollments:
+//  *   get:
+//  *     summary: Get user's enrollments
+//  *     tags: [MySelf]
+//  *     security:
+//  *       - BearerAuth: []
+//  *     responses:
+//  *       200:
+//  *         description: Successfully retrieved enrollments
+//  *         content:
+//  *           application/json:
+//  *             schema:
+//  *               type: array
+//  *               items:
+//  *                 $ref: '#/components/schemas/Enrollment'
+//  *       404:
+//  *         description: No enrollments found
+//  *       500:
+//  *         description: Internal server error
+//  */
+// route.get("/my-enrollments", verifyTokenAndRole(["ADMIN", "CEO"]), getMyEnrollment);
 
 module.exports = route

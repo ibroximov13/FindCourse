@@ -12,9 +12,9 @@ async function fullData() {
     await Month.destroy({ where: {} }); 
 
     await db.query("ALTER TABLE regions AUTO_INCREMENT = 1");
-    await db.query("ALTER TABLE categories AUTO_INCREMENT = 1");
-    await db.query("ALTER TABLE subjects AUTO_INCREMENT = 1");
-    await db.query("ALTER TABLE courses AUTO_INCREMENT = 1");
+    await db.query("ALTER TABLE Categories AUTO_INCREMENT = 1");
+    await db.query("ALTER TABLE Subjects AUTO_INCREMENT = 1");
+    await db.query("ALTER TABLE Courses AUTO_INCREMENT = 1");
     await db.query("ALTER TABLE months AUTO_INCREMENT = 1"); 
     await db.query("ALTER TABLE users AUTO_INCREMENT = 1");
 

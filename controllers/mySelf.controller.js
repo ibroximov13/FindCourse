@@ -27,12 +27,12 @@ const getMyData = async (req, res, model, whereCondition = {}, include = [], exc
 
 const getMyComments = (req, res) => getMyData(req, res, Comment, {userId: req.user.id});
 const getMyResource = (req, res) => getMyData(req, res, Resource, {userId: req.user.id}, [{model: Category}], ["categoryId"]);
-const getMyEnrollment = (req, res) => getMyData(req, res, Enrollment, {userId: req.user.id}, [{model: Course}, {model: Center}, {model: Subject}], ["courseId", "centerId", "subjectId"]);
+// const getMyEnrollment = (req, res) => getMyData(req, res, Enrollment, {userId: req.user.id}, [{model: Course}, {model: Center}, {model: Subject}], ["courseId", "centerId", "subjectId"]);
 const getMyCenter = (req, res) => getMyData(req, res, Center, {userId: req.user.id}, [{model: Region}], ["regionId"]);
 
 module.exports = {
     getMyComments,
     getMyResource,
-    getMyEnrollment,
+    // getMyEnrollment,
     getMyCenter
 }

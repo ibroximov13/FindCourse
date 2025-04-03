@@ -1,0 +1,159 @@
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T21:11:35.671Z"}
+{"level":"error","message":"createCenter error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`courseitems`, CONSTRAINT `courseitems_ibfk_2` FOREIGN KEY (`courseId`) REFERENCES `courses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"center","timestamp":"2025-03-27T21:12:02.498Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T21:12:47.553Z"}
+{"level":"info","message":"Comment created with ID: 3","model":"comment","timestamp":"2025-03-27T21:13:06.273Z"}
+{"level":"info","message":"Fetched center with ID: 2","model":"center","timestamp":"2025-03-27T21:13:41.236Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T21:42:16.321Z"}
+{"level":"error","message":"Error!","model":"Branch","timestamp":"2025-03-27T21:42:37.275Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T21:44:23.910Z"}
+{"level":"error","message":"Error!","model":"Branch","timestamp":"2025-03-27T21:44:52.472Z"}
+{"level":"error","message":"Error!","model":"Branch","timestamp":"2025-03-27T21:45:21.936Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-27T21:49:07.997Z"}
+{"level":"warn","message":"Branch creation failed: Center with ID 1 not found","model":"Branch","timestamp":"2025-03-27T21:49:29.256Z"}
+{"level":"warn","message":"Branch creation failed: Center with ID 2 not found","model":"Branch","timestamp":"2025-03-27T21:49:38.142Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T21:49:58.551Z"}
+{"level":"info","message":"Center created with ID: 3","model":"center","timestamp":"2025-03-27T21:50:15.963Z"}
+{"level":"info","message":"A new branch was created by 1","model":"Branch","timestamp":"2025-03-27T21:50:27.305Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-27T21:51:26.906Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T21:52:17.530Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-27T21:52:52.161Z"}
+{"level":"error","message":"Op is not defined","model":"Cource","timestamp":"2025-03-27T21:53:28.004Z"}
+{"level":"error","message":"Unknown column 'Centers.star' in 'field list'","model":"Cource","timestamp":"2025-03-27T21:56:41.297Z"}
+{"level":"error","message":"Unknown column 'Centers.star' in 'field list'","model":"Cource","timestamp":"2025-03-27T21:57:48.782Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T00:20:50.124Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T00:21:02.921Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T00:21:14.833Z"}
+{"level":"info","message":"Center created with ID: 4","model":"center","timestamp":"2025-03-28T00:21:49.939Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T00:23:07.448Z"}
+{"level":"info","message":"Center created with ID: 5","model":"center","timestamp":"2025-03-28T00:23:39.863Z"}
+{"level":"info","message":"like created with ID: 1","model":"like","timestamp":"2025-03-28T00:23:52.157Z"}
+{"level":"info","message":"Fetched 0 likes (Page: 1)","model":"like","timestamp":"2025-03-28T00:25:35.936Z"}
+{"level":"info","message":"Fetched 1 likes (Page: 1)","model":"like","timestamp":"2025-03-28T00:25:43.551Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T01:34:27.751Z"}
+{"level":"error","message":"CourseItem is not associated to Center!","model":"MySelf","timestamp":"2025-03-28T01:34:46.927Z"}
+{"level":"info","message":"Fetched 12 months","model":"enrollment","timestamp":"2025-03-28T02:47:33.234Z"}
+{"level":"info","message":"Fetched 12 months","model":"enrollment","timestamp":"2025-03-28T02:49:35.442Z"}
+{"level":"info","message":"Fetched 10 months on page 1","model":"enrollment","timestamp":"2025-03-28T02:54:38.224Z"}
+{"level":"info","message":"Fetched 10 months on page 1","model":"enrollment","timestamp":"2025-03-28T02:57:43.227Z"}
+{"level":"info","message":"Fetched 10 months on page 1","model":"enrollment","timestamp":"2025-03-28T02:57:51.106Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T02:58:08.042Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T02:58:16.826Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-28T02:58:43.636Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T02:59:36.648Z"}
+{"level":"info","message":"Center created with ID: 2","model":"center","timestamp":"2025-03-28T03:00:00.133Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T03:00:11.252Z"}
+{"level":"warn","message":"validation error: \"userId\" is not allowed","model":"enrollment","timestamp":"2025-03-28T03:00:30.318Z"}
+{"level":"warn","message":"validation error: centerId must be a positive number","model":"enrollment","timestamp":"2025-03-28T03:01:36.570Z"}
+{"level":"warn","message":"validation error: \"userId\" is not allowed","model":"enrollment","timestamp":"2025-03-28T03:02:32.548Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T03:03:43.651Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-28T03:04:06.786Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-28T03:04:13.800Z"}
+{"level":"warn","message":"validation error: \"userId\" is not allowed","model":"enrollment","timestamp":"2025-03-28T03:04:32.064Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T03:11:59.234Z"}
+{"level":"info","message":"Center created with ID: 2","model":"center","timestamp":"2025-03-28T03:12:25.740Z"}
+{"level":"error","message":"createEnrollment error: notNull Violation: Enrollment.userId cannot be null,\nnotNull Violation: Enrollment.date cannot be null","model":"enrollment","timestamp":"2025-03-28T03:12:38.547Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T03:26:11.183Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-28T03:26:28.693Z"}
+{"level":"error","message":"createEnrollment error: notNull Violation: Enrollment.userId cannot be null,\nnotNull Violation: Enrollment.date cannot be null","model":"enrollment","timestamp":"2025-03-28T03:26:39.964Z"}
+{"level":"warn","message":"validation error: \"userId\" is not allowed","model":"enrollment","timestamp":"2025-03-28T03:27:12.584Z"}
+{"level":"warn","message":"validation error: \"userId\" is not allowed","model":"enrollment","timestamp":"2025-03-28T03:27:42.013Z"}
+{"level":"error","message":"createEnrollment error: Cannot access 'enrollmentData' before initialization","model":"enrollment","timestamp":"2025-03-28T03:29:49.070Z"}
+{"level":"error","message":"createEnrollment error: notNull Violation: Enrollment.date cannot be null","model":"enrollment","timestamp":"2025-03-28T03:30:44.972Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T03:50:55.223Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-28T03:51:18.420Z"}
+{"level":"info","message":"enrollment created with ID: 1","model":"enrollment","timestamp":"2025-03-28T03:51:30.125Z"}
+{"level":"info","message":"fetched enrollment with ID: 1","model":"enrollment","timestamp":"2025-03-28T03:52:18.293Z"}
+{"level":"info","message":"Fetched 1 enrollments on page 1","model":"enrollment","timestamp":"2025-03-28T03:52:36.835Z"}
+{"level":"info","message":"GetAllCourse","model":"Cource","timestamp":"2025-03-28T10:26:59.781Z"}
+{"level":"info","message":"GetAllSubjects","model":"Subject","timestamp":"2025-03-28T10:27:40.182Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-28T12:14:14.556Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-28T12:14:47.274Z"}
+{"level":"info","message":"Center created with ID: 2","model":"center","timestamp":"2025-03-28T12:15:21.676Z"}
+{"level":"info","message":"A new branch was created by 1","model":"Branch","timestamp":"2025-03-28T12:15:51.762Z"}
+{"level":"info","message":"A new branch was created by 1","model":"Branch","timestamp":"2025-03-28T12:16:04.616Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-28T12:16:17.532Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-28T12:16:20.330Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-28T12:18:28.295Z"}
+{"level":"warn","message":"Branch creation failed: Center with ID 2 not found","model":"Branch","timestamp":"2025-03-28T12:18:53.211Z"}
+{"level":"info","message":"Get all branches","model":"Branch","timestamp":"2025-03-28T12:19:54.875Z"}
+{"level":"error","message":"Course is not associated to Enrollment!","model":"MySelf","timestamp":"2025-03-28T12:33:25.326Z"}
+{"level":"error","message":"loginUser error: Table 'exam.sessions' doesn't exist","model":"user","timestamp":"2025-03-29T07:02:35.749Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T07:10:45.644Z"}
+{"level":"info","message":"Center created with ID: 1","model":"center","timestamp":"2025-03-29T07:11:10.493Z"}
+{"level":"info","message":"enrollment created with ID: 1","model":"enrollment","timestamp":"2025-03-29T07:11:28.590Z"}
+{"level":"error","message":"getAllEnrollments error: Course is not associated to Enrollment!","model":"enrollment","timestamp":"2025-03-29T07:11:40.166Z"}
+{"level":"info","message":"fetched enrollment with ID: 1","model":"enrollment","timestamp":"2025-03-29T07:12:00.027Z"}
+{"level":"warn","message":"enrollment not found with ID: 2","model":"enrollment","timestamp":"2025-03-29T07:12:09.122Z"}
+{"level":"warn","message":"enrollment not found with ID: 10","model":"enrollment","timestamp":"2025-03-29T07:12:13.725Z"}
+{"level":"info","message":"fetched enrollment with ID: 1","model":"enrollment","timestamp":"2025-03-29T07:12:16.912Z"}
+{"level":"warn","message":"enrollment not found with ID: 3","model":"enrollment","timestamp":"2025-03-29T07:12:22.098Z"}
+{"level":"warn","message":"enrollment not found with ID: 4","model":"enrollment","timestamp":"2025-03-29T07:12:26.372Z"}
+{"level":"warn","message":"enrollment not found with ID: 5","model":"enrollment","timestamp":"2025-03-29T07:12:30.106Z"}
+{"level":"warn","message":"enrollment not found with ID: 6","model":"enrollment","timestamp":"2025-03-29T07:12:33.546Z"}
+{"level":"error","message":"Course is not associated to Enrollment!","model":"MySelf","timestamp":"2025-03-29T07:12:50.037Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T07:20:08.264Z"}
+{"level":"error","message":"createEnrollment error: Cannot add or update a child row: a foreign key constraint fails (`exam`.`enrollments`, CONSTRAINT `enrollments_ibfk_1` FOREIGN KEY (`centerId`) REFERENCES `centers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)","model":"enrollment","timestamp":"2025-03-29T07:20:23.336Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T07:20:58.220Z"}
+{"level":"info","message":"Center created with ID: 2","model":"center","timestamp":"2025-03-29T07:21:34.229Z"}
+{"level":"info","message":"enrollment created with ID: 3","model":"enrollment","timestamp":"2025-03-29T07:21:50.221Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T07:22:07.989Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T07:27:54.824Z"}
+{"level":"warn","message":"enrollment not found with ID: 1","model":"enrollment","timestamp":"2025-03-29T07:28:11.576Z"}
+{"level":"warn","message":"enrollment not found with ID: 2","model":"enrollment","timestamp":"2025-03-29T07:28:16.425Z"}
+{"level":"warn","message":"enrollment not found with ID: 3","model":"enrollment","timestamp":"2025-03-29T07:28:20.049Z"}
+{"level":"warn","message":"enrollment not found with ID: 4","model":"enrollment","timestamp":"2025-03-29T07:28:23.586Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T07:28:33.990Z"}
+{"level":"info","message":"Center created with ID: 3","model":"center","timestamp":"2025-03-29T07:28:58.638Z"}
+{"level":"info","message":"enrollment created with ID: 4","model":"enrollment","timestamp":"2025-03-29T07:29:12.806Z"}
+{"level":"info","message":"fetched enrollment with ID: 4","model":"enrollment","timestamp":"2025-03-29T07:29:20.706Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T07:29:29.142Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T07:37:31.872Z"}
+{"level":"info","message":"Center created with ID: 4","model":"center","timestamp":"2025-03-29T07:38:11.463Z"}
+{"level":"info","message":"enrollment created with ID: 5","model":"enrollment","timestamp":"2025-03-29T07:38:28.532Z"}
+{"level":"info","message":"fetched enrollment with ID: 5","model":"enrollment","timestamp":"2025-03-29T07:38:42.031Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T07:38:49.350Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T07:44:17.750Z"}
+{"level":"info","message":"Center created with ID: 5","model":"center","timestamp":"2025-03-29T07:44:38.448Z"}
+{"level":"info","message":"enrollment created with ID: 6","model":"enrollment","timestamp":"2025-03-29T07:44:49.910Z"}
+{"level":"info","message":"fetched enrollment with ID: 6","model":"enrollment","timestamp":"2025-03-29T07:45:01.961Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T07:45:16.729Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T07:59:11.768Z"}
+{"level":"warn","message":"enrollment not found with ID: 5","model":"enrollment","timestamp":"2025-03-29T07:59:24.054Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T07:59:36.618Z"}
+{"level":"info","message":"Center created with ID: 6","model":"center","timestamp":"2025-03-29T08:00:03.176Z"}
+{"level":"info","message":"enrollment created with ID: 7","model":"enrollment","timestamp":"2025-03-29T08:00:23.809Z"}
+{"level":"info","message":"enrollment created with ID: 8","model":"enrollment","timestamp":"2025-03-29T08:00:32.669Z"}
+{"level":"info","message":"fetched enrollment with ID: 7","model":"enrollment","timestamp":"2025-03-29T08:00:43.305Z"}
+{"level":"info","message":"fetched enrollment with ID: 8","model":"enrollment","timestamp":"2025-03-29T08:00:51.480Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T08:00:57.856Z"}
+{"level":"warn","message":"enrollment not found with ID: 8","model":"enrollment","timestamp":"2025-03-29T08:02:00.043Z"}
+{"level":"warn","message":"enrollment not found with ID: 7","model":"enrollment","timestamp":"2025-03-29T08:02:09.270Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T08:02:17.158Z"}
+{"level":"info","message":"Center created with ID: 7","model":"center","timestamp":"2025-03-29T08:02:38.241Z"}
+{"level":"info","message":"enrollment created with ID: 9","model":"enrollment","timestamp":"2025-03-29T08:02:53.292Z"}
+{"level":"info","message":"enrollment created with ID: 10","model":"enrollment","timestamp":"2025-03-29T08:03:00.265Z"}
+{"level":"info","message":"fetched enrollment with ID: 9","model":"enrollment","timestamp":"2025-03-29T08:03:08.144Z"}
+{"level":"error","message":"getAllEnrollments error: Cannot read properties of undefined (reading 'getTableName')","model":"enrollment","timestamp":"2025-03-29T08:03:14.150Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T08:40:01.860Z"}
+{"level":"info","message":"Center created with ID: 8","model":"center","timestamp":"2025-03-29T08:40:23.261Z"}
+{"level":"info","message":"enrollment created with ID: 11","model":"enrollment","timestamp":"2025-03-29T08:40:35.094Z"}
+{"level":"info","message":"fetched enrollment with ID: 11","model":"enrollment","timestamp":"2025-03-29T08:40:47.473Z"}
+{"level":"error","message":"getAllEnrollments error: Unknown column 'Course.phone' in 'field list'","model":"enrollment","timestamp":"2025-03-29T08:40:56.797Z"}
+{"level":"warn","message":"enrollment not found with ID: 11","model":"enrollment","timestamp":"2025-03-29T08:42:40.118Z"}
+{"level":"error","message":"getAllEnrollments error: Unknown column 'user.name' in 'field list'","model":"enrollment","timestamp":"2025-03-29T08:42:49.874Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T08:43:00.128Z"}
+{"level":"info","message":"Center created with ID: 9","model":"center","timestamp":"2025-03-29T08:43:08.590Z"}
+{"level":"info","message":"enrollment created with ID: 12","model":"enrollment","timestamp":"2025-03-29T08:43:31.569Z"}
+{"level":"error","message":"getAllEnrollments error: Unknown column 'user.name' in 'field list'","model":"enrollment","timestamp":"2025-03-29T08:43:39.148Z"}
+{"level":"warn","message":"enrollment not found with ID: 12","model":"enrollment","timestamp":"2025-03-29T08:46:01.977Z"}
+{"level":"info","message":"User logged in successfully: 1","model":"user","timestamp":"2025-03-29T08:46:47.827Z"}
+{"level":"error","message":"getMeProfile error: Unknown column 'image' in 'field list'","model":"user","timestamp":"2025-03-29T08:47:19.663Z"}
+{"level":"info","message":"Center created with ID: 10","model":"center","timestamp":"2025-03-29T08:47:35.787Z"}
+{"level":"info","message":"enrollment created with ID: 13","model":"enrollment","timestamp":"2025-03-29T08:47:47.430Z"}
+{"level":"info","message":"fetched enrollment with ID: 13","model":"enrollment","timestamp":"2025-03-29T08:47:59.107Z"}
+{"level":"info","message":"Fetched 1 enrollments on page 1","model":"enrollment","timestamp":"2025-03-29T08:48:08.275Z"}
+{"level":"info","message":"fetched enrollment with ID: 13","model":"enrollment","timestamp":"2025-03-29T08:53:54.179Z"}
+{"level":"error","message":"getMeProfile error: Unknown column 'image' in 'field list'","model":"user","timestamp":"2025-03-29T08:54:10.062Z"}
+{"level":"info","message":"Center created with ID: 11","model":"center","timestamp":"2025-03-29T08:54:56.233Z"}
+{"level":"info","message":"Get all centers","model":"center","timestamp":"2025-03-29T08:55:09.814Z"}
+{"level":"info","message":"Fetched center with ID: 11","model":"center","timestamp":"2025-03-29T08:55:31.237Z"}

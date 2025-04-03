@@ -92,12 +92,12 @@ const deleteCourse = async (req, res) => {
 const getAllCourse = async (req, res) => {
     try {
         let page = parseInt(req.query.page) || 1;
-        let take = parseInt(req.query.take) || 10;
-        let offset = (page - 1) * take;
+        let limit = parseInt(req.query.limit) || 10;
+        let offset = (page - 1) * limit;
 
         let filter = req.query.filter || "";
         let order = req.query.order === "DESC" ? "DESC" : "ASC";
-        let allowedColumns = ["id", "name", "phone", "location", "regionId", "centerId"];
+        let allowedColumns = ["id", "name"];
         let column = allowedColumns.includes(req.query.column) ? req.query.column : "id";
 
         const courses = await Course.findAll({
@@ -114,7 +114,7 @@ const getAllCourse = async (req, res) => {
                     attributes: ["id", "name", "adress", "location"]
                 },
             ],
-            limit: take,
+            limit: limit,
             offset: offset,
             order: [[column, order]]
         });

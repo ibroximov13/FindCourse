@@ -250,7 +250,10 @@ async function getAllUsers(req, res) {
             limit: limit,
             offset: offset,
             order: [[column, order]],
-            include: [{ model: Region, attributes: ["id", "name"] }]
+            include: [{ model: Region, attributes: ["id", "name"] }],
+            attributes: {
+                exclude: ["regionId"]
+            }
         });
 
         logger.info(`Fetched ${users.length} users (Page: ${page})`);
